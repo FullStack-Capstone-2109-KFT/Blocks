@@ -1,7 +1,9 @@
 import React from "react";
 
 export class Team extends React.Component {
-  render(props) {
+  render() {
+    const { props } = this;
+
     return (
       <div id="team" className="text-center">
         <div className="container">

@@ -1,10 +1,13 @@
 body {
   font-family: sans-serif;
-  color: green;
 }
 
 a {
   text-decoration: none;
+}
+
+.team-img {
+  max-width: 100px;
 }
 
 label {

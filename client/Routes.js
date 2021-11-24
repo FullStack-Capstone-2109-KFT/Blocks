@@ -1,20 +1,26 @@
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import { Login, Signup } from './components/AuthForm';
-import Home from './components/Home';
-import {me} from './store'
+import React, { Component, Fragment, useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Login, Signup } from "./components/AuthForm";
+import Home from "./components/Home";
+import { me } from "./store";
+import { Team } from "./components/LandingPageComponents/Team";
+import { Contact } from "./components/LandingPageComponents/Contact";
+import JsonData from "../script/data.json";
+// import SmoothScroll from "smooth-scroll";
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
-    this.props.loadInitialData()
+    this.props.loadInitialData();
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const { isLoggedIn } = this.props;
+
+    // const scroll = new SmoothScroll('a[href*="#"]', {
+    //   speed: 1000,
+    //   speedAsDuration: true,
+    // });
 
     return (
       <div>
@@ -24,36 +30,41 @@ class Routes extends Component {
             <Redirect to="/home" />
           </Switch>
         ) : (
-          <Switch>
-            <Route path='/' exact component={ Login } />
+          // <Switch>
+          <div>
+            {/* <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-          </Switch>
+            <Redirect to="/home" /> */}
+            <Team data={JsonData.Team} />
+            <Contact data={JsonData.Contact} />
+          </div>
+          // </Switch>
         )}
       </div>
-    )
+    );
   }
 }
 
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id
-  }
-}
+    isLoggedIn: !!state.auth.id,
+  };
+};
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
-      dispatch(me())
-    }
-  }
-}
+      dispatch(me());
+    },
+  };
+};
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Routes))
+export default withRouter(connect(mapState, mapDispatch)(Routes));
