@@ -31,7 +31,7 @@ import { logout } from "../store";
 
 export class Navbar extends React.Component {
   render() {
-    const { handleClick, isLoggedIn } = this;
+    // const { handleClick, isLoggedIn } = this;
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
         <div className="container">
@@ -48,7 +48,7 @@ export class Navbar extends React.Component {
               <span className="icon-bar"></span>{" "}
               <span className="icon-bar"></span>{" "}
             </button>
-            <a className="navbar-brand page-scroll" href="#page-top">
+            <a className="navbar-brand page-scroll" href="#header">
               Blocks
             </a>{" "}
           </div>
