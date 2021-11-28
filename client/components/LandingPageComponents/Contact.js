@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import emailjs from "emailjs-com";
 //emailjs requires subscription, pay for > 200 monthly requests
 
@@ -143,17 +144,26 @@ export class Contact extends React.Component {
                   <ul>
                     <li>
                       <a href={props.data ? props.data.facebook : "/"}>
-                        <i className="fa fa-facebook"></i>
+                        <FontAwesomeIcon
+                          className="fa fa-youtube"
+                          icon={["fab", "facebook"]}
+                        />
                       </a>
                     </li>
                     <li>
                       <a href={props.data ? props.data.twitter : "/"}>
-                        <i className="fa fa-twitter"></i>
+                        <FontAwesomeIcon
+                          className="fa fa-twitter"
+                          icon={["fab", "twitter"]}
+                        />
                       </a>
                     </li>
                     <li>
                       <a href={props.data ? props.data.youtube : "/"}>
-                        <i className="fa fa-youtube"></i>
+                        <FontAwesomeIcon
+                          className="fa fa-youtube"
+                          icon={["fab", "youtube"]}
+                        />
                       </a>
                     </li>
                   </ul>

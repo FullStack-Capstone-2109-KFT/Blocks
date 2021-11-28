@@ -1,5 +1,4 @@
 import React from "react";
-// export const Header = (props) => {
 
 export class Header extends React.Component {
   render() {

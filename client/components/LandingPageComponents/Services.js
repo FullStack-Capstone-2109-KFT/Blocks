@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class Services extends React.Component {
   render() {
@@ -19,7 +20,10 @@ export class Services extends React.Component {
               ? props.data.map((d, i) => (
                   <div key={`${d.name}-${i}`} className="col-md-4">
                     {" "}
-                    <i className={d.icon}></i>
+                    <FontAwesomeIcon
+                      className={"fa fa-" + d.icon}
+                      icon={d.icon}
+                    />{" "}
                     <div className="service-desc">
                       <h3>{d.name}</h3>
                       <p>{d.text}</p>
