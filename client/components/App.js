@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import DStorage from '
+import Blocks from '../../abis/Blocks';
 const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
 
@@ -38,14 +38,14 @@ export default class App extends Component {
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
     const networkId = await web3.eth.net.getId();
-    const networkData = DStorage.networks[networkId]; //need to import
+    const networkData = Blocks.networks[networkId];
     if (networkData) {
-      const dstorage = new web3.eth.Contract(DStorage.abi, networkData.address);
-      this.setState({ dstorage });
-      const filesCount = await dstorage.methods.fileCount().call();
+      const blocks = new web3.eth.Contract(Blocks.abi, networkData.address);
+      this.setState({ blocks });
+      const filesCount = await blocks.methods.fileCount().call();
       this.setState({ filesCount });
       for (let i = filesCount; i >= 1; i--) {
-        const file = await dstorage.methods.files(i).call();
+        const file = await blocks.methods.files(i).call();
         this.setState({
           files: [...this.state.files, file],
         });
