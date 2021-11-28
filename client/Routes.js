@@ -12,7 +12,6 @@ import { Team } from "./components/LandingPageComponents/Team";
 import { Contact } from "./components/LandingPageComponents/Contact";
 import JsonData from "../script/data.json";
 // import SmoothScroll from "smooth-scroll";
-// import "./App.css";
 
 class Routes extends Component {
   componentDidMount() {
