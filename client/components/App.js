@@ -90,9 +90,26 @@ export default class App extends Component {
   //       console.error(error);
   //       return
   //     }
+      
+  //     this.setState({loading: true})
+  //     if(this.state.type === ''){
+  //       this.setState({type: 'none'})
+  //     }
+      
+  //     this.state.blocks.methods.uploadFile(result[0].hash, result[0].size, this.state.type, this.state.name, description).send({ from: this.state.account }).on('transactionHash', (hash) => {
+  //       this.setState({
+  //         loading: false,
+  //         type: null,
+  //         name: null
+  //       })
+        
+  //       window.location.reload();
+        
+  //     }).on('error', (e) => {
+  //       window.alert('Error')
+  //       this.setState({loading: false})
+  //     })
   //   })
-    
-  //   this.setState
   // }
 
   render() {
