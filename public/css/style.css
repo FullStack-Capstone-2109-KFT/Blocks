@@ -102,8 +102,8 @@ ul,
 ol {
   list-style: none;
   padding: 0;
-  webkit-padding: 0;
-  moz-padding: 0;
+  /* webkit-padding: 0;
+  moz-padding: 0; */
 }
 
 hr {
@@ -166,7 +166,7 @@ hr {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nave > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .navbar-default .navbar-nav > .active > a:after,
@@ -283,7 +283,7 @@ a:focus,
 }
 
 .intro .overlay {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 182, 70, 0.2);
 }
 
 .intro h1 {
@@ -318,8 +318,7 @@ header .intro-text {
 
 /* FEATURES */
 #features {
-  background: #ffffff;
-  padding-top: 100px;
+  padding: 100px 0;
 }
 
 #features .fa {
@@ -337,6 +336,7 @@ header .intro-text {
 
 /* ABOUT */
 #about {
+  background: #e6e6e6;
   padding: 100px 0;
 }
 
