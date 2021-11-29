@@ -22,7 +22,16 @@ export default class App extends Component {
     };
     //this.uploadFile
     this.captureFile = this.captureFile.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    // const description = this.fileDescription.value;
+    // this.uploadFile(description);
+    console.log(this);
+  };
 
   async componentWillMount() {
     await this.loadWeb3();
@@ -124,8 +133,17 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        {/* <h1>{this.state.loading}</h1> */}
-        <form>input</form>
+        <form
+          onSubmit={(e) => {
+            this.handleSubmit();
+          }}
+        >
+          <label>
+            Name:
+            <input type='file' onChange={this.captureFile} />
+          </label>
+          <input type='submit' value='Submit' />
+        </form>
       </div>
     );
   }
