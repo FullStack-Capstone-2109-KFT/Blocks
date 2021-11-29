@@ -9552,7 +9552,7 @@
     "version": "0.8.10+commit.fc410830.Emscripten.clang"
   },
   "networks": {
-    "5777": {
+    "1337": {
       "events": {},
       "links": {},
       "address": "0x4d091852931B2CDa48CB00a3695e309d713f5E76",

@@ -12,7 +12,14 @@ const ipfs = create({
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      account: '',
+      blocks: null,
+      files: [],
+      loading: false,
+      type: null,
+      name: null
+    };
     //this.uploadFile
     //this.captureFile
   }
@@ -38,7 +45,9 @@ export default class App extends Component {
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
     const networkId = await web3.eth.net.getId();
+    console.log(networkId)
     const networkData = Blocks.networks[networkId];
+    console.log(networkData)
     if (networkData) {
       const blocks = new web3.eth.Contract(Blocks.abi, networkData.address);
       this.setState({ blocks });
@@ -51,9 +60,40 @@ export default class App extends Component {
         });
       }
     } else {
-      window.alert("DStorage contract not deployed to detected network");
+      window.alert("Blocks contract not deployed to detected network");
     }
   }
+  
+  captureFile = event => {
+    event.preventDefault();
+    
+    const file = event.target.files[0];
+    const reader = new window.FileReader();
+    
+    reader.readAsArrayBuffer(file);
+    reader.onloadend = () => {
+      this.setState({
+        buffer: Buffer(reader.result),
+        type: file.type,
+        name: file.name
+      })
+    console.log('buffer', this.state.buffer)
+    }
+  }
+  
+  // uploadFile = description => {
+  //   console.log("Submitting file to IPFS...")
+    
+  //   ipfs.add(this.state.buffer, (error, result) => {
+  //     console.log('IPFS result', result.size);
+  //     if (error){
+  //       console.error(error);
+  //       return
+  //     }
+  //   })
+    
+  //   this.setState
+  // }
 
   render() {
     return (
