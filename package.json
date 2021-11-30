@@ -38,6 +38,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "react-dropzone": "^11.4.2",
     "sequelize": "^6.3.5",
     "truffle": "^5.4.21",
     "truffle-hdwallet-provider-privkey": "^0.3.0",

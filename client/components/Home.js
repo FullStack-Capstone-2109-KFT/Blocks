@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import MyDropzone from './Drag&Drop'
 
 /**
  * COMPONENT
@@ -10,6 +11,7 @@ export const Home = props => {
   return (
     <div>
       <h3>Welcome, {username}</h3>
+      <MyDropzone />
     </div>
   )
 }
