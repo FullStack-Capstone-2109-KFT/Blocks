@@ -2,10 +2,17 @@ pragma solidity ^0.8.10;
 
 contract Blocks {
     string public name = 'Blocks';
-    uint public fileCount = 0;
-    mapping(uint => File) public files; // mapping number of files through our Struct;
-
-    struct File { // file model that will be uploaded from users
+    // uint public fileCount = 0;
+    mapping(uint => User) public users;
+    // mapping(uint => File) public files;
+    
+    struct User {
+        uint id;
+        uint fileCount;
+        File[] files;
+    }
+    
+    struct File {
         uint id;
         string fileHash;
         uint fileSize;
@@ -18,6 +25,7 @@ contract Blocks {
 
     event FileUploaded (
         uint id,
+        uint userId
         string fileHash,
         uint fileSize,
         string fileType,
@@ -31,20 +39,24 @@ contract Blocks {
 
     // }
 
-    function uploadFile(string memory _fileHash, uint _fileSize, string memory _fileType, string memory _fileName, string memory _fileDescription) public {
-
-    require(bytes(_fileHash).length > 0); // validation for uploaded file from user
+    function uploadFile(uint _userId, string memory _fileHash, uint _fileSize, string memory _fileType, string memory _fileName, string memory _fileDescription) public {
+    
+    require(bytes(_userId) > 0);
+    require(bytes(_fileHash).length > 0);
     require(bytes(_fileType).length > 0);
     require(bytes(_fileDescription).length > 0);
     require(bytes(_fileName).length > 0);
     require(msg.sender != address(0));
-
     require(_fileSize > 0);
-    fileCount++;
+    
+    uint user = users[_userId]
+    user.fileCount ++
+     
     // string calldata mess = msg.sender;
-    files[fileCount] = File(fileCount, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, block.timestamp, msg.sender);
+    
+    user.File[user.fileCount] = File(fileCount, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, block.timestamp, msg.sender);
 
-    emit FileUploaded(fileCount, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, block.timestamp, msg.sender);
+    emit FileUploaded(fileCount, _userId, _fileHash, _fileSize, _fileType, _fileName, _fileDescription, block.timestamp, msg.sender);
     }
 }
 
