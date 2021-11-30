@@ -1,37 +1,32 @@
-import React, { Component } from 'react';
-import Blocks from '../../abis/Blocks';
-const Web3 = require('web3');
-const { create } = require('ipfs-http-client');
+import React, { Component } from "react";
+import Blocks from "../../abis/Blocks";
+const Web3 = require("web3");
+const { create } = require("ipfs-http-client");
 
 const ipfs = create({
-  host: 'ipfs.infura.io',
+  host: "ipfs.infura.io",
   port: 5001,
-  protocol: 'https',
+  protocol: "https",
 });
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      account: '',
+      account: "",
       blocks: null,
       files: [],
       loading: false,
       type: null,
       name: null,
+      description: "",
     };
     //this.uploadFile
     this.captureFile = this.captureFile.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    // const description = this.fileDescription.value;
-    // this.uploadFile(description);
-    console.log(this);
-  };
 
   async componentWillMount() {
     await this.loadWeb3();
@@ -45,7 +40,7 @@ export default class App extends Component {
     } else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider);
     } else {
-      window.alert('Non-Ethereum browser detected');
+      window.alert("Non-Ethereum browser detected");
     }
   }
 
@@ -69,9 +64,21 @@ export default class App extends Component {
         });
       }
     } else {
-      window.alert('Blocks contract not deployed to detected network');
+      window.alert("Blocks contract not deployed to detected network");
     }
   }
+
+  handleChange = (evt) => {
+    const target = evt.target.value;
+    this.setState({ description: target });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    // const description = this.fileDescription.value;
+    const description = this.state.description;
+    this.uploadFile(description);
+  };
 
   captureFile = (event) => {
     event.preventDefault();
@@ -85,64 +92,66 @@ export default class App extends Component {
         type: file.type,
         name: file.name,
       });
-      console.log('buffer', this.state.buffer);
+      console.log("buffer", this.state.buffer);
     };
     console.log(event);
   };
 
-  uploadFile = (description) => {
-    console.log('Submitting file to IPFS...');
+  uploadFile = async (description) => {
+    console.log("Submitting file to IPFS...");
 
-    ipfs.add(this.state.buffer, (error, result) => {
-      console.log('IPFS result', result.size);
-      if (error) {
-        console.error(error);
-        return;
-      }
+    const result = await ipfs.add(this.state.buffer);
+    console.info(result);
+    console.info(result.path);
 
-      this.setState({ loading: true });
-      if (this.state.type === '') {
-        this.setState({ type: 'none' });
-      }
+    // ipfs.add(this.state.buffer, (error, result) => {
+    //   console.log("IPFS result", result.size);
+    //   if (error) {
+    //     console.error(error);
+    //     return;
+    //   }
 
-      this.state.blocks.methods
-        .uploadFile(
-          result[0].hash,
-          result[0].size,
-          this.state.type,
-          this.state.name,
-          description
-        )
-        .send({ from: this.state.account })
-        .on('transactionHash', (hash) => {
-          this.setState({
-            loading: false,
-            type: null,
-            name: null,
-          });
+    //   this.setState({ loading: true });
 
-          window.location.reload();
-        })
-        .on('error', (e) => {
-          window.alert('Error');
-          this.setState({ loading: false });
-        });
-    });
+    //   if (this.state.type === "") {
+    //     this.setState({ type: "none" });
+    //   }
+
+    //   this.state.blocks.methods
+    //     .uploadFile(
+    //       result[0].hash,
+    //       result[0].size,
+    //       this.state.type,
+    //       this.state.name,
+    //       description
+    //     )
+    //     .send({ from: this.state.account })
+    //     .on("transactionHash", (hash) => {
+    //       this.setState({
+    //         loading: false,
+    //         type: null,
+    //         name: null,
+    //       });
+
+    //       window.location.reload();
+    //     })
+    //     .on("error", (e) => {
+    //       window.alert("Error");
+    //       this.setState({ loading: false });
+    //     });
+    // });
   };
 
   render() {
     return (
       <div>
-        <form
-          onSubmit={(e) => {
-            this.handleSubmit();
-          }}
-        >
+        <form onSubmit={this.handleSubmit}>
           <label>
             Name:
-            <input type='file' onChange={this.captureFile} />
+            <input type="file" onChange={this.captureFile} />
           </label>
-          <input type='submit' value='Submit' />
+          <input type="text" onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
