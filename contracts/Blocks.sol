@@ -1,3 +1,4 @@
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
 contract Blocks {
@@ -9,7 +10,7 @@ contract Blocks {
   struct User {
     uint256 id;
     uint256 fileCount;
-    // File[] files;
+    // File[] userFiles;
   }
 
   struct File {
