@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Dropzone from "react-dropzone";
 import Blocks from "../../abis/Blocks";
 import StyledDropzone from "./Drag&Drop";
 const Web3 = require("web3");
@@ -51,9 +50,7 @@ export default class App extends Component {
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
     const networkId = await web3.eth.net.getId();
-    console.log(networkId);
     const networkData = Blocks.networks[networkId];
-    console.log(networkData);
     if (networkData) {
       const blocks = new web3.eth.Contract(Blocks.abi, networkData.address);
       this.setState({ blocks });
@@ -94,7 +91,7 @@ export default class App extends Component {
         type: file.type,
         name: file.name,
       });
-      console.log("buffer", this.state.buffer);
+      console.log("buffer", this.state);
     };
     console.log(event);
   };
@@ -148,7 +145,7 @@ export default class App extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <StyledDropzone />
+          <StyledDropzone captureFile={this.captureFile}/>
           <label>
             Name:
             <input type="file" onChange={this.captureFile} />

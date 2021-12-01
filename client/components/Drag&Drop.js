@@ -75,6 +75,9 @@ const doc = {
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
+  const [buffer, setBuffer] = useState([]);
+  const [type, setType] = useState(null);
+  const [name, setName] = useState(null);
   const {
     getRootProps,
     getInputProps,
@@ -84,20 +87,19 @@ function StyledDropzone(props) {
     acceptedFiles,
     open
   } = useDropzone({
-    accept: "image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3, ",
+    accept: "image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3",
     noClick: true,
     noKeyboard: true,
     onDrop: acceptedFiles => {
       setFiles(
         acceptedFiles.map(file =>
           Object.assign(file, {
-            preview: URL.createObjectURL(file)
+            preview: URL.createObjectURL(file),
           })
         )
       );
     }
   });
-
   const style = useMemo(
     () => ({
       ...baseStyle,
@@ -107,6 +109,17 @@ function StyledDropzone(props) {
     }),
     [isDragActive, isDragReject]
   );
+
+  // const bufferReader = files.map(file => {
+  //   let reader = file.reader;
+  //   reader.readAsArrayBuffer(file);
+  //   reader.onloadend = () => {
+  //     setBuffer(Buffer(reader.result))
+  //     setType(file.type)
+  //     setName(file.name)
+  //   }
+  //   console.log(reader)
+  // })
 
   const thumbs = files.map(file => (
     <div style={thumb} key={file.name}>
@@ -134,9 +147,39 @@ function StyledDropzone(props) {
     </li>
   ));
 
+//   const handleDragLeave = event => {
+//   event.stopPropogation()
+//   event.preventDefault()
+//   console.log('eventtttt',event)
+//   // Bring the endzone back to normal, maybe?
+// };
+// const handleDragOver = event => {
+//   event.stopPropogation()
+//   event.preventDefault()
+//   console.log('eventtttt',event)
+//   // Turn the endzone red, perhaps?
+// };
+const handleDragEnter = event => {
+  event.stopPropogation()
+  event.preventDefault()
+  console.log('eventtttt',event)
+  // Play a little sound, possibly?
+};
+const handleDrop = event => {
+  // event.stopPropogation()
+  event.preventDefault()
+  console.log('eventtttt',event)
+  // Add a football image to the endzone, initiate a file upload,
+  // steal the user's credit card
+};
+
   return (
     <div className="container">
-      <div {...getRootProps({ style })}>
+      <div {...getRootProps({ style })}
+       onDragOver={handleDragOver}
+       onDragEnter={handleDragEnter}
+       onDragLeave={handleDragLeave}
+       onDrop={handleDrop}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop files here</p>
         <button type="button" onClick={open}>
@@ -154,3 +197,31 @@ function StyledDropzone(props) {
 
 export default StyledDropzone;
 
+
+// handleDragLeave = event => {
+//   event.stopPropogation()
+//   event.preventDefault()
+//   // Bring the endzone back to normal, maybe?
+// };
+// handleDragOver = event => {
+//   event.stopPropogation()
+//   event.preventDefault()
+//   // Turn the endzone red, perhaps?
+// };
+// handleDragEnter = event => {
+//   event.stopPropogation()
+//   event.preventDefault()
+//   // Play a little sound, possibly?
+// };
+// handleDrop = event => {
+//   event.stopPropogation()
+//   event.preventDefault()
+//   // Add a football image to the endzone, initiate a file upload,
+//   // steal the user's credit card
+// };
+
+// return (
+//   <div className={'endzone'} onDragOver={this.handleDragOver} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
+//     <p>The Drop Zone</p>
+//   </div>
+// );
