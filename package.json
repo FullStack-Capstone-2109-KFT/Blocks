@@ -20,6 +20,10 @@
   "author": "Takumi Otsuka, Jordan Oetting, Davide Lepri, David Kremenitzer",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@truffle/hdwallet-provider": "^1.7.0",
     "axios": "^0.21.1",
     "babel-polyfill": "6.26.0",
@@ -38,7 +42,9 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "react-dropzone": "^11.4.2",
     "sequelize": "^6.3.5",
+    "style-loader": "^3.3.1",
     "truffle": "^5.4.21",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
     "web3": "^1.6.1"
@@ -51,6 +57,7 @@
     "axios-mock-adapter": "^1.16.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.2.0",
+    "css-loader": "^6.5.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "esm": "^3.2.25",

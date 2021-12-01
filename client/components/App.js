@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Blocks from '../../abis/Blocks';
+import Blocks from "../../abis/Blocks";
+import StyledDropzone from "./Drag&Drop";
 const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
 
@@ -13,15 +14,19 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      account: '',
+      account: "",
       blocks: null,
       files: [],
       loading: false,
       type: null,
-      name: null
+      name: null,
+      description: "",
     };
     //this.uploadFile
-    //this.captureFile
+    this.captureFile = this.captureFile.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentWillMount() {
@@ -45,9 +50,7 @@ export default class App extends Component {
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
     const networkId = await web3.eth.net.getId();
-    console.log(networkId)
     const networkData = Blocks.networks[networkId];
-    console.log(networkData)
     if (networkData) {
       const blocks = new web3.eth.Contract(Blocks.abi, networkData.address);
       this.setState({ blocks });
@@ -63,42 +66,93 @@ export default class App extends Component {
       window.alert("Blocks contract not deployed to detected network");
     }
   }
-  
-  captureFile = event => {
+
+  handleChange = (evt) => {
+    const target = evt.target.value;
+    this.setState({ description: target });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    // const description = this.fileDescription.value;
+    const description = this.state.description;
+    this.uploadFile(description);
+  };
+
+  captureFile = (event) => {
     event.preventDefault();
-    
     const file = event.target.files[0];
     const reader = new window.FileReader();
-    
+
     reader.readAsArrayBuffer(file);
     reader.onloadend = () => {
       this.setState({
         buffer: Buffer(reader.result),
         type: file.type,
-        name: file.name
-      })
-    console.log('buffer', this.state.buffer)
-    }
-  }
-  
-  // uploadFile = description => {
-  //   console.log("Submitting file to IPFS...")
-    
-  //   ipfs.add(this.state.buffer, (error, result) => {
-  //     console.log('IPFS result', result.size);
-  //     if (error){
-  //       console.error(error);
-  //       return
-  //     }
-  //   })
-    
-  //   this.setState
-  // }
+        name: file.name,
+      });
+      console.log("buffer", this.state);
+    };
+    console.log(event);
+  };
+
+  uploadFile = async (description) => {
+    console.log("Submitting file to IPFS...");
+
+    const result = await ipfs.add(this.state.buffer);
+    console.info(result);
+    console.info(result.path);
+
+    // ipfs.add(this.state.buffer, (error, result) => {
+    //   console.log("IPFS result", result.size);
+    //   if (error) {
+    //     console.error(error);
+    //     return;
+    //   }
+
+    //   this.setState({ loading: true });
+
+    //   if (this.state.type === "") {
+    //     this.setState({ type: "none" });
+    //   }
+
+    //   this.state.blocks.methods
+    //     .uploadFile(
+    //       result[0].hash,
+    //       result[0].size,
+    //       this.state.type,
+    //       this.state.name,
+    //       description
+    //     )
+    //     .send({ from: this.state.account })
+    //     .on("transactionHash", (hash) => {
+    //       this.setState({
+    //         loading: false,
+    //         type: null,
+    //         name: null,
+    //       });
+
+    //       window.location.reload();
+    //     })
+    //     .on("error", (e) => {
+    //       window.alert("Error");
+    //       this.setState({ loading: false });
+    //     });
+    // });
+  };
 
   render() {
     return (
       <div>
-        <h1>Filler text here</h1>
+        <form onSubmit={this.handleSubmit}>
+          <StyledDropzone captureFile={this.captureFile}/>
+          <label>
+            Name:
+            <input type="file" onChange={this.captureFile} />
+          </label>
+          <input type="text" onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     );
   }
