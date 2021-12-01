@@ -148,6 +148,7 @@ export default class App extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <StyledDropzone />
           <label>
             Name:
             <input type="file" onChange={this.captureFile} />

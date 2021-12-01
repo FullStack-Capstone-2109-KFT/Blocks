@@ -39,6 +39,7 @@ const thumbsContainer = {
 };
 
 const thumb = {
+  backgroundColor: 'green',
   display: "inline-flex",
   borderRadius: 2,
   border: "1px solid #eaeaea",
@@ -62,8 +63,17 @@ const img = {
   height: "100%"
 };
 
+const doc = {
+  width: "100%",
+  height: "800px",
+  backgroundColor: "red",
+  overflowY: 'auto',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+}
+
 function StyledDropzone(props) {
-  console.log(props)
   const [files, setFiles] = useState([]);
   const {
     getRootProps,
@@ -74,7 +84,7 @@ function StyledDropzone(props) {
     acceptedFiles,
     open
   } = useDropzone({
-    accept: "image/*",
+    accept: "image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3, ",
     noClick: true,
     noKeyboard: true,
     onDrop: acceptedFiles => {
@@ -92,8 +102,8 @@ function StyledDropzone(props) {
     () => ({
       ...baseStyle,
       ...(isDragActive ? activeStyle : {}),
-      ...(isDragAccept ? acceptStyle : {}),
-      ...(isDragReject ? rejectStyle : {})
+      ...(isDragAccept ? activeStyle : {}),
+      ...(isDragReject ? activeStyle : {})
     }),
     [isDragActive, isDragReject]
   );
@@ -101,7 +111,11 @@ function StyledDropzone(props) {
   const thumbs = files.map(file => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
-        <img src={file.preview} style={img} />
+        {console.log(file.type)}
+        {file.type === 'image/png' ? <img src={file.preview} style={img} />
+        : <div>
+              <iframe className={file.type} width="100%" height="600" frameBorder="0" src={file.preview}></iframe>
+          </div>}
       </div>
     </div>
   ));
@@ -124,7 +138,7 @@ function StyledDropzone(props) {
     <div className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here</p>
+        <p>Drag 'n' drop files here</p>
         <button type="button" onClick={open}>
           Open File Dialog
         </button>
