@@ -1,3 +1,5 @@
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+
 module.exports = {
   entry: ["./client/index.js"],
   output: {
@@ -17,4 +19,10 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    fallback: {
+      http: require.resolve("stream-http"),
+    },
+  },
+  plugins: [new NodePolyfillPlugin()],
 };
