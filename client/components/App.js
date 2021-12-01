@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Dropzone from "react-dropzone";
 import Blocks from "../../abis/Blocks";
+import StyledDropzone from "./Drag&Drop";
 const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
 
