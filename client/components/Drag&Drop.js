@@ -75,6 +75,8 @@ const doc = {
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
+  const [fileToUpload, setFileToUpload] = useState(null);
+  console.log('proppes', props);
   // const [buffer, setBuffer] = useState([]);
   // const [type, setType] = useState(null);
   // const [name, setName] = useState(null);
@@ -111,20 +113,9 @@ function StyledDropzone(props) {
     [isDragActive, isDragReject]
   );
 
-  // const bufferReader = files.map(file => {
-  //   let reader = file.reader;
-  //   reader.readAsArrayBuffer(file);
-  //   reader.onloadend = () => {
-  //     setBuffer(Buffer(reader.result))
-  //     setType(file.type)
-  //     setName(file.name)
-  //   }
-  //   console.log(reader)
-  // })
-
   const thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
-      {console.log('fieellleee', file)}
+      {setFileToUpload(file)}
       <div style={thumbInner}>
         {console.log(file.type)}
         {file.type === 'image/png' ? (

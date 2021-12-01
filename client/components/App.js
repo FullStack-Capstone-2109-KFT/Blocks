@@ -14,6 +14,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      fileToUpload: null,
       account: '',
       blocks: null,
       files: [],
@@ -83,9 +84,10 @@ export default class App extends Component {
     event.preventDefault();
     const file = event.target.files[0];
     const reader = new window.FileReader();
-
+    console.log(file, 'fileeea');
     reader.readAsArrayBuffer(file);
     reader.onloadend = () => {
+      console.log(reader.result, 'stepbeforeBUFFA');
       this.setState({
         buffer: Buffer(reader.result),
         type: file.type,
@@ -145,7 +147,10 @@ export default class App extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <StyledDropzone />
+          <StyledDropzone
+            // handle={this.handleSubmit}
+            fileToUpload={this.state.fileToUpload}
+          />
           <label>
             Name:
             <input type='file' onChange={this.captureFile} />
