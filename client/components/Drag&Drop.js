@@ -80,6 +80,7 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
+  const [description, setDescr] = useState('')
 
   const {
     getRootProps,
@@ -155,8 +156,26 @@ function StyledDropzone(props) {
     console.log(buff, name, type)
   }, [name, type])
 
+  const handleChange = (evt) => {
+    const target = evt.target.value;
+    setDescr(target)
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // const description = this.fileDescription.value;
+    console.log(uploadFile(description))
+  };
+
+  const uploadFile = async () => {
+    console.log("SUBMITTINGGGG to IPFSSS")
+    const res = await props.ipfS.add(buff);
+    console.log("RESULT ==>>", res)
+  }
+
 
   return (
+  <form onSubmit={handleSubmit}>
     <div className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
@@ -165,12 +184,15 @@ function StyledDropzone(props) {
           Open File Dialog
         </button>
       </div>
+      <input type="text" onChange={handleChange}/>
       <aside>
         <h4>Files</h4>
         <ul>{filepath}</ul>
       </aside>
       <aside style={thumbsContainer}>{thumbs}</aside>
+      <input type="submit" value="Submit" />
     </div>
+  </form>
   );
 }
 
