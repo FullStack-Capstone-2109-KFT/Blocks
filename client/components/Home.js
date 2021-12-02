@@ -1,5 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { Header } from "./LandingPageComponents/Header";
+import { Features } from "./LandingPageComponents/Features";
+import { About } from "./LandingPageComponents/About";
+import { Services } from "./LandingPageComponents/Services";
+import { Testimonials } from "./LandingPageComponents/Testimonials";
+import { Team } from "./LandingPageComponents/Team";
+import { Contact } from "./LandingPageComponents/Contact";
+import JsonData from "../../script/data.json";
 import MyDropzone from './Drag&Drop'
 
 /**
@@ -10,7 +18,13 @@ export const Home = props => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <Header data={JsonData.Header} />
+      <Features data={JsonData.Features} />
+      <About data={JsonData.About} />
+      <Services data={JsonData.Services} />
+      <Testimonials data={JsonData.Testimonials} />
+      <Team data={JsonData.Team} />
+      <Contact data={JsonData.Contact} />
     </div>
   )
 }

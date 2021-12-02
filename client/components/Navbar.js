@@ -59,6 +59,11 @@ export class Navbar extends React.Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
+              <Link to='/login' className='page-scroll'>
+                Login
+              </Link>
+              </li>
+              <li>
                 <a href="#features" className="page-scroll">
                   Features
                 </a>
