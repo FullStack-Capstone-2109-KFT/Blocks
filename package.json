@@ -12,6 +12,7 @@
     "start:dev:logger": "LOGGING=true npm run start:dev",
     "start:dev:seed": "SEED=true npm run start:dev",
     "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
+    "start-server-windows": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "NODE_ENV=test JWT=a_secret mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" --require @babel/register --require esm ",
     "test:dev": "npm run test -- --watch",
     "test:dev:models": "npm run test:dev -- --grep=model",
@@ -21,6 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.7.0",
+    "acorn": "^8.6.0",
     "axios": "^0.21.1",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
@@ -39,7 +41,6 @@
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5",
-    "truffle": "^5.4.21",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
     "web3": "^1.6.1"
   },
