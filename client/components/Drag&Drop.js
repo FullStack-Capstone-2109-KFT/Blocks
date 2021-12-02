@@ -1,3 +1,4 @@
+import { filter } from "compression";
 import React, { useMemo, useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import { useDropzone } from "react-dropzone";
@@ -78,7 +79,7 @@ function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
-  const [type, setType] = useState(null)
+  const [type, setType] = useState(null);
 
   const {
     getRootProps,
@@ -93,6 +94,14 @@ function StyledDropzone(props) {
     noClick: true,
     noKeyboard: true,
     onDrop: acceptedFiles => {
+      const theFile = acceptedFiles[0];
+      const reader = new window.FileReader();
+      reader.readAsArrayBuffer(theFile);
+      reader.onloadend = () => {
+        setBuffer(Buffer(reader.result))
+        setName(theFile.name);
+        setType(theFile.type);
+      };
       setFiles(
         acceptedFiles.map(file =>
           Object.assign(file, {
@@ -100,8 +109,9 @@ function StyledDropzone(props) {
           })
         )
       );
-    }
+    },
   });
+
   const style = useMemo(
     () => ({
       ...baseStyle,
@@ -140,26 +150,16 @@ function StyledDropzone(props) {
     </li>
   ));
 
-  const onFileDrop = (e) => {
-    let event = e;
-    event.stopPropagation();
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-    const reader = new window.FileReader();
-    reader.readAsArrayBuffer(file);
-    reader.onloadend = () => {
-      setBuffer(Buffer(reader.result))
-      setName(file.name)
-      setType(file.type);
-    };
+
+  useEffect(() => {
     console.log(buff, name, type)
-  }
+  }, [name, type])
+
 
   return (
-    <div className="container" onDrop={onFileDrop}>
-      <div {...getRootProps({ style })}
-      >
-        <input {...getInputProps()} type='file'/>
+    <div className="container">
+      <div {...getRootProps({ style })}>
+        <input {...getInputProps()} />
         <p>Drag 'n' drop files here</p>
         <button type="button" onClick={open}>
           Open File Dialog

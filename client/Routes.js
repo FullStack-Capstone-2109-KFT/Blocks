@@ -11,6 +11,7 @@ import { Testimonials } from "./components/LandingPageComponents/Testimonials";
 import { Team } from "./components/LandingPageComponents/Team";
 import { Contact } from "./components/LandingPageComponents/Contact";
 import JsonData from "../script/data.json";
+import App from '../client/App'
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {

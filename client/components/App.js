@@ -29,7 +29,7 @@ export default class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await this.loadWeb3();
     await this.loadBlockchainData();
   }
@@ -99,7 +99,6 @@ export default class App extends Component {
 
   uploadFile = async (description) => {
     console.log("Submitting file to IPFS...");
-
     const result = await ipfs.add(this.state.buffer);
     console.info(result);
     console.info(result.path);
@@ -146,11 +145,11 @@ export default class App extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <StyledDropzone onDrop={this.captureFile}/>
-          <label>
+          <StyledDropzone ipfS={ipfs}/>
+          {/* <label>
             Name:
             <input type="file" onChange={this.captureFile} />
-          </label>
+          </label> */}
           <input type="text" onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
