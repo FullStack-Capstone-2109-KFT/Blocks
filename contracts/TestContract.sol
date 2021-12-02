@@ -1,78 +1,4 @@
-// //SPDX-License-Identifier: MIT
-// pragma solidity ^0.8.10;
-
-// contract Blocks {
-//   string public name = "Blocks";
-//   uint256 public fileCount = 0;
-//   mapping(uint256 => File) public files; // mapping number of files through our Struct;
-
-//   struct File {
-//     // file model that will be uploaded from users
-//     uint256 id;
-//     string fileHash;
-//     uint256 fileSize;
-//     string fileType;
-//     string fileName;
-//     string fileDescription;
-//     uint256 uploadTime;
-//     address uploader;
-//   }
-
-//   event FileUploaded(
-//     uint256 id,
-//     string fileHash,
-//     uint256 fileSize,
-//     string fileType,
-//     string fileName,
-//     string fileDescription,
-//     uint256 uploadTime,
-//     address uploader
-//   );
-
-//   // constructor() public { // when the contract is first deployed initialize state variable
-
-//   // }
-
-//   function uploadFile(
-//     string memory _fileHash,
-//     uint256 _fileSize,
-//     string memory _fileType,
-//     string memory _fileName,
-//     string memory _fileDescription
-//   ) public {
-//     require(bytes(_fileHash).length > 0); // validation for uploaded file from user
-//     require(bytes(_fileType).length > 0);
-//     require(bytes(_fileDescription).length > 0);
-//     require(bytes(_fileName).length > 0);
-//     require(msg.sender != address(0));
-
-//     require(_fileSize > 0);
-//     fileCount++;
-//     // string calldata mess = msg.sender;
-//     files[fileCount] = File(
-//       fileCount,
-//       _fileHash,
-//       _fileSize,
-//       _fileType,
-//       _fileName,
-//       _fileDescription,
-//       block.timestamp,
-//       msg.sender
-//     );
-
-//     emit FileUploaded(
-//       fileCount,
-//       _fileHash,
-//       _fileSize,
-//       _fileType,
-//       _fileName,
-//       _fileDescription,
-//       block.timestamp,
-//       msg.sender
-//     );
-//   }
-// }
-
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
 contract Blocks {
@@ -88,7 +14,8 @@ contract Blocks {
     uint256 id; //unique id for each user
     string userName; //userName
     uint256 fileCount; //user-specific file count
-    File[] userFiles; //is this definition correct?
+    bytes32[] fileList;
+    mapping(bytes32 => File) fileStructs;
   }
 
   //define the File struct
