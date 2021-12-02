@@ -1,4 +1,5 @@
 import React from "react";
+import Duda from "../Video";
 
 export class About extends React.Component {
   render() {
@@ -8,12 +9,13 @@ export class About extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-12 col-md-6">
-              {" "}
+              <Duda className="img-responsive" alt=""/>
+              {/* {" "}
               <img
                 src="img/video-placeholder.jpg"
                 className="img-responsive"
                 alt=""
-              />{" "}
+              />{" "} */}
             </div>
             <div className="col-xs-12 col-md-6">
               <div className="about-text">
