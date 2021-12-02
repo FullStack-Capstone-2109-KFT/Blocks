@@ -73,68 +73,127 @@
 //   }
 // }
 
+// pragma solidity ^0.8.10;
+
+// contract Blocks {
+//   string public name = "BlocksTest";
+//   uint256 public userCount = 0; //global counter to assign new users a new userId
+//   uint256 public fileCount = 0; //global counter to assign new files a new fileId
+
+//   //   mapping(uint256 => User) public users; //mapped key-value of users present
+//   //0:User1, 1:User2, 2:User3...
+
+//   //define the User struct
+//   struct User {
+//     uint256 id; //unique id for each user
+//     string userName; //userName
+//     uint256 fileCount; //user-specific file count
+//     File[] userFiles; //is this definition correct?
+//   }
+
+//   //define the File struct
+//   struct File {
+//     uint256 id; //Unique id for each file
+//     string fileHash; //CID
+//   }
+
+//   User[] public users; //state variable users to store user structs
+//   //   mapping(uint256 => User) public users;
+
+//   //define user creation event
+//   event UserCreated(uint256 id, string userName);
+
+//   //define file upload event
+//   event FileUploaded(uint256 fileCount, uint256 id, string fileHash);
+
+//   //function to add a new User
+//   function addUser(string memory _userName) public {
+//     require(bytes(_userName).length > 0); //require a name
+//     userCount++; //update global user count
+//     User memory newUser = User(userCount, _userName, 0, new File[](0)); //new User instance
+//     users[userCount - 1] = newUser; //add new user to users []
+
+//     emit UserCreated(userCount, _userName);
+//   }
+
+//   //function to upload a file for a specific User
+//   function uploadUserFile(
+//     uint256 _userId, //user the new file belongs to
+//     string memory _fileHash //CID
+//   ) public {
+//     require(_userId > 0); //check for userId
+//     require(bytes(_fileHash).length > 0); //check for CID
+//     fileCount++; //increase global file count
+
+//     File memory newFile = File(fileCount, _fileHash); //instantiate new file
+
+//     users[_userId - 1].fileCount++; //increase file count of user
+//     users[_userId - 1].userFiles.push(newFile); //add new file instance to user's files
+
+//     emit FileUploaded(fileCount, _userId, _fileHash);
+//   }
+
+//   //   constructor() public {
+//   //     addUser("testUser"); //test user instance (should be id:1, name:'testUser, fileCount: 0, Files[])
+//   //     uploadUserFile(1, "randomCIDFiller"); //test file instance (should be id:1, fileHash: 'randomCIDFiller), and should be assigned to user1
+//   //   }
+// }
+
 pragma solidity ^0.8.10;
 
 contract Blocks {
   string public name = "BlocksTest";
-  uint256 public userCount = 0; //global counter to assign new users a new userId
-  uint256 public fileCount = 0; //global counter to assign new files a new fileId
-
-  //   mapping(uint256 => User) public users; //mapped key-value of users present
-  //0:User1, 1:User2, 2:User3...
-
-  //define the User struct
-  struct User {
-    uint256 id; //unique id for each user
-    string userName; //userName
-    uint256 fileCount; //user-specific file count
-    File[] userFiles; //is this definition correct?
-  }
 
   //define the File struct
   struct File {
-    uint256 id; //Unique id for each file
     string fileHash; //CID
   }
 
-  User[] public users; //state variable users to store user structs
-  //   mapping(uint256 => User) public users;
-
-  //define user creation event
-  event UserCreated(uint256 id, string userName);
-
-  //define file upload event
-  event FileUploaded(uint256 fileCount, uint256 id, string fileHash);
-
-  //function to add a new User
-  function addUser(string memory _userName) public {
-    require(bytes(_userName).length > 0); //require a name
-    userCount++; //update global user count
-    User memory newUser = User(userCount, _userName, 0, new File[](0)); //new User instance
-    users[userCount - 1] = newUser; //add new user to users []
-
-    emit UserCreated(userCount, _userName);
+  //define the User struct
+  struct User {
+    string userName; //userName
+    bytes32[] fileList; //list of file keys for lookup
+    mapping(bytes32 => File) fileStructs;
   }
 
-  //function to upload a file for a specific User
-  function uploadUserFile(
-    uint256 _userId, //user the new file belongs to
-    string memory _fileHash //CID
-  ) public {
-    require(_userId > 0); //check for userId
-    require(bytes(_fileHash).length > 0); //check for CID
-    fileCount++; //increase global file count
+  mapping(bytes32 => User) userStructs;
+  bytes32[] userList; //list of user keys to enumerate
 
-    File memory newFile = File(fileCount, _fileHash); //instantiate new file
-
-    users[_userId - 1].fileCount++; //increase file count of user
-    users[_userId - 1].userFiles.push(newFile); //add new file instance to user's files
-
-    emit FileUploaded(fileCount, _userId, _fileHash);
+  function newUser(bytes32 userKey, string memory userName)
+    public
+    returns (bool success)
+  {
+    userStructs[userKey].userName = userName;
+    userList.push(userKey);
+    return true;
   }
 
-  //   constructor() public {
-  //     addUser("testUser"); //test user instance (should be id:1, name:'testUser, fileCount: 0, Files[])
-  //     uploadUserFile(1, "randomCIDFiller"); //test file instance (should be id:1, fileHash: 'randomCIDFiller), and should be assigned to user1
-  //   }
+  function getUser(bytes32 userKey)
+    public
+    view
+    returns (string memory userName, uint256 fileCount)
+  {
+    return (
+      userStructs[userKey].userName,
+      userStructs[userKey].fileList.length
+    );
+  }
+
+  function addFile(
+    bytes32 userKey,
+    bytes32 fileKey,
+    string memory fileHash
+  ) public returns (bool success) {
+    userStructs[userKey].fileList.push(fileKey);
+    userStructs[userKey].fileStructs[fileKey].fileHash = fileHash;
+    return true;
+  }
+
+  function getUserFile(bytes32 userKey, bytes32 fileKey)
+    public
+    view
+    returns (string memory fileHash)
+  {
+    return (userStructs[userKey].fileStructs[fileKey].fileHash);
+  }
 }
