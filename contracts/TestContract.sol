@@ -9,6 +9,12 @@ contract Blocks {
   //   mapping(uint256 => User) public users; //mapped key-value of users present
   //0:User1, 1:User2, 2:User3...
 
+  //define the File struct
+  struct File {
+    uint256 id; //Unique id for each file
+    string fileHash; //CID
+  }
+
   //define the User struct
   struct User {
     uint256 id; //unique id for each user
@@ -18,14 +24,10 @@ contract Blocks {
     mapping(bytes32 => File) fileStructs;
   }
 
-  //define the File struct
-  struct File {
-    uint256 id; //Unique id for each file
-    string fileHash; //CID
-  }
+  mapping(bytes32 => User) userStructs;
+  bytes32[] userList;
 
-  User[] public users; //state variable users to store user structs
-  //   mapping(uint256 => User) public users;
+  function newUser
 
   //define user creation event
   event UserCreated(uint256 id, string userName);
