@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useCallback } from "react";
 import Blocks from "../../abis/Blocks";
 import StyledDropzone from "./Drag&Drop";
 const Web3 = require("web3");
@@ -33,6 +33,7 @@ export default class App extends Component {
     await this.loadWeb3();
     await this.loadBlockchainData();
   }
+
 
   async loadWeb3() {
     if (window.ethereum) {
@@ -83,7 +84,6 @@ export default class App extends Component {
     event.preventDefault();
     const file = event.target.files[0];
     const reader = new window.FileReader();
-
     reader.readAsArrayBuffer(file);
     reader.onloadend = () => {
       this.setState({
@@ -92,6 +92,7 @@ export default class App extends Component {
         name: file.name,
       });
       console.log("buffer", this.state);
+      console.log('READE RESULT',reader.result)
     };
     console.log(event);
   };
@@ -145,7 +146,7 @@ export default class App extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <StyledDropzone captureFile={this.captureFile}/>
+          <StyledDropzone onDrop={this.captureFile}/>
           <label>
             Name:
             <input type="file" onChange={this.captureFile} />

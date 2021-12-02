@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo, useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import { useDropzone } from "react-dropzone";
 
@@ -74,10 +74,12 @@ const doc = {
 }
 
 function StyledDropzone(props) {
+
   const [files, setFiles] = useState([]);
-  const [buffer, setBuffer] = useState([]);
-  const [type, setType] = useState(null);
+  const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
+  const [type, setType] = useState(null)
+
   const {
     getRootProps,
     getInputProps,
@@ -110,21 +112,10 @@ function StyledDropzone(props) {
     [isDragActive, isDragReject]
   );
 
-  // const bufferReader = files.map(file => {
-  //   let reader = file.reader;
-  //   reader.readAsArrayBuffer(file);
-  //   reader.onloadend = () => {
-  //     setBuffer(Buffer(reader.result))
-  //     setType(file.type)
-  //     setName(file.name)
-  //   }
-  //   console.log(reader)
-  // })
 
   const thumbs = files.map(file => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
-        {console.log(file.type)}
         {file.type === 'image/png' ? <img src={file.preview} style={img} />
         : <div>
               <iframe className={file.type} width="100%" height="600" frameBorder="0" src={file.preview}></iframe>
@@ -136,7 +127,9 @@ function StyledDropzone(props) {
   useEffect(
     () => () => {
       // Make sure to revoke the data uris to avoid memory leaks
-      files.forEach(file => URL.revokeObjectURL(file.preview));
+      files.forEach(file =>
+        URL.revokeObjectURL(file.preview)
+        );
     },
     [files]
   );
@@ -147,40 +140,26 @@ function StyledDropzone(props) {
     </li>
   ));
 
-//   const handleDragLeave = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   console.log('eventtttt',event)
-//   // Bring the endzone back to normal, maybe?
-// };
-// const handleDragOver = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   console.log('eventtttt',event)
-//   // Turn the endzone red, perhaps?
-// };
-const handleDragEnter = event => {
-  event.stopPropogation()
-  event.preventDefault()
-  console.log('eventtttt',event)
-  // Play a little sound, possibly?
-};
-const handleDrop = event => {
-  // event.stopPropogation()
-  event.preventDefault()
-  console.log('eventtttt',event)
-  // Add a football image to the endzone, initiate a file upload,
-  // steal the user's credit card
-};
+  const onFileDrop = (e) => {
+    let event = e;
+    event.stopPropagation();
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    const reader = new window.FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onloadend = () => {
+      setBuffer(Buffer(reader.result))
+      setName(file.name)
+      setType(file.type);
+    };
+    console.log(buff, name, type)
+  }
 
   return (
-    <div className="container">
+    <div className="container" onDrop={onFileDrop}>
       <div {...getRootProps({ style })}
-       onDragOver={handleDragOver}
-       onDragEnter={handleDragEnter}
-       onDragLeave={handleDragLeave}
-       onDrop={handleDrop}>
-        <input {...getInputProps()} />
+      >
+        <input {...getInputProps()} type='file'/>
         <p>Drag 'n' drop files here</p>
         <button type="button" onClick={open}>
           Open File Dialog
@@ -196,32 +175,3 @@ const handleDrop = event => {
 }
 
 export default StyledDropzone;
-
-
-// handleDragLeave = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Bring the endzone back to normal, maybe?
-// };
-// handleDragOver = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Turn the endzone red, perhaps?
-// };
-// handleDragEnter = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Play a little sound, possibly?
-// };
-// handleDrop = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Add a football image to the endzone, initiate a file upload,
-//   // steal the user's credit card
-// };
-
-// return (
-//   <div className={'endzone'} onDragOver={this.handleDragOver} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
-//     <p>The Drop Zone</p>
-//   </div>
-// );
