@@ -12,17 +12,19 @@ contract Blocks {
   //define the User struct
   struct User {
     string userName; //userName
-    bytes32[] fileList; //list of file keys for lookup
-    mapping(bytes32 => File) fileStructs;
+    uint256[] fileList; //list of file keys for lookup
+    mapping(uint256 => File) fileStructs;
   }
 
-  mapping(bytes32 => User) userStructs;
-  bytes32[] userList; //list of user keys to enumerate
+  mapping(uint256 => User) public userStructs;
+  uint256[] userList; //list of user keys to enumerate
+
+  constructor() public {}
 
   //   //define user creation event
   //   event UserCreated(bytes32 userKey, string userName);
 
-  function newUser(bytes32 userKey, string memory userName)
+  function newUser(uint256 userKey, string memory userName)
     public
     returns (bool success)
   {
@@ -31,10 +33,10 @@ contract Blocks {
     return true;
   }
 
-  function getUser(bytes32 userKey)
+  function getUser(uint256 userKey)
     public
     view
-    returns (string memory, uint256)
+    returns (string memory userName, uint256 fileCount)
   {
     return (
       userStructs[userKey].userName,
@@ -43,8 +45,8 @@ contract Blocks {
   }
 
   function addFile(
-    bytes32 userKey,
-    bytes32 fileKey,
+    uint256 userKey,
+    uint256 fileKey,
     string memory fileHash
   ) public returns (bool success) {
     userStructs[userKey].fileList.push(fileKey);
@@ -52,7 +54,7 @@ contract Blocks {
     return true;
   }
 
-  function getUserFile(bytes32 userKey, bytes32 fileKey)
+  function getUserFile(uint256 userKey, uint256 fileKey)
     public
     view
     returns (string memory fileHash)
