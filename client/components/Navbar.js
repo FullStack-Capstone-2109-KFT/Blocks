@@ -3,37 +3,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
 
-// const Navbar = ({ handleClick, isLoggedIn }) => (
-//   <div>
-//     <h1>Blocks</h1>
-//     <nav>
-//       {isLoggedIn ? (
-//         <div>
-//           {/* The navbar will show these links after you log in */}
-//           <Link to="/home">Home</Link>
-//           <a href="#" onClick={handleClick}>
-//             Logout
-//           </a>
-//         </div>
-//       ) : (
-//         <div>
-//           {/* The navbar will show these links before you log in */}
-//           <Link to="/login">Login</Link>
-//           <Link to="/signup">Sign Up</Link>
-//         </div>
-//       )}
-//     </nav>
-//     <hr />
-//   </div>
-// );
-
-//add code to below to account for changed nav view w/ logged-in user
-
 export class Navbar extends React.Component {
   
   render() {
-    // const { handleClick, isLoggedIn } = this;
-    console.log(this.props);
+
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
         {this.props.isLoggedIn ? 
@@ -53,7 +26,7 @@ export class Navbar extends React.Component {
               </button>
               <a
                 className="navbar-brand page-scroll"
-                href="http://localhost:8080/home#header"
+                href="http://localhost:8080/upload"
               >
                 Blocks
               </a>{" "}
