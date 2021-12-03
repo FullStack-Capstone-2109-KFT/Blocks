@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useCallback } from "react";
 import Blocks from "../../abis/Blocks";
 import StyledDropzone from "./Drag&Drop";
 const Web3 = require("web3");
@@ -22,11 +22,6 @@ export default class App extends Component {
       name: null,
       description: "",
     };
-    //this.uploadFile
-    this.captureFile = this.captureFile.bind(this);
-    this.uploadFile = this.uploadFile.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
@@ -109,7 +104,7 @@ export default class App extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <StyledDropzone />
+          <StyledDropzone ipfS={ipfs} />
           <label>
             Name:
             <input type="file" onChange={this.captureFile} />

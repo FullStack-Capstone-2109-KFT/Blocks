@@ -4742,9 +4742,7 @@
   "ast": {
     "absolutePath": "project:/contracts/Blocks.sol",
     "exportedSymbols": {
-      "Blocks": [
-        128
-      ]
+      "Blocks": [128]
     },
     "id": 129,
     "license": "MIT",
@@ -4752,12 +4750,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".10"
-        ],
+        "literals": ["solidity", "^", "0.8", ".10"],
         "nodeType": "PragmaDirective",
         "src": "34:24:0"
       },
@@ -4769,9 +4762,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 128,
-        "linearizedBaseContracts": [
-          128
-        ],
+        "linearizedBaseContracts": [128],
         "name": "Blocks",
         "nameLocation": "69:6:0",
         "nodeType": "ContractDefinition",
@@ -6293,9 +6284,7 @@
   "legacyAST": {
     "absolutePath": "project:/contracts/Blocks.sol",
     "exportedSymbols": {
-      "Blocks": [
-        128
-      ]
+      "Blocks": [128]
     },
     "id": 129,
     "license": "MIT",
@@ -6303,12 +6292,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".10"
-        ],
+        "literals": ["solidity", "^", "0.8", ".10"],
         "nodeType": "PragmaDirective",
         "src": "34:24:0"
       },
@@ -6320,9 +6304,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 128,
-        "linearizedBaseContracts": [
-          128
-        ],
+        "linearizedBaseContracts": [128],
         "name": "Blocks",
         "nameLocation": "69:6:0",
         "nodeType": "ContractDefinition",
