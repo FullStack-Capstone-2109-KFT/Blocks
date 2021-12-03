@@ -1,6 +1,7 @@
 import React, { Component, useCallback } from "react";
 import Blocks from "../../abis/Blocks.json";
 import StyledDropzone from "./Drag&Drop";
+import { loadWeb3, loadBlockchainData } from "../store/blockchain";
 const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
 
@@ -21,37 +22,20 @@ export default class App extends Component {
       type: null,
       name: null,
       description: "",
+      id: 0,
+      userName: "",
     };
   }
 
   async componentDidMount() {
-    await this.loadWeb3();
-    await this.loadBlockchainData();
-  }
-
-  async loadWeb3() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-      await window.ethereum.enable();
-    } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-    } else {
-      window.alert("Non-Ethereum browser detected");
-    }
-  }
-
-  async loadBlockchainData() {
-    const web3 = window.web3;
-    const accounts = await web3.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    const networkId = await web3.eth.net.getId();
-    const networkData = Blocks.networks[networkId];
-    if (networkData) {
-      const blocks = new web3.eth.Contract(Blocks.abi, networkData.address);
-      this.setState({ blocks });
-    } else {
-      window.alert("Blocks contract not deployed to detected network");
-    }
+    await loadWeb3();
+    let bcData = await loadBlockchainData();
+    this.setState({
+      id: this.props.userId,
+      userName: this.props.userName,
+      account: bcData.account,
+      blocks: bcData.contract,
+    });
   }
 
   render() {
@@ -61,13 +45,9 @@ export default class App extends Component {
           ipfS={ipfs}
           blocks={this.state.blocks}
           account={this.state.account}
+          id={this.state.id}
+          userName={this.state.userName}
         />
-        {/* <label>
-            Name:
-            <input type="file" onChange={this.captureFile} />
-          </label>
-          <input type="text" onChange={this.handleChange} />
-          <input type="submit" value="Submit" /> */}
       </div>
     );
   }

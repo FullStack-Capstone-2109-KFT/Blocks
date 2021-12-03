@@ -177,22 +177,40 @@ function StyledDropzone(props) {
   const uploadFile = async () => {
     // console.log("Submitting file to IPFS");
     // const res = await props.ipfS.add(buff);
-    // console.log("RESULT ==>>", res);
+
     // const fileCID = res.path;
-    //const userID = this.state.userID?
-    console.log("Props.blocks", props.blocks);
-    console.log("Props.account", props.account);
+    const userId = props.id;
+    const userName = props.userName;
+    const metaMaskAccount = props.account;
+
+    // console.log("Props.id", props.id);
+    // console.log("Props.blocks", props.blocks);
+    // console.log("Props.account", props.account);
+
+    let user = await props.blocks.methods.getUser(userId).call();
+    if (user.userName.length < 1) {
+      await props.blocks.methods
+        .newUser(userId, userName)
+        .send({ from: metaMaskAccount });
+    }
+
+    user = await props.blocks.methods.getUser(userId).call();
+    console.log(user);
+    // await props.blocks.methods
+    //   .addFile(userId, "USERFILE#", fileCID)
+    //   .send({ from: metaMaskAccount });
 
     // await props.blocks.methods.newUser(1, "KREM").send({ from: props.account });
+
     // await props.blocks.methods
     //   .newUser(2, "DAVID-EEE")
     //   .send({ from: props.account });
 
-    const user1 = await props.blocks.methods.getUser(1).call();
-    const user2 = await props.blocks.methods.getUser(2).call();
-    const userFile = await props.blocks.methods.getUserFile(1, 1).call();
-    console.log("USER:", user1, user2);
-    console.log("FILE", userFile);
+    // const user1 = await props.blocks.methods.getUser(1).call();
+    // const user2 = await props.blocks.methods.getUser(2).call();
+    // const userFile = await props.blocks.methods.getUserFile(1, 1).call();
+    // console.log("USER:", user1);
+    // console.log("FILE", userFile);
   };
 
   return (
