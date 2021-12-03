@@ -79,7 +79,8 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  const [description, setDescr] = useState("");
+  let [description, setDescription] = useState("");
+
 
   const {
     getRootProps,
@@ -123,9 +124,8 @@ function StyledDropzone(props) {
     [isDragActive, isDragReject]
   );
 
-  const thumbs = files.map((file) => (
+  let thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
-      {console.log("fieellleee", file)}
       <div style={thumbInner}>
         {file.type === "image/png" ? (
           <img src={file.preview} style={img} />
@@ -152,38 +152,39 @@ function StyledDropzone(props) {
     [files]
   );
 
-  let filepath = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+  let filepath = acceptedFiles
+  .map((file) => (
+  <li key={file.path}>
+   {file.path} - {file.size} bytes
+  </li>
+));
 
   useEffect(() => {
-    console.log(buff, name, type);
   }, [name, type]);
 
   const handleChange = (evt) => {
     let target = evt.target.value;
-    setDescr(target);
+    setDescription(target);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // const description = this.fileDescription.value;
-    console.log(uploadFile(description));
+    uploadFile(description);
+    setDescription("")
   };
 
   const uploadFile = async (description) => {
     console.log("SUBMITTINGGGG to IPFSSS");
     const res = await props.ipfS.add(buff);
     console.log("RESULT ==>>", res);
-    const fileCID = res.path;
+    // const fileCID = res.path;
     //const userID = this.state.userID?
-
-    const user = await props.blocks.methods.getUser(1).call();
-    const userFile = await props.blocks.methods.getUserFile(1, 1).call();
-    console.log("USER:", user);
-    console.log("FILE", userFile);
+    // console.log('PROPSSS',props.blocks)
+    // const user = await props.blocks.methods.getUser(1).call();
+    // const userFile = await props.blocks.methods.getUserFile(1, 1).call();
+    // console.log("USER:", user);
+    // console.log("FILE", userFile);
   };
 
   return (
@@ -196,7 +197,8 @@ function StyledDropzone(props) {
             Open File Dialog
           </button>
         </div>
-        <input type="text" onChange={handleChange} />
+        
+        <input type="text" onChange={handleChange} value={description} placeholder='Description'/>
         <aside>
           <h4>Files</h4>
           <ul>{filepath}</ul>

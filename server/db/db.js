@@ -20,7 +20,6 @@ if (process.env.DATABASE_URL) {
     },
   };
 }
-
 // const db = new Sequelize( //Jordan
 //   process.env.DATABASE_URL || `postgres://postgres:JediLordKenobi@localhost:5432/${databaseName}`, config)
 // module.exports = db

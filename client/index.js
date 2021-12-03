@@ -11,7 +11,6 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <App />
-      {/* <UploadFile /> */}
     </Router>
   </Provider>,
   document.getElementById("app")
