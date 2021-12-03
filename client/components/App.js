@@ -22,11 +22,6 @@ export default class App extends Component {
       name: null,
       description: "",
     };
-    //this.uploadFile
-    this.captureFile = this.captureFile.bind(this);
-    this.uploadFile = this.uploadFile.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
@@ -67,40 +62,11 @@ export default class App extends Component {
     }
   }
 
-  handleChange = (evt) => {
-    const target = evt.target.value;
-    this.setState({ description: target });
-  };
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    // const description = this.fileDescription.value;
-    const description = this.state.description;
-    this.uploadFile(description);
-  };
-
-  captureFile = (event) => {
-    event.preventDefault();
-    const file = event.target.files[0];
-    const reader = new window.FileReader();
-    reader.readAsArrayBuffer(file);
-    reader.onloadend = () => {
-      this.setState({
-        buffer: Buffer(reader.result),
-        type: file.type,
-        name: file.name,
-      });
-      console.log("buffer", this.state);
-      console.log("READE RESULT", reader.result);
-    };
-    console.log(event);
-  };
-
-  uploadFile = async (description) => {
-    console.log("Submitting file to IPFS...");
-    const result = await ipfs.add(this.state.buffer);
-    console.info(result);
-    console.info(result.path);
+  // uploadFile = async (description) => {
+  //   console.log("Submitting file to IPFS...");
+  //   const result = await ipfs.add(this.state.buffer);
+  //   console.info(result);
+  //   console.info(result.path);
 
     // ipfs.add(this.state.buffer, (error, result) => {
     //   console.log("IPFS result", result.size);
@@ -138,20 +104,12 @@ export default class App extends Component {
     //       this.setState({ loading: false });
     //     });
     // });
-  };
+  // };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <StyledDropzone ipfS={ipfs} />
-          {/* <label>
-            Name:
-            <input type="file" onChange={this.captureFile} />
-          </label> */}
-          <input type="text" onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
-        </form>
+          <StyledDropzone ipfS={ipfs}/>
       </div>
     );
   }
