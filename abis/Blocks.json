@@ -9555,12 +9555,21 @@
     "1337": {
       "events": {},
       "links": {},
+<<<<<<< HEAD
       "address": "0x0226bf279179AEdA7A37EC4B0522C08F16d15C3B",
       "transactionHash": "0xebbb4a752e1b69075ffbb71639ebfe2967ce853c4e9af85959c948261e9fbe3f"
     }
   },
   "schemaVersion": "3.4.3",
   "updatedAt": "2021-12-01T21:47:51.122Z",
+=======
+      "address": "0xbF79F83f4Cb72FFED7b673FEE30B818C23cE47BA",
+      "transactionHash": "0xf5ae4f06cab7fea3ba445140b83b2150ad1aacb2768597f5d6c697ff8a59dc0e"
+    }
+  },
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-12-02T15:50:31.135Z",
+>>>>>>> 40dcf62a1d3ae0a231746ba8444c8d9d598863b4
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
