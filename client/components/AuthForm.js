@@ -9,7 +9,7 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div id='login-margin'>
+    <div className='nav-margin'>
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="username">
