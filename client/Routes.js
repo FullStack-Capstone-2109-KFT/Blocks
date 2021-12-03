@@ -26,6 +26,10 @@ class Routes extends Component {
           <Switch>
             {/* <Route path="/home" component={Home} />
             <Redirect to="/home" /> */}
+            <Route path='/upload' component={UploadFile} />
+            <Route path='/login'>
+              <Redirect to='/upload'/>
+            </Route> 
           </Switch>
         ) : (
           <div>
@@ -34,7 +38,6 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
             <Redirect to="/home" /> */}
             <Route exact path='/home' component={Home} />
-            <Route path='/upload' component={UploadFile} />
             <Route path='/signup' component={Signup}/>
             <Route path='/login' component={Login} />
           </div>
