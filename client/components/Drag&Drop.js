@@ -1,83 +1,86 @@
-import React, { useMemo, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { useDropzone } from 'react-dropzone';
+import { filter } from "compression";
+import React, { useMemo, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import { useDropzone } from "react-dropzone";
 
 const baseStyle = {
   flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "20px",
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
-  backgroundColor: '#fafafa',
-  color: '#bdbdbd',
-  outline: 'none',
-  transition: 'border .24s ease-in-out',
-  maxWidth: '300px',
+  borderColor: "#eeeeee",
+  borderStyle: "dashed",
+  backgroundColor: "#fafafa",
+  color: "#bdbdbd",
+  outline: "none",
+  transition: "border .24s ease-in-out",
+  maxWidth: "300px",
 };
 
 const activeStyle = {
-  borderColor: '#2196f3',
+  borderColor: "#2196f3",
 };
 
 const acceptStyle = {
-  borderColor: '#00e676',
+  borderColor: "#00e676",
 };
 
 const rejectStyle = {
-  borderColor: '#ff1744',
+  borderColor: "#ff1744",
 };
 
 const thumbsContainer = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
   marginTop: 16,
 };
 
 const thumb = {
-  backgroundColor: 'green',
-  display: 'inline-flex',
+  backgroundColor: "green",
+  display: "inline-flex",
   borderRadius: 2,
-  border: '1px solid #eaeaea',
+  border: "1px solid #eaeaea",
   marginBottom: 8,
   marginRight: 8,
-  width: 'auto',
+  width: "auto",
   height: 200,
   padding: 4,
-  boxSizing: 'border-box',
+  boxSizing: "border-box",
 };
 
 const thumbInner = {
-  display: 'flex',
+  display: "flex",
   minWidth: 0,
-  overflow: 'hidden',
+  overflow: "hidden",
 };
 
 const img = {
-  display: 'block',
-  width: 'auto',
-  height: '100%',
+  display: "block",
+  width: "auto",
+  height: "100%",
 };
 
 const doc = {
-  width: '100%',
-  height: '800px',
-  backgroundColor: 'red',
-  overflowY: 'auto',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  width: "100%",
+  height: "800px",
+  backgroundColor: "red",
+  overflowY: "auto",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 };
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
-  // const [buffer, setBuffer] = useState([]);
-  // const [type, setType] = useState(null);
-  // const [name, setName] = useState(null);
+  const [buff, setBuffer] = useState([]);
+  const [name, setName] = useState(null);
+  const [type, setType] = useState(null);
+  const [description, setDescr] = useState('')
+
   const {
     getRootProps,
     getInputProps,
@@ -88,10 +91,18 @@ function StyledDropzone(props) {
     open,
   } = useDropzone({
     accept:
-      'image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3',
+      "image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3",
     noClick: true,
     noKeyboard: true,
     onDrop: (acceptedFiles) => {
+      const theFile = acceptedFiles[0];
+      const reader = new window.FileReader();
+      reader.readAsArrayBuffer(theFile);
+      reader.onloadend = () => {
+        setBuffer(Buffer(reader.result));
+        setName(theFile.name);
+        setType(theFile.type);
+      };
       setFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {
@@ -101,6 +112,7 @@ function StyledDropzone(props) {
       );
     },
   });
+
   const style = useMemo(
     () => ({
       ...baseStyle,
@@ -111,31 +123,19 @@ function StyledDropzone(props) {
     [isDragActive, isDragReject]
   );
 
-  // const bufferReader = files.map(file => {
-  //   let reader = file.reader;
-  //   reader.readAsArrayBuffer(file);
-  //   reader.onloadend = () => {
-  //     setBuffer(Buffer(reader.result))
-  //     setType(file.type)
-  //     setName(file.name)
-  //   }
-  //   console.log(reader)
-  // })
-
   const thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
-      {console.log('fieellleee', file)}
+      {console.log("fieellleee", file)}
       <div style={thumbInner}>
-        {console.log(file.type)}
-        {file.type === 'image/png' ? (
+        {file.type === "image/png" ? (
           <img src={file.preview} style={img} />
         ) : (
           <div>
             <iframe
               className={file.type}
-              width='100%'
-              height='600'
-              frameBorder='0'
+              width="100%"
+              height="600"
+              frameBorder="0"
               src={file.preview}
             ></iframe>
           </div>
@@ -152,88 +152,56 @@ function StyledDropzone(props) {
     [files]
   );
 
-  const filepath = acceptedFiles.map((file) => (
+  let filepath = acceptedFiles.map(file => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
   ));
 
-  //   const handleDragLeave = event => {
-  //   event.stopPropogation()
-  //   event.preventDefault()
-  //   console.log('eventtttt',event)
-  //   // Bring the endzone back to normal, maybe?
-  // };
-  // const handleDragOver = event => {
-  //   event.stopPropogation()
-  //   event.preventDefault()
-  //   console.log('eventtttt',event)
-  //   // Turn the endzone red, perhaps?
-  // };
-  // const handleDragEnter = event => {
-  //   event.stopPropogation()
-  //   event.preventDefault()
-  //   console.log('eventtttt',event)
-  // Play a little sound, possibly?
-  // };
-  // const handleDrop = event => {
-  // event.stopPropogation()
-  // event.preventDefault()
-  // console.log('eventtttt',event)
-  // Add a football image to the endzone, initiate a file upload,
-  // steal the user's credit card
-  //
+  useEffect(() => {
+    console.log(buff, name, type)
+  }, [name, type])
+
+  const handleChange = (evt) => {
+    let target = evt.target.value;
+    setDescr(target)
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // const description = this.fileDescription.value;
+    console.log(uploadFile(description))
+  };
+
+  const uploadFile = async () => {
+    console.log("SUBMITTINGGGG to IPFSSS")
+    const res = await props.ipfS.add(buff);
+    console.log("RESULT ==>>", res)
+  }
+
 
   return (
-    <div className='container'>
-      <div
-        {...getRootProps({ style })}
-        //  onDragOver={handleDragOver}
-        //  onDragEnter={handleDragEnter}
-        //  onDragLeave={handleDragLeave}
-        //  onDrop={handleDrop}
-      >
+  <form onSubmit={handleSubmit}>
+    <div className="container">
+      <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop files here</p>
-        <button type='button' onClick={open}>
+        <button type="button" onClick={open}>
           Open File Dialog
         </button>
       </div>
+      <input type="text" onChange={handleChange}/>
       <aside>
         <h4>Files</h4>
         <ul>{filepath}</ul>
       </aside>
       <aside style={thumbsContainer}>{thumbs}</aside>
+      <input type="submit" value="Submit" onClick={() => {
+        setFiles([])
+      }}/>
     </div>
+  </form>
   );
 }
 
 export default StyledDropzone;
-
-// handleDragLeave = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Bring the endzone back to normal, maybe?
-// };
-// handleDragOver = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Turn the endzone red, perhaps?
-// };
-// handleDragEnter = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Play a little sound, possibly?
-// };
-// handleDrop = event => {
-//   event.stopPropogation()
-//   event.preventDefault()
-//   // Add a football image to the endzone, initiate a file upload,
-//   // steal the user's credit card
-// };
-
-// return (
-//   <div className={'endzone'} onDragOver={this.handleDragOver} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}>
-//     <p>The Drop Zone</p>
-//   </div>
-// );

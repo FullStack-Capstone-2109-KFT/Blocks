@@ -91,7 +91,7 @@ p.intro {
 }
 
 a {
-  color: #007057;
+  color: #4caf50;
   font-weight: 400;
 }
 
@@ -137,7 +137,7 @@ hr {
   font-family: "Raleway", sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: #05740a;
   text-transform: uppercase;
 }
 
@@ -150,6 +150,7 @@ hr {
   padding: 8px 2px;
   border-radius: 0;
   margin: 9px 20px 0;
+  letter-spacing: 1px;
 }
 
 #menu.navbar-default .navbar-nav > li > a:after {
@@ -159,7 +160,7 @@ hr {
   bottom: -1px;
   width: 0;
   height: 2px;
-  background: linear-gradient(to right, #014c47 0%, #008c87 100%);
+  background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%);
   content: "";
   transition: width 0.3s;
 }
@@ -183,7 +184,7 @@ hr {
   bottom: -1px !important;
   width: 100% !important;
   height: 2px !important;
-  background: linear-gradient(to right, #014c47 0%, #008c87 100%) !important;
+  background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%) !important;
   content: "" !important;
   transition: width 0.3s !important;
 }
@@ -213,12 +214,14 @@ hr {
   margin-top: 10px;
   margin-bottom: 15px;
   padding-bottom: 15px;
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
 .section-title h2::after {
   position: absolute;
   content: "";
-  background: linear-gradient(to right, #014c47 0%, #008c87 100%);
+  background: linear-gradient(to right, #4caf50 0%, #196c1c 100%);
   height: 4px;
   width: 60px;
   bottom: 0;
@@ -234,7 +237,8 @@ hr {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   color: #fff;
-  background-color: #007057;
+  background-color: #4caf50;
+  background-image: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
   padding: 14px 34px;
   letter-spacing: 1px;
   margin: 0;
@@ -252,7 +256,7 @@ hr {
 .btn-custom.active {
   color: #fff;
   background-image: none;
-  background-color: #007057;
+  background-color: #387a43;
 }
 
 .btn:active,
@@ -279,7 +283,7 @@ a:focus,
   display: table;
   width: 100%;
   padding: 0;
-  background: url(../img/intro-bg.jpg) center center no-repeat;
+  background: url(../css/headerBackground.png) center center no-repeat;
   background-color: #bbbbbb;
   background-blend-mode: overlay;
   -webkit-background-size: cover;
@@ -294,23 +298,24 @@ a:focus,
 
 .intro h1 {
   font-family: "Raleway", sans-serif;
-  color: black;
+  color: #4f8652;
   font-size: 82px;
-  font-weight: 700;
+  font-weight: 100;
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 10px;
+  letter-spacing: 2px;
 }
 
 .intro h1 span {
   font-weight: 800;
-  color: #5ca9fb;
+  color: #32794a;
 }
 
 .intro p {
   color: black;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 30px;
   margin: 0 auto;
   margin-bottom: 60px;
@@ -360,7 +365,7 @@ header .intro-text {
 #about h2::after {
   position: absolute;
   content: "";
-  background: linear-gradient(to right, #014c47 0%, #008c87 100%);
+  background: linear-gradient(to right, #4caf50 0%, #07860c 100%);
   height: 4px;
   width: 60px;
   bottom: 0;
@@ -377,7 +382,7 @@ header .intro-text {
 #about .about-text li:before {
   content: "\f00c";
   font-family: "FontAwesome";
-  color: #007057;
+  color: #3cb741;
   font-size: 11px;
   font-weight: 300;
   padding-right: 8px;
@@ -399,8 +404,7 @@ header .intro-text {
 /* SERVICES */
 #services {
   padding: 100px 0;
-  /* background: linear-gradient(to right, #015e4f 0%, #008c87 100%); */
-  background: #007057;
+  background: linear-gradient(to right, #4caf50 0%, #147418 100%);
   color: #fff;
 }
 
@@ -428,11 +432,10 @@ header .intro-text {
   width: 120px;
   height: 120px;
   padding: 40px 0;
-  background: linear-gradient(to right, #01574c 0%, #008c87 100%);
-  /* background: #6c7271; */
+  background: linear-gradient(to right, #183419 0%, #009688 100%);
   border-radius: 50%;
   color: #fff;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 33px 17px 10px rgb(0 0 0 / 5%);
 }
 
 #services h3 {
@@ -505,6 +508,9 @@ header .intro-text {
 
 #team h4 {
   margin: 5px 0;
+  letter-spacing: 1px;
+  font-weight: 400;
+  color: black;
 }
 
 #team .team-img {
@@ -512,6 +518,7 @@ header .intro-text {
   height: 240px;
   object-fit: cover;
   border-radius: 8px;
+  box-shadow: 4px 2px 8px gray;
 }
 
 #team .thumbnail {
@@ -527,9 +534,9 @@ header .intro-text {
 /* CONTACT */
 #contact {
   padding: 100px 0 60px;
-  /* background: linear-gradient(to right, #008c87 0%, #014c47 100%); */
-  background: #007057;
+  /* background: linear-gradient(to right, #4caf50 0%, #4caf50 100%); */
   color: rgba(255, 255, 255, 0.75);
+  background: linear-gradient(to right, #4caf50 0%, #4caf50 100%);
 }
 
 #contact .section-title {
@@ -578,6 +585,7 @@ header .intro-text {
   margin: 30px 0;
   background: transparent;
   border: 2px solid #fff;
+  /* text-align: center; */
 }
 
 #contact .btn-custom:hover {
@@ -665,11 +673,11 @@ label {
 }
 
 #footer a {
-  color: #007057;
+  color: #4caf50;
 }
 
 #footer a:hover {
-  border-bottom: 2px solid #007057;
+  border-bottom: 2px solid #000000;
 }
 
 @media (max-width: 768px) {
@@ -678,6 +686,31 @@ label {
   }
 }
 
+<<<<<<< HEAD
 #login-margin {
   margin-top: 100px ;
+=======
+.video-react .video-react-big-play-button {
+  font-size: 3em;
+  line-height: 1.5em;
+  height: 1.5em;
+  width: 3em;
+  display: block;
+  position: absolute;
+  top: 156px;
+  left: 300px;
+  padding: 0;
+  cursor: pointer;
+  opacity: 1;
+  border: 0.06666em solid #fff;
+  background-color: #2b333f;
+  background-color: rgba(43, 51, 63, 0.7);
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 1.4s;
+>>>>>>> main
 }

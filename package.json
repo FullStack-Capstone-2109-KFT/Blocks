@@ -49,6 +49,7 @@
     "style-loader": "^3.3.1",
     "truffle": "^5.4.21",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
+    "video-react": "^0.14.1",
     "web3": "^1.6.1"
   },
   "devDependencies": {
@@ -66,8 +67,8 @@
     "mocha": "^6.2.3",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "nodemon": "^1.19.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-redux": "^7.0.1",
     "react-router-dom": "^5.0.0",
     "react-test-renderer": "^16.4.2",
