@@ -30,12 +30,54 @@ import { logout } from "../store";
 //add code to below to account for changed nav view w/ logged-in user
 
 export class Navbar extends React.Component {
+  
   render() {
     // const { handleClick, isLoggedIn } = this;
-    console.log(this);
+    console.log(this.props);
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
-        <div className="container">
+        {this.props.isLoggedIn ? 
+          <div className="container">
+            <div className="navbar-header">
+              <button
+                type="button"
+                className="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1"
+              >
+                {" "}
+                <span className="sr-only">Toggle navigation</span>{" "}
+                <span className="icon-bar"></span>{" "}
+                <span className="icon-bar"></span>{" "}
+                <span className="icon-bar"></span>{" "}
+              </button>
+              <a
+                className="navbar-brand page-scroll"
+                href="http://localhost:8080/home#header"
+              >
+                Blocks
+              </a>{" "}
+            </div>
+    
+            <div
+              className="collapse navbar-collapse"
+              id="bs-example-navbar-collapse-1"
+            >
+              <ul className="nav navbar-nav navbar-right">
+                <li>
+                  <Link to="upload" className="page-scroll">
+                    Upload File
+                  </Link>
+                </li>
+                <li>
+                  <a href="#" onClick={this.props.handleClick}>
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div> : 
+          <div className="container">
           <div className="navbar-header">
             <button
               type="button"
@@ -56,7 +98,7 @@ export class Navbar extends React.Component {
               Blocks
             </a>{" "}
           </div>
-
+  
           <div
             className="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
@@ -70,11 +112,6 @@ export class Navbar extends React.Component {
               <li>
                 <Link to="/login" className="page-scroll">
                   Login
-                </Link>
-              </li>
-              <li>
-                <Link to="upload" className="page-scroll">
-                  Upload File
                 </Link>
               </li>
               <li>
@@ -128,8 +165,10 @@ export class Navbar extends React.Component {
             </ul>
           </div>
         </div>
+        }
       </nav>
-    );
+    )  
+      
   }
 }
 
