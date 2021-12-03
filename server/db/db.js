@@ -1,14 +1,14 @@
-const Sequelize = require("sequelize");
-const pkg = require("../../package.json");
+const Sequelize = require('sequelize');
+const pkg = require('../../package.json');
 
 const databaseName =
-  pkg.name + (process.env.NODE_ENV === "test" ? "-test" : "");
+  pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
 
 const config = {
   logging: false,
 };
 
-if (process.env.LOGGING === "true") {
+if (process.env.LOGGING === 'true') {
   delete config.logging;
 }
 // console.log(process.env.DATABASE_URL); //Jordan
@@ -21,12 +21,12 @@ if (process.env.DATABASE_URL) {
   };
 }
 
-const db = new Sequelize( //Jordan
-  process.env.DATABASE_URL || `postgres://postgres:JediLordKenobi@localhost:5432/${databaseName}`, config)
-module.exports = db
+// const db = new Sequelize( //Jordan
+//   process.env.DATABASE_URL || `postgres://postgres:JediLordKenobi@localhost:5432/${databaseName}`, config)
+// module.exports = db
 
-// const db = new Sequelize(
-//   process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`,
-//   config
-// );
+const db = new Sequelize(
+  process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`,
+  config
+);
 module.exports = db;
