@@ -33,9 +33,10 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Redirect to="/home" /> */}
-            <Route exact path='/' component={Home} />
+            <Route exact path='/home' component={Home} />
             <Route path='/upload' component={UploadFile} />
-            <Route path='/login' component={Signup}/>
+            <Route path='/signup' component={Signup}/>
+            <Route path='/login' component={Login} />
           </div>
         )}
       </div>

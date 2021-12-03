@@ -9,6 +9,7 @@ import Routes from "./Routes";
 library.add(fab, fas);
 
 const App = () => {
+
   return (
     <div>
       <Navbar />
