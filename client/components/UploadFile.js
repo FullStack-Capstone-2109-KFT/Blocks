@@ -102,16 +102,9 @@ export default class App extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div>
+      <div className="nav-margin">
         <StyledDropzone ipfS={ipfs} blocks={this.state.blocks} />
         {/* <label>
-=======
-      <div className='nav-margin'>
-        <form onSubmit={this.handleSubmit}>
-          <StyledDropzone ipfS={ipfs} />
-          <label>
->>>>>>> main
             Name:
             <input type="file" onChange={this.captureFile} />
           </label>

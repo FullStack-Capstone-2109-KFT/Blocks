@@ -10,8 +10,8 @@ import UploadFile from "./components/UploadFile";
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      {/* <App /> */}
-      <UploadFile />
+      <App />
+      {/* <UploadFile /> */}
     </Router>
   </Provider>,
   document.getElementById("app")

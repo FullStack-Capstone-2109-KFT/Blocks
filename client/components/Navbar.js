@@ -73,19 +73,15 @@ export class Navbar extends React.Component {
                 </Link>
               </li>
               <li>
-<<<<<<< HEAD
-                <a
-                  href="http://localhost:8080/home#features"
-                  className="page-scroll"
-                >
-=======
-                <Link to='upload' className='page-scroll'>
+                <Link to="upload" className="page-scroll">
                   Upload File
                 </Link>
               </li>
               <li>
-                <a href="http://localhost:8080/home#features" className="page-scroll">
->>>>>>> main
+                <a
+                  href="http://localhost:8080/home#features"
+                  className="page-scroll"
+                >
                   Features
                 </a>
               </li>
