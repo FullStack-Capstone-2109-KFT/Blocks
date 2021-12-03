@@ -10,7 +10,7 @@ const ipfs = create({
   protocol: "https",
 });
 
-export default class App extends Component {
+export default class UploadFile extends Component {
   constructor(props) {
     super(props);
     this.state = {
