@@ -49,14 +49,14 @@ export default class App extends Component {
     if (networkData) {
       const blocks = new web3.eth.Contract(Blocks.abi, networkData.address);
       this.setState({ blocks });
-      const filesCount = await blocks.methods.fileCount().call();
-      this.setState({ filesCount });
-      for (let i = filesCount; i >= 1; i--) {
-        const file = await blocks.methods.files(i).call();
-        this.setState({
-          files: [...this.state.files, file],
-        });
-      }
+      // const filesCount = await blocks.methods.fileCount().call();
+      // this.setState({ filesCount });
+      // for (let i = filesCount; i >= 1; i--) {
+      //   const file = await blocks.methods.files(i).call();
+      //   this.setState({
+      //     files: [...this.state.files, file],
+      //   });
+      //}
     } else {
       window.alert("Blocks contract not deployed to detected network");
     }
@@ -108,8 +108,8 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-          <StyledDropzone ipfS={ipfs}/>
+      <div className='nav-margin'>
+          <StyledDropzone ipfS={ipfs} blocks={this.state.blocks} account={this.state.account}/>
       </div>
     );
   }
