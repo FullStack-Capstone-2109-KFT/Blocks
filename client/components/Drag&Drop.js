@@ -1,5 +1,5 @@
 import { filter } from "compression";
-import React, { useMemo, useEffect, useState} from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useDropzone } from "react-dropzone";
 
@@ -21,26 +21,26 @@ const baseStyle = {
 };
 
 const activeStyle = {
-  borderColor: "#2196f3"
+  borderColor: "#2196f3",
 };
 
 const acceptStyle = {
-  borderColor: "#00e676"
+  borderColor: "#00e676",
 };
 
 const rejectStyle = {
-  borderColor: "#ff1744"
+  borderColor: "#ff1744",
 };
 
 const thumbsContainer = {
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  marginTop: 16
+  marginTop: 16,
 };
 
 const thumb = {
-  backgroundColor: 'green',
+  backgroundColor: "green",
   display: "inline-flex",
   borderRadius: 2,
   border: "1px solid #eaeaea",
@@ -49,33 +49,32 @@ const thumb = {
   width: "auto",
   height: 200,
   padding: 4,
-  boxSizing: "border-box"
+  boxSizing: "border-box",
 };
 
 const thumbInner = {
   display: "flex",
   minWidth: 0,
-  overflow: "hidden"
+  overflow: "hidden",
 };
 
 const img = {
   display: "block",
   width: "auto",
-  height: "100%"
+  height: "100%",
 };
 
 const doc = {
   width: "100%",
   height: "800px",
   backgroundColor: "red",
-  overflowY: 'auto',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
+  overflowY: "auto",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
 function StyledDropzone(props) {
-
   const [files, setFiles] = useState([]);
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
@@ -89,22 +88,23 @@ function StyledDropzone(props) {
     isDragAccept,
     isDragReject,
     acceptedFiles,
-    open
+    open,
   } = useDropzone({
-    accept: "image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3",
+    accept:
+      "image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3",
     noClick: true,
     noKeyboard: true,
-    onDrop: acceptedFiles => {
+    onDrop: (acceptedFiles) => {
       const theFile = acceptedFiles[0];
       const reader = new window.FileReader();
       reader.readAsArrayBuffer(theFile);
       reader.onloadend = () => {
-        setBuffer(Buffer(reader.result))
+        setBuffer(Buffer(reader.result));
         setName(theFile.name);
         setType(theFile.type);
       };
       setFiles(
-        acceptedFiles.map(file =>
+        acceptedFiles.map((file) =>
           Object.assign(file, {
             preview: URL.createObjectURL(file),
           })
@@ -118,19 +118,28 @@ function StyledDropzone(props) {
       ...baseStyle,
       ...(isDragActive ? activeStyle : {}),
       ...(isDragAccept ? activeStyle : {}),
-      ...(isDragReject ? activeStyle : {})
+      ...(isDragReject ? activeStyle : {}),
     }),
     [isDragActive, isDragReject]
   );
 
-
-  const thumbs = files.map(file => (
+  const thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
+      {console.log("fieellleee", file)}
       <div style={thumbInner}>
-        {file.type === 'image/png' ? <img src={file.preview} style={img} />
-        : <div>
-              <iframe className={file.type} width="100%" height="600" frameBorder="0" src={file.preview}></iframe>
-          </div>}
+        {file.type === "image/png" ? (
+          <img src={file.preview} style={img} />
+        ) : (
+          <div>
+            <iframe
+              className={file.type}
+              width="100%"
+              height="600"
+              frameBorder="0"
+              src={file.preview}
+            ></iframe>
+          </div>
+        )}
       </div>
     </div>
   ));
@@ -138,9 +147,7 @@ function StyledDropzone(props) {
   useEffect(
     () => () => {
       // Make sure to revoke the data uris to avoid memory leaks
-      files.forEach(file =>
-        URL.revokeObjectURL(file.preview)
-        );
+      files.forEach((file) => URL.revokeObjectURL(file.preview));
     },
     [files]
   );
@@ -150,7 +157,6 @@ function StyledDropzone(props) {
       {file.path} - {file.size} bytes
     </li>
   ));
-
 
   useEffect(() => {
     console.log(buff, name, type)
