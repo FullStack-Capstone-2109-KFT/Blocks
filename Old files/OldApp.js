@@ -1,4 +1,4 @@
-import React, { Component, useCallback } from "react";
+import React, { Component } from "react";
 import Blocks from "../../abis/Blocks";
 import StyledDropzone from "./Drag&Drop";
 const Web3 = require("web3");
@@ -21,16 +21,18 @@ export default class App extends Component {
       type: null,
       name: null,
       description: "",
+      user: "",
     };
+    //this.uploadFile
+    this.captureFile = this.captureFile.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
     await this.loadWeb3();
     await this.loadBlockchainData();
-
-    // await this.state.blocks.methods
-    //   .newUser(1, "KREMKING")
-    //   .send({ from: this.state.account });
   }
 
   async loadWeb3() {
@@ -53,6 +55,16 @@ export default class App extends Component {
     if (networkData) {
       const blocks = new web3.eth.Contract(Blocks.abi, networkData.address);
       this.setState({ blocks });
+      // const user = await blocks.methods.getUser(1).call();
+      // this.setState({ user: user });
+      // console.log(user); // const filesCount = await blocks.methods.fileCount().call();
+      // this.setState({ filesCount });
+      // for (let i = filesCount; i >= 1; i--) {
+      //   const file = await blocks.methods.files(i).call();
+      //   this.setState({
+      //     files: [...this.state.files, file],
+      //   });
+      // }
     } else {
       window.alert("Blocks contract not deployed to detected network");
     }
@@ -65,6 +77,7 @@ export default class App extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    // const description = this.fileDescription.value;
     const description = this.state.description;
     this.uploadFile(description);
   };
@@ -81,30 +94,82 @@ export default class App extends Component {
         type: file.type,
         name: file.name,
       });
+      // console.log("buffer", this.state);
     };
+    // console.log(event);
   };
 
   uploadFile = async (description) => {
     // console.log("Submitting file to IPFS...");
     // const result = await ipfs.add(this.state.buffer);
-    // const fileCID = result.path;
-    // const userID = ???this.state.userID???
+    // console.info(result);
 
-    // await this.state.blocks.methods
-    //   .addFile(1, 2, result.path)
-    //   .send({ from: this.state.account });
+    // console.log(this.state);
 
-    const user = await this.state.blocks.methods.getUser(1).call();
-    const userFile = await this.state.blocks.methods.getUserFile(1, 1).call();
+    // ipfs.add(this.state.buffer, (error, result) => {
+    //   console.log("IPFS result", result.size);
+    //   if (error) {
+    //     console.error(error);
+    //     return;
+    //   }
+
+    // this.setState({ loading: true });
+
+    //   if (this.state.type === "") {
+    //     this.setState({ type: "none" });
+    //   }
+
+    // .send({ from: this.state.account });
+    // .on("transactionHash", (hash) => {
+    //   this.setState({
+    //     loading: false,
+    //   });
+
+    // const id = bytes32(uint256(1));
+    await this.state.blocks.methods.newUser(1, "testName");
+    const user = await this.state.blocks.methods.getUser(1);
     console.log("USER:", user);
-    console.log("FILE", userFile);
+
+    // window.location.reload();
+    // })
+    // .on("error", (e) => {
+    //   window.alert("Error!");
+    //   this.setState({ loading: false });
+    // });
+    console.log("success?");
+
+    // this.state.blocks.methods
+
+    //   this.state.blocks.methods
+    //     .uploadFile(
+    //       result[0].hash,
+    //       result[0].size,
+    //       this.state.type,
+    //       this.state.name,
+    //       description
+    //     )
+    //     .send({ from: this.state.account })
+    //     .on("transactionHash", (hash) => {
+    //       this.setState({
+    //         loading: false,
+    //         type: null,
+    //         name: null,
+    //       });
+
+    //       window.location.reload();
+    //     })
+    //     .on("error", (e) => {
+    //       window.alert("Error");
+    //       this.setState({ loading: false });
+    //     });
+    // });
   };
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <StyledDropzone ipfS={ipfs} />
+          <StyledDropzone />
           <label>
             Name:
             <input type="file" onChange={this.captureFile} />
