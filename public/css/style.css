@@ -686,10 +686,6 @@ label {
   }
 }
 
-<<<<<<< HEAD
-#login-margin {
-  margin-top: 100px ;
-=======
 .video-react .video-react-big-play-button {
   font-size: 3em;
   line-height: 1.5em;
@@ -712,5 +708,8 @@ label {
   -moz-transition: all 0.4s;
   -o-transition: all 0.4s;
   transition: all 1.4s;
->>>>>>> main
+}
+
+.nav-margin{
+  margin-top: 200px;
 }
