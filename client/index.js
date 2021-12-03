@@ -5,11 +5,13 @@ import { Router } from "react-router-dom";
 import history from "./history";
 import store from "./store";
 import App from "./App";
+import UploadFile from "./components/UploadFile";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      {/* <App /> */}
+      <UploadFile />
     </Router>
   </Provider>,
   document.getElementById("app")
