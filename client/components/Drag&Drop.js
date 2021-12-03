@@ -159,7 +159,7 @@ function StyledDropzone(props) {
   ));
 
   useEffect(() => {
-    console.log(buff, name, type);
+    // console.log(buff, name, type);
   }, [name, type]);
 
   const handleChange = (evt) => {
@@ -170,19 +170,28 @@ function StyledDropzone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // const description = this.fileDescription.value;
-    console.log(uploadFile(description));
+    // console.log(uploadFile(description));
+    uploadFile();
   };
 
-  const uploadFile = async (description) => {
-    console.log("SUBMITTINGGGG to IPFSSS");
-    const res = await props.ipfS.add(buff);
-    console.log("RESULT ==>>", res);
-    const fileCID = res.path;
+  const uploadFile = async () => {
+    // console.log("Submitting file to IPFS");
+    // const res = await props.ipfS.add(buff);
+    // console.log("RESULT ==>>", res);
+    // const fileCID = res.path;
     //const userID = this.state.userID?
+    console.log("Props.blocks", props.blocks);
+    console.log("Props.account", props.account);
 
-    const user = await props.blocks.methods.getUser(1).call();
+    // await props.blocks.methods.newUser(1, "KREM").send({ from: props.account });
+    // await props.blocks.methods
+    //   .newUser(2, "DAVID-EEE")
+    //   .send({ from: props.account });
+
+    const user1 = await props.blocks.methods.getUser(1).call();
+    const user2 = await props.blocks.methods.getUser(2).call();
     const userFile = await props.blocks.methods.getUserFile(1, 1).call();
-    console.log("USER:", user);
+    console.log("USER:", user1, user2);
     console.log("FILE", userFile);
   };
 
