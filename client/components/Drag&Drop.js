@@ -79,7 +79,7 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  const [description, setDescr] = useState('')
+  const [description, setDescr] = useState("");
 
   const {
     getRootProps,
@@ -152,55 +152,65 @@ function StyledDropzone(props) {
     [files]
   );
 
-  let filepath = acceptedFiles.map(file => (
+  let filepath = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
   ));
 
   useEffect(() => {
-    console.log(buff, name, type)
-  }, [name, type])
+    console.log(buff, name, type);
+  }, [name, type]);
 
   const handleChange = (evt) => {
     let target = evt.target.value;
-    setDescr(target)
+    setDescr(target);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // const description = this.fileDescription.value;
-    console.log(uploadFile(description))
+    console.log(uploadFile(description));
   };
 
-  const uploadFile = async () => {
-    console.log("SUBMITTINGGGG to IPFSSS")
+  const uploadFile = async (description) => {
+    console.log("SUBMITTINGGGG to IPFSSS");
     const res = await props.ipfS.add(buff);
-    console.log("RESULT ==>>", res)
-  }
+    console.log("RESULT ==>>", res);
+    const fileCID = res.path;
+    //const userID = this.state.userID?
 
+    const user = await props.blocks.methods.getUser(1).call();
+    const userFile = await props.blocks.methods.getUserFile(1, 1).call();
+    console.log("USER:", user);
+    console.log("FILE", userFile);
+  };
 
   return (
-  <form onSubmit={handleSubmit}>
-    <div className="container">
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop files here</p>
-        <button type="button" onClick={open}>
-          Open File Dialog
-        </button>
+    <form onSubmit={handleSubmit}>
+      <div className="container">
+        <div {...getRootProps({ style })}>
+          <input {...getInputProps()} />
+          <p>Drag 'n' drop files here</p>
+          <button type="button" onClick={open}>
+            Open File Dialog
+          </button>
+        </div>
+        <input type="text" onChange={handleChange} />
+        <aside>
+          <h4>Files</h4>
+          <ul>{filepath}</ul>
+        </aside>
+        <aside style={thumbsContainer}>{thumbs}</aside>
+        <input
+          type="submit"
+          value="Submit"
+          onClick={() => {
+            setFiles([]);
+          }}
+        />
       </div>
-      <input type="text" onChange={handleChange}/>
-      <aside>
-        <h4>Files</h4>
-        <ul>{filepath}</ul>
-      </aside>
-      <aside style={thumbsContainer}>{thumbs}</aside>
-      <input type="submit" value="Submit" onClick={() => {
-        setFiles([])
-      }}/>
-    </div>
-  </form>
+    </form>
   );
 }
 
