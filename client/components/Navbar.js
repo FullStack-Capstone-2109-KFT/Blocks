@@ -38,8 +38,13 @@ export class Navbar extends React.Component {
             >
               <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <Link to="upload" className="page-scroll">
+                  <Link to="/upload" className="page-scroll">
                     Upload File
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/files' className='page-scroll'>
+                    Files
                   </Link>
                 </li>
                 <li>
@@ -80,11 +85,6 @@ export class Navbar extends React.Component {
               <li>
                 <Link to="/signup" className="page-scroll">
                   Sign Up
-                </Link>
-              </li>
-              <li>
-                <Link to="/login" className="page-scroll">
-                  Login
                 </Link>
               </li>
               <li>
@@ -134,6 +134,11 @@ export class Navbar extends React.Component {
                 >
                   Contact
                 </a>
+              </li>
+              <li>
+                <Link to="/login" className="page-scroll">
+                  Login
+                </Link>
               </li>
             </ul>
           </div>

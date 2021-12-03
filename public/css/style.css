@@ -804,3 +804,61 @@ label {
 .nav-margin {
   margin-top: 200px;
 }
+
+.fileView-flex {
+  margin-top: 200px;
+  display: flex ;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fileTable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+  align-self: center;
+}
+
+.fileTable td {
+  padding: 20px
+}
+
+.fileTable th {
+  padding: 20px
+}
+
+.fileTable thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.fileTable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.fileTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.fileTable tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+#heading {
+  align-self: center;
+  font-family: "Lato", sans-serif
+
+}
+
+.row-flex{
+  display: flex;
+  justify-content: center;
+}
+
+.share {
+  font-family: "Lato", sans-serif
+}
