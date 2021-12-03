@@ -32,7 +32,7 @@ import { logout } from '../store';
 export class Navbar extends React.Component {
   render() {
     // const { handleClick, isLoggedIn } = this;
-    console.log(this)
+    console.log(this);
     return (
       <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
         <div className='container'>
@@ -70,10 +70,15 @@ export class Navbar extends React.Component {
                 </Link>
               </li>
               <li>
+                <Link to='upload' className='page-scroll'>
+                  Upload File
+                </Link>
+              </li>
+              <li>
                 <a href="http://localhost:8080/home#features" className="page-scroll">
                   Features
                 </a>
-              </li> */}
+              </li>
               <li>
                 <a href="http://localhost:8080/home#about" className="page-scroll">
                   About
