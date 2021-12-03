@@ -90,12 +90,13 @@ export default class App extends Component {
   };
 
   uploadFile = async (description) => {
-    console.log("Submitting file to IPFS...");
-    const result = await ipfs.add(this.state.buffer);
-    const fileCID = result.path;
+    // console.log("Submitting file to IPFS...");
+    // const result = await ipfs.add(this.state.buffer);
+    // const fileCID = result.path;
+    // const userID = ???this.state.userID???
 
     // await this.state.blocks.methods
-    //   .addFile(1, 1, result.path)
+    //   .addFile(1, 2, result.path)
     //   .send({ from: this.state.account });
 
     const user = await this.state.blocks.methods.getUser(1).call();

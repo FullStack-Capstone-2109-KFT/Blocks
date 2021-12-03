@@ -7,6 +7,7 @@ contract Blocks {
   //define the File struct
   struct File {
     string fileHash; //CID
+    string description; //file description
   }
 
   //define the User struct
@@ -17,9 +18,9 @@ contract Blocks {
   }
 
   mapping(uint256 => User) public userStructs;
-  uint256[] userList; //list of user keys to enumerate
+  uint256[] userList; //list of user keys to enumerate - do we need?
 
-  constructor() public {}
+  //   constructor() public {}
 
   //   //define user creation event
   //   event UserCreated(bytes32 userKey, string userName);
@@ -29,7 +30,7 @@ contract Blocks {
     returns (bool success)
   {
     userStructs[userKey].userName = userName;
-    userList.push(userKey);
+    userList.push(userKey); //do we need this?
     return true;
   }
 
@@ -47,18 +48,28 @@ contract Blocks {
   function addFile(
     uint256 userKey,
     uint256 fileKey,
-    string memory fileHash
+    string memory fileHash,
+    string memory description
   ) public returns (bool success) {
+    require(userKey > 0 && fileKey > 0);
+    require(bytes(fileHash).length > 0);
+
     userStructs[userKey].fileList.push(fileKey);
     userStructs[userKey].fileStructs[fileKey].fileHash = fileHash;
+    userStructs[userKey].fileStructs[fileKey].description = description;
     return true;
   }
 
   function getUserFile(uint256 userKey, uint256 fileKey)
     public
     view
-    returns (string memory fileHash)
+    returns (string memory fileHash, string memory description)
   {
-    return (userStructs[userKey].fileStructs[fileKey].fileHash);
+    require(userKey > 0 && fileKey > 0);
+
+    return (
+      userStructs[userKey].fileStructs[fileKey].fileHash,
+      userStructs[userKey].fileStructs[fileKey].description
+    );
   }
 }
