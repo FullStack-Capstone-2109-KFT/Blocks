@@ -197,6 +197,7 @@ function StyledDropzone(props) {
             Open File Dialog
           </button>
         </div>
+        
         <input type="text" onChange={handleChange} value={description} placeholder='Description'/>
         <aside>
           <h4>Files</h4>
