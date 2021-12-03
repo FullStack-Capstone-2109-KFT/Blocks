@@ -172,7 +172,6 @@ function StyledDropzone(props) {
     // const description = this.fileDescription.value;
     uploadFile(description);
     setDescription("")
-
   };
 
   const uploadFile = async (description) => {
