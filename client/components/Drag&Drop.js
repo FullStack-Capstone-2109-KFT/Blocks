@@ -145,7 +145,7 @@ function StyledDropzone(props) {
     [files]
   );
 
-  const filepath = acceptedFiles.map(file => (
+  let filepath = acceptedFiles.map(file => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
@@ -157,7 +157,7 @@ function StyledDropzone(props) {
   }, [name, type])
 
   const handleChange = (evt) => {
-    const target = evt.target.value;
+    let target = evt.target.value;
     setDescr(target)
   };
 
@@ -190,7 +190,9 @@ function StyledDropzone(props) {
         <ul>{filepath}</ul>
       </aside>
       <aside style={thumbsContainer}>{thumbs}</aside>
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" onClick={() => {
+        setFiles([])
+      }}/>
     </div>
   </form>
   );
