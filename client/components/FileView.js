@@ -39,7 +39,7 @@ export default class FileView extends Component {
                 </thead>
                 <tbody>
                     {this.state.files.map((file) => (
-                        <tr>
+                        <tr key={file.id}>
                             <td>{file.description}</td>
                             <td>{file.cid}</td>
                             <td>{file.type}</td>
