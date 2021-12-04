@@ -169,6 +169,7 @@ function StyledDropzone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
+    setDescription('')
   };
 
   const uploadFile = async () => {
@@ -217,11 +218,10 @@ function StyledDropzone(props) {
             Open File Dialog
           </button>
         </div>
-
         <input
           type="text"
           onChange={handleChange}
-          value={description}
+          value={description === 'N/A' ? '' : description}
           placeholder="Description"
         />
         <aside>
