@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { logout } from "../store";
 
 export class Navbar extends React.Component {
-  
+
   render() {
 
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
-        {this.props.isLoggedIn ? 
+        {this.props.isLoggedIn ?
           <div className="container">
             <div className="navbar-header">
               <button
@@ -31,7 +31,7 @@ export class Navbar extends React.Component {
                 Blocks
               </a>{" "}
             </div>
-    
+
             <div
               className="collapse navbar-collapse"
               id="bs-example-navbar-collapse-1"
@@ -54,7 +54,7 @@ export class Navbar extends React.Component {
                 </li>
               </ul>
             </div>
-          </div> : 
+          </div> :
           <div className="container">
           <div className="navbar-header">
             <button
@@ -76,17 +76,12 @@ export class Navbar extends React.Component {
               Blocks
             </a>{" "}
           </div>
-  
+
           <div
             className="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
           >
             <ul className="nav navbar-nav navbar-right">
-              <li>
-                <Link to="/signup" className="page-scroll">
-                  Sign Up
-                </Link>
-              </li>
               <li>
                 <a
                   href="http://localhost:8080/home#features"
@@ -145,8 +140,8 @@ export class Navbar extends React.Component {
         </div>
         }
       </nav>
-    )  
-      
+    )
+
   }
 }
 
