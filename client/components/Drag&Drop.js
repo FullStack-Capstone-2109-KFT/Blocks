@@ -79,7 +79,7 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  const [description, setDescr] = useState("");
+  const [description, setDescr] = useState("N/A");
 
   const {
     getRootProps,
@@ -169,24 +169,23 @@ function StyledDropzone(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const description = this.fileDescription.value;
-    // console.log(uploadFile(description));
     uploadFile();
   };
 
   const uploadFile = async () => {
-    // console.log("Submitting file to IPFS");
-    // const res = await props.ipfS.add(buff);
+    //Add optional encryption here? Or higher in file.
 
-    // const fileCID = res.path;
+    //Add file to IPFS and receive CID
+    console.log("Submitting file to IPFS");
+    const res = await props.ipfS.add(buff);
+
+    //identify key variables for contract calls
+    const fileCID = res.path;
     const userId = props.id;
     const userName = props.userName;
     const metaMaskAccount = props.account;
 
-    // console.log("Props.id", props.id);
-    // console.log("Props.blocks", props.blocks);
-    // console.log("Props.account", props.account);
-
+    //check blockchain for user with user id. If does not exist, create new user through contract
     let user = await props.blocks.methods.getUser(userId).call();
     if (user.userName.length < 1) {
       await props.blocks.methods
@@ -194,23 +193,18 @@ function StyledDropzone(props) {
         .send({ from: metaMaskAccount });
     }
 
-    user = await props.blocks.methods.getUser(userId).call();
-    console.log(user);
-    // await props.blocks.methods
-    //   .addFile(userId, "USERFILE#", fileCID)
-    //   .send({ from: metaMaskAccount });
+    //get fileKey for next file for the assigned user
+    const fileKey = parseInt(user.fileCount) + 1;
 
-    // await props.blocks.methods.newUser(1, "KREM").send({ from: props.account });
-
-    // await props.blocks.methods
-    //   .newUser(2, "DAVID-EEE")
-    //   .send({ from: props.account });
+    //add file to blockchain for the logged in user
+    await props.blocks.methods
+      .addFile(userId, fileKey, fileCID, description)
+      .send({ from: metaMaskAccount });
 
     // const user1 = await props.blocks.methods.getUser(1).call();
     // const user2 = await props.blocks.methods.getUser(2).call();
-    // const userFile = await props.blocks.methods.getUserFile(1, 1).call();
+    // const userFile = await props.blocks.methods.getUserFile(3, 1).call();
     // console.log("USER:", user1);
-    // console.log("FILE", userFile);
   };
 
   return (
