@@ -39,7 +39,6 @@ export default class FileView extends Component {
     if (parseInt(user.fileCount) > 0) {
       this.setState({ fileCount: parseInt(user.fileCount) });
     }
-<<<<<<< HEAD
   };
 
   getUserFiles = async (userId) => {
@@ -88,36 +87,4 @@ export default class FileView extends Component {
       </div>
     );
   }
-=======
-
-    render(){
-        return (
-          <div className="fileView-flex">
-            <h3 id='heading'>Uploaded Files</h3>
-            <table className='fileTable'>
-                <thead>
-                    <tr>
-                        <th>File</th>
-                        <th>CID</th>
-                        <th>Type</th>
-                        <th>Encryption Key</th>
-                        <th>Share</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.files.map((file) => (
-                        <tr key={file.id}>
-                            <td>{file.description}</td>
-                            <td>{file.cid}</td>
-                            <td>{file.type}</td>
-                            <td>File Encryption</td>
-                            <td><button className='share'>Share</button></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-          </div>
-        );
-    }
->>>>>>> e0d6124a5c1d0bb9a12ab4346ff19bca2c2479c1
 }
