@@ -200,10 +200,11 @@ function StyledDropzone(props) {
       .addFile(userId, fileKey, fileCID, description)
       .send({ from: metaMaskAccount });
 
-    // const user1 = await props.blocks.methods.getUser(1).call();
+    const user1 = await props.blocks.methods.getUser(1).call();
     // const user2 = await props.blocks.methods.getUser(2).call();
-    // const userFile = await props.blocks.methods.getUserFile(3, 1).call();
-    // console.log("USER:", user1);
+    const userFile = await props.blocks.methods.getUserFile(1, 1).call();
+    console.log("USER:", user1);
+    console.log("File", userFile);
   };
 
   return (

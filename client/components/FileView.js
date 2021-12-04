@@ -17,8 +17,10 @@ export default class FileView extends Component {
     this.state = {
       id: 0,
       blocks: null,
-      filesFound: false,
+      fileCount: 0,
+      userFiles: [],
       files: [
+        //temp hardcode for render
         {
           description: "file1",
           type: ".jpg",
@@ -50,17 +52,37 @@ export default class FileView extends Component {
   async componentDidMount() {
     await loadWeb3();
     let bcData = await loadBlockchainData();
-    this.setState({ id: this.props.userId, blocks: bcData.contract });
+    let userId = this.props.userId;
+    this.setState({ id: userId, blocks: bcData.contract });
+    await this.getUserData(userId);
+    await this.getUserFiles(userId);
   }
 
-  getUserFiles = async (userId) => {
-    console.log("Retrieving file information from Blockchain");
+  getUserData = async (userId) => {
+    console.log("Retrieving user information from Blockchain");
 
     let user = await this.state.blocks.methods.getUser(userId).call();
 
-    if (user.fileCount > 0) {
-      this.setState({ filesFound: true });
+    if (parseInt(user.fileCount) > 0) {
+      this.setState({ fileCount: parseInt(user.fileCount) });
     }
+  };
+
+  getUserFiles = async (userId) => {
+    let files = [];
+
+    console.log("Retrieving user files from Blockchain");
+
+    for (let i = 1; i <= this.state.fileCount; i++) {
+      let file = await this.state.blocks.methods.getUserFile(userId, i).call();
+      if (file.fileHash.length > 0) {
+        files.push(file);
+      }
+    }
+
+    this.setState({ userFiles: files });
+    // console.log(this.state.userFiles);
+    // console.log(this.state.userFiles[0].fileHash);
   };
 
   render() {
@@ -77,7 +99,7 @@ export default class FileView extends Component {
               <th>Share</th>
             </tr>
           </thead>
-          <tbody>
+          {/* <tbody>
             {this.state.files.map((file) => (
               <tr>
                 <td>{file.description}</td>
@@ -89,7 +111,7 @@ export default class FileView extends Component {
                 </td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */}
         </table>
       </div>
     );
