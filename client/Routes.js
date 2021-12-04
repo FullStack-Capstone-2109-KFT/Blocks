@@ -31,7 +31,9 @@ class Routes extends Component {
             <Route path="/login">
               <Redirect to="/upload" />
             </Route>
-            <Route path="/files" component={FileView} />
+            <Route path="/files">
+              <FileView userId={userId} />
+            </Route>
           </Switch>
         ) : (
           <div>
