@@ -19,33 +19,6 @@ export default class FileView extends Component {
       blocks: null,
       fileCount: 0,
       userFiles: [],
-      files: [
-        //temp hardcode for render
-        {
-          description: "file1",
-          type: ".jpg",
-          cid: "soifnaopehfasoifhposehf",
-          id: 1,
-        },
-        {
-          description: "file2",
-          type: ".jpg",
-          cid: "sdoifnasdokfnjpowaiehjs",
-          id: 2,
-        },
-        {
-          description: "file3",
-          type: ".pdf",
-          cid: "aisfnoisnadfoiaskhjgoas",
-          id: 3,
-        },
-        {
-          description: "file4",
-          type: ".txt",
-          cid: "skaldjfoigakiwfjoijaosi",
-          id: 4,
-        },
-      ],
     };
   }
 
@@ -81,8 +54,6 @@ export default class FileView extends Component {
     }
 
     this.setState({ userFiles: files });
-    // console.log(this.state.userFiles);
-    // console.log(this.state.userFiles[0].fileHash);
   };
 
   render() {
@@ -99,11 +70,11 @@ export default class FileView extends Component {
               <th>Share</th>
             </tr>
           </thead>
-          {/* <tbody>
-            {this.state.files.map((file) => (
-              <tr>
+          <tbody>
+            {this.state.userFiles.map((file) => (
+              <tr key={file.fileNumber}>
                 <td>{file.description}</td>
-                <td>{file.cid}</td>
+                <td>{file.fileHash}</td>
                 <td>{file.type}</td>
                 <td>File Encryption</td>
                 <td>
@@ -111,7 +82,7 @@ export default class FileView extends Component {
                 </td>
               </tr>
             ))}
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     );

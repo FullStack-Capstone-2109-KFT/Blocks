@@ -2444,12 +2444,12 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0xE9CdDA2cfE140779C0B2BBe5Cc80af532891260F",
-      "transactionHash": "0xd1a1229ec3f7d4253444a31aa83f992783721770df079ce55a98f7af41aa2433"
+      "address": "0x09dEc892AdAB03a88EF454FeaeB97d31E08DEB99",
+      "transactionHash": "0xbf7d6163779118ebbecfe01e5a1b9f1678110cb3f6eb904c2649a4629ff9b9e8"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-12-04T21:33:38.486Z",
+  "updatedAt": "2021-12-04T22:11:01.518Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

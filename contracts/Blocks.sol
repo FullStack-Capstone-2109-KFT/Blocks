@@ -63,13 +63,18 @@ contract Blocks {
   function getUserFile(uint256 userKey, uint256 fileKey)
     public
     view
-    returns (string memory fileHash, string memory description)
+    returns (
+      string memory fileHash,
+      string memory description,
+      uint256 fileNumber //aka fileKey
+    )
   {
     require(userKey > 0 && fileKey > 0);
 
     return (
       userStructs[userKey].fileStructs[fileKey].fileHash,
-      userStructs[userKey].fileStructs[fileKey].description
+      userStructs[userKey].fileStructs[fileKey].description,
+      fileKey
     );
   }
 }
