@@ -4,8 +4,8 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import { me } from "./store";
 import UploadFile from "./components/UploadFile";
-import FileView from './components/FileView';
-import Home from './components/Home';
+import FileView from "./components/FileView";
+import Home from "./components/Home";
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
@@ -14,7 +14,7 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, userId, userName } = this.props;
 
     // const scroll = new SmoothScroll('a[href*="#"]', {
     //   speed: 1000,
@@ -25,17 +25,23 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path='/upload' component={UploadFile} />
-            <Route path='/login'>
-              <Redirect to='/upload'/>
+            <Route path="/upload">
+              <UploadFile userId={userId} userName={userName} />
             </Route>
-            <Route path='/files' component={FileView}/>
+            <Route path="/login">
+              <Redirect to="/upload" />
+            </Route>
+            <Route path="/files" component={FileView} />
           </Switch>
         ) : (
           <div>
-            <Route exact path='/home' component={Home} />
-            <Route path='/signup' component={Signup}/>
-            <Route path='/login' component={Login} />
+            {/* <Route path="/" exact component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Redirect to="/home" /> */}
+            <Route exact path="/home" component={Home} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
           </div>
         )}
       </div>
@@ -46,6 +52,8 @@ class Routes extends Component {
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
+    userId: state.auth.id,
+    userName: state.auth.username,
   };
 };
 

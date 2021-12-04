@@ -79,8 +79,7 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  let [description, setDescription] = useState("");
-
+  const [description, setDescription] = useState("N/A");
 
   const {
     getRootProps,
@@ -152,14 +151,14 @@ function StyledDropzone(props) {
     [files]
   );
 
-  let filepath = acceptedFiles
-  .map((file) => (
-  <li key={file.path}>
-   {file.path} - {file.size} bytes
-  </li>
-));
+  let filepath = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
 
   useEffect(() => {
+    // console.log(buff, name, type);
   }, [name, type]);
 
   const handleChange = (evt) => {
@@ -169,22 +168,42 @@ function StyledDropzone(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const description = this.fileDescription.value;
-    uploadFile(description);
-    setDescription("")
+    uploadFile();
   };
 
-  const uploadFile = async (description) => {
-    console.log("SUBMITTINGGGG to IPFSSS");
+  const uploadFile = async () => {
+    //Add optional encryption here? Or higher in file.
+
+    //Add file to IPFS and receive CID
+    console.log("Submitting file to IPFS");
     const res = await props.ipfS.add(buff);
-    console.log("RESULT ==>>", res);
-    // const fileCID = res.path;
-    //const userID = this.state.userID?
-    // console.log('PROPSSS',props.blocks)
-    // const user = await props.blocks.methods.getUser(1).call();
-    // const userFile = await props.blocks.methods.getUserFile(1, 1).call();
-    // console.log("USER:", user);
-    // console.log("FILE", userFile);
+
+    //identify key variables for contract calls
+    const fileCID = res.path;
+    const userId = props.id;
+    const userName = props.userName;
+    const metaMaskAccount = props.account;
+
+    //check blockchain for user with user id. If does not exist, create new user through contract
+    let user = await props.blocks.methods.getUser(userId).call();
+    if (user.userName.length < 1) {
+      await props.blocks.methods
+        .newUser(userId, userName)
+        .send({ from: metaMaskAccount });
+    }
+
+    //get fileKey for next file for the assigned user
+    const fileKey = parseInt(user.fileCount) + 1;
+
+    //add file to blockchain for the logged in user
+    await props.blocks.methods
+      .addFile(userId, fileKey, fileCID, description)
+      .send({ from: metaMaskAccount });
+
+    // const user1 = await props.blocks.methods.getUser(1).call();
+    // const user2 = await props.blocks.methods.getUser(2).call();
+    // const userFile = await props.blocks.methods.getUserFile(3, 1).call();
+    // console.log("USER:", user1);
   };
 
   return (
@@ -197,8 +216,13 @@ function StyledDropzone(props) {
             Open File Dialog
           </button>
         </div>
-        
-        <input type="text" onChange={handleChange} value={description} placeholder='Description'/>
+
+        <input
+          type="text"
+          onChange={handleChange}
+          value={description}
+          placeholder="Description"
+        />
         <aside>
           <h4>Files</h4>
           <ul>{filepath}</ul>
