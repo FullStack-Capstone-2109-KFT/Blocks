@@ -278,6 +278,97 @@ a:focus,
   outline-offset: none;
 }
 
+/* LOGIN */
+.login {
+  /* background: white; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+  border: 2px solid grey;
+  padding: 6px;
+  width: 100%;
+  padding: 10px;
+}
+
+.login__logo {
+  margin-top: 4px;
+  margin-bottom: 18px;
+  object-fit: contain;
+  width: 43px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.login__container {
+  width: 377px;
+  height: 407px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 3px solid #4caf50;
+  padding: 49px;
+  margin-top: 100px;
+  text-align: center;
+  margin-top: 0px 20px 20px 20px;
+  margin-top: 249px;
+  background: #f7f7f7;
+}
+
+.login__container > h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.noAccount {
+  color: black;
+  font-size: 14px;
+  color: green;
+}
+
+.login__container > form > h5 {
+  margin-bottom: 5px;
+  color: black;
+  font-size: 14px;
+}
+
+.login__container > label {
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 98%;
+}
+
+.login__container > p {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.login__signInButton {
+  margin-left: 13px;
+  background: #138b60;
+  border-radius: 2px;
+  width: 102%;
+  height: 40px;
+  border: 1px solid;
+  margin-top: 22px;
+  border-color: #4caf50 #8bc34a #2b5e2d;
+  color: white;
+  /* justify-content: center; */
+  letter-spacing: 1px;
+}
+
+.linky {
+  font-size: 14px;
+  color: #438546;
+  letter-spacing: 1px;
+}
+
 /* HEADER */
 .intro {
   display: table;
@@ -712,4 +803,62 @@ label {
 
 .nav-margin {
   margin-top: 200px;
+}
+
+.fileView-flex {
+  margin-top: 200px;
+  display: flex ;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fileTable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+  align-self: center;
+}
+
+.fileTable td {
+  padding: 20px
+}
+
+.fileTable th {
+  padding: 20px
+}
+
+.fileTable thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.fileTable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.fileTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.fileTable tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+#heading {
+  align-self: center;
+  font-family: "Lato", sans-serif
+
+}
+
+.row-flex{
+  display: flex;
+  justify-content: center;
+}
+
+.share {
+  font-family: "Lato", sans-serif
 }

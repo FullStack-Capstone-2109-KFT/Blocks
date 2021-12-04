@@ -1,5 +1,5 @@
 import React, { Component, useCallback } from "react";
-import Blocks from "../../abis/Blocks.json";
+import Blocks from "../../abis/Blocks";
 import StyledDropzone from "./Drag&Drop";
 import { loadWeb3, loadBlockchainData } from "../store/blockchain";
 const Web3 = require("web3");
@@ -11,7 +11,7 @@ const ipfs = create({
   protocol: "https",
 });
 
-export default class App extends Component {
+export default class UploadFile extends Component {
   constructor(props) {
     super(props);
     this.state = {

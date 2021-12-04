@@ -1,57 +1,75 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
-const Web3 = require("web3");
-import { loadWeb3, loadBlockchainData } from "../store/blockchain";
-
-/**
- * COMPONENT
- */
+import { Link } from "react-router-dom";
 
 const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div className="nav-margin">
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="username">
-            <small>Username</small>
-          </label>
-          <input name="username" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        {name === "signup" ? (
+    <div className="login">
+      <div className="login__container">
+        <img
+          className="login__logo"
+          src="https://www.kindpng.com/picc/m/235-2351000_login-icon-png-transparent-png.png"
+          alt=""
+        />
+        <form onSubmit={handleSubmit} name={name}>
           <div>
-            <label htmlFor="email">
-              <small>Email</small>
-            </label>
-            <input name="email" type="email" />
+            <label htmlFor="username"></label>
+            <input
+              className="inputs"
+              name="username"
+              type="text"
+              placeholder="Username*"
+            />
           </div>
-        ) : (
-          ""
-        )}
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
+          <div>
+            <label htmlFor="password"></label>
+            <input
+              className="inputs"
+              name="password"
+              type="password"
+              placeholder="Password*"
+            />
+          </div>
+          {name === "signup" ? (
+            <div>
+              <label htmlFor="email"></label>
+              <input
+                className="inputs"
+                name="email"
+                type="email"
+                placeholder="Email*"
+              />
+            </div>
+          ) : (
+            ""
+          )}
+          <div>
+            <div className="noAccount">
+              {name !== "signup" ? (
+                <h4>
+                  <Link className="linky" to="/signup">
+                    {" "}
+                    Don't have an account? Sign Up
+                  </Link>
+                </h4>
+              ) : (
+                ""
+              )}
+            </div>
+            <button className="login__signInButton" type="submit">
+              {displayName}
+            </button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </div>
     </div>
   );
 };
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = (state) => {
   return {
     name: "login",

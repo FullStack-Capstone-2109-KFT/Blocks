@@ -79,7 +79,7 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  const [description, setDescr] = useState("N/A");
+  const [description, setDescription] = useState("N/A");
 
   const {
     getRootProps,
@@ -123,9 +123,8 @@ function StyledDropzone(props) {
     [isDragActive, isDragReject]
   );
 
-  const thumbs = files.map((file) => (
+  let thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
-      {console.log("fieellleee", file)}
       <div style={thumbInner}>
         {file.type === "image/png" ? (
           <img src={file.preview} style={img} />
@@ -164,7 +163,7 @@ function StyledDropzone(props) {
 
   const handleChange = (evt) => {
     let target = evt.target.value;
-    setDescr(target);
+    setDescription(target);
   };
 
   const handleSubmit = async (e) => {
@@ -217,7 +216,13 @@ function StyledDropzone(props) {
             Open File Dialog
           </button>
         </div>
-        <input type="text" onChange={handleChange} />
+
+        <input
+          type="text"
+          onChange={handleChange}
+          value={description}
+          placeholder="Description"
+        />
         <aside>
           <h4>Files</h4>
           <ul>{filepath}</ul>

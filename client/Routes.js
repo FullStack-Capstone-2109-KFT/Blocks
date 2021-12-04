@@ -4,7 +4,12 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import { me } from "./store";
 import UploadFile from "./components/UploadFile";
+<<<<<<< HEAD
 import Home from "./components/Home";
+=======
+import FileView from './components/FileView';
+import Home from './components/Home';
+>>>>>>> main
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
@@ -24,6 +29,7 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
+<<<<<<< HEAD
             {/* <Route path="/home" component={Home} />
             <Redirect to="/home" /> */}
             <Route path="/upload">
@@ -42,6 +48,19 @@ class Routes extends Component {
             <Route exact path="/home" component={Home} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
+=======
+            <Route path='/upload' component={UploadFile} />
+            <Route path='/login'>
+              <Redirect to='/upload'/>
+            </Route>
+            <Route path='/files' component={FileView}/>
+          </Switch>
+        ) : (
+          <div>
+            <Route exact path='/home' component={Home} />
+            <Route path='/signup' component={Signup}/>
+            <Route path='/login' component={Login} />
+>>>>>>> main
           </div>
         )}
       </div>
