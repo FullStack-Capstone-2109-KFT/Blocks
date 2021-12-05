@@ -79,7 +79,7 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  const [description, setDescription] = useState("N/A");
+  const [description, setDescription] = useState("");
 
   const {
     getRootProps,
@@ -212,7 +212,7 @@ function StyledDropzone(props) {
     <form onSubmit={handleSubmit}>
       <div className="container">
         <div {...getRootProps({ style })}>
-          <input {...getInputProps()} />
+          <input {...getInputProps()} directory="" webkitdirectory="" type="file"/>
           <p>Drag 'n' drop files here</p>
           <button type="button" onClick={open}>
             Open File Dialog
@@ -221,7 +221,7 @@ function StyledDropzone(props) {
         <input
           type="text"
           onChange={handleChange}
-          value={description === 'N/A' ? '' : description}
+          value={description}
           placeholder="Description"
         />
         <aside>
