@@ -212,7 +212,7 @@ function StyledDropzone(props) {
     <form onSubmit={handleSubmit}>
       <div className="container">
         <div {...getRootProps({ style })}>
-          <input {...getInputProps()} />
+          <input {...getInputProps()} directory="" webkitdirectory="" type="file"/>
           <p>Drag 'n' drop files here</p>
           <button type="button" onClick={open}>
             Open File Dialog
