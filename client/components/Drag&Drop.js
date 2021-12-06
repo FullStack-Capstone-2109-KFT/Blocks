@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
   const [buff, setBuffer] = useState([]);
@@ -99,7 +100,7 @@ function StyledDropzone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
-    setDescription("");
+    setDescription('');
   };
 
   const uploadFile = async () => {
@@ -131,12 +132,6 @@ function StyledDropzone(props) {
     await props.blocks.methods
       .addFile(userId, fileKey, fileCID, description)
       .send({ from: metaMaskAccount });
-
-    const user1 = await props.blocks.methods.getUser(1).call();
-    // const user2 = await props.blocks.methods.getUser(2).call();
-    const userFile = await props.blocks.methods.getUserFile(1, 1).call();
-    console.log('USER:', user1);
-    console.log('File', userFile);
   };
 
   return (
@@ -217,13 +212,6 @@ const activeStyle = {
   borderColor: '#2196f3',
 };
 
-const acceptStyle = {
-  borderColor: '#00e676',
-};
-
-const rejectStyle = {
-  borderColor: '#ff1744',
-};
 
 const thumbsContainer = {
   display: 'flex',

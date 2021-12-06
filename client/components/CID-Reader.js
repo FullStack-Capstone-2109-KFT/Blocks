@@ -5,7 +5,6 @@ function CidReader() {
 
   const handleOnChange = (e) => {
     let targeValue = e.target.value;
-    console.log(targeValue)
     setValue(targeValue);
   }
 
