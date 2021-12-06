@@ -40,7 +40,7 @@ code {
 
 body,
 html {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   color: #777;
@@ -52,7 +52,7 @@ html {
 h2,
 h3,
 h4 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 h2 {
@@ -134,15 +134,16 @@ hr {
 }
 
 #menu a.navbar-brand {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #05740a;
+  color: #337e36;
   text-transform: uppercase;
+  color: #4caf50 #8bc34a #2b5e2d;
 }
 
 #menu.navbar-default .navbar-nav > li > a {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   color: #555;
   font-size: 15px;
@@ -161,7 +162,7 @@ hr {
   width: 0;
   height: 2px;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%);
-  content: "";
+  content: '';
   transition: width 0.3s;
 }
 
@@ -185,7 +186,7 @@ hr {
   width: 100% !important;
   height: 2px !important;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%) !important;
-  content: "" !important;
+  content: '' !important;
   transition: width 0.3s !important;
 }
 
@@ -220,7 +221,7 @@ hr {
 
 .section-title h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: linear-gradient(to right, #4caf50 0%, #196c1c 100%);
   height: 4px;
   width: 60px;
@@ -234,7 +235,7 @@ hr {
 }
 
 .btn-custom {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   color: #fff;
   background-color: #4caf50;
@@ -280,7 +281,7 @@ a:focus,
 
 /* LOGIN */
 .login {
-  /* background: white; */
+  background: #2e9772;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -291,10 +292,11 @@ a:focus,
   justify-content: center;
   align-items: center;
   margin: 16px;
-  border: 2px solid grey;
+  border: 2px solid #009688;
   padding: 6px;
   width: 100%;
   padding: 10px;
+  margin-left: 6px;
 }
 
 .login__logo {
@@ -307,18 +309,22 @@ a:focus,
 }
 
 .login__container {
-  width: 377px;
+  width: 380px;
   height: 407px;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
-  border: 3px solid #4caf50;
+  border-radius: 11px;
+  border: 2px solid black;
   padding: 49px;
   margin-top: 100px;
   text-align: center;
   margin-top: 0px 20px 20px 20px;
   margin-top: 249px;
   background: #f7f7f7;
+  /* padding: 46px; */
+  /* margin-left: 26px; */
+  box-sizing: 10px 5px 5px black;
+  box-shadow: 7px 11px 26px #0c0c0c;
 }
 
 .login__container > h1 {
@@ -350,10 +356,10 @@ a:focus,
 }
 
 .login__signInButton {
-  margin-left: 13px;
-  background: #138b60;
+  margin-left: 4px;
+  background: #16c08a;
   border-radius: 2px;
-  width: 102%;
+  width: 100%;
   height: 40px;
   border: 1px solid;
   margin-top: 22px;
@@ -365,7 +371,7 @@ a:focus,
 
 .linky {
   font-size: 14px;
-  color: #438546;
+  color: #0f91a4;
   letter-spacing: 1px;
 }
 
@@ -388,7 +394,7 @@ a:focus,
 }
 
 .intro h1 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: #4f8652;
   font-size: 82px;
   font-weight: 100;
@@ -432,8 +438,8 @@ header .intro-text {
   height: 100px;
   padding: 30px 0;
   border-radius: 50%;
-  background: linear-gradient(to right, #014c47 0%, #008c87 100%);
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(to right, #4caf50 0%, #265828 100%);
+  box-shadow: 10px 8px 17px #3d4a50;
 }
 
 /* ABOUT */
@@ -455,7 +461,7 @@ header .intro-text {
 
 #about h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: linear-gradient(to right, #4caf50 0%, #07860c 100%);
   height: 4px;
   width: 60px;
@@ -471,8 +477,8 @@ header .intro-text {
 }
 
 #about .about-text li:before {
-  content: "\f00c";
-  font-family: "FontAwesome";
+  content: '\f00c';
+  font-family: 'FontAwesome';
   color: #3cb741;
   font-size: 11px;
   font-weight: 300;
@@ -509,7 +515,7 @@ header .intro-text {
 
 #services .section-title h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -627,7 +633,8 @@ header .intro-text {
   padding: 100px 0 60px;
   /* background: linear-gradient(to right, #4caf50 0%, #4caf50 100%); */
   color: rgba(255, 255, 255, 0.75);
-  background: linear-gradient(to right, #4caf50 0%, #4caf50 100%);
+  /* background: linear-gradient(to right, #4caf50 0%, #4caf50 100%); */
+  background: linear-gradient(to right, #4caf50 0%, #3e8541 100%);
 }
 
 #contact .section-title {
@@ -647,7 +654,7 @@ header .intro-text {
 
 #contact .section-title h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -687,7 +694,7 @@ header .intro-text {
 label {
   font-size: 12px;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   float: left;
 }
 
@@ -744,7 +751,7 @@ label {
 
 #contact .social .fa {
   font-size: 48px;
-  color: #008c87;
+  color: #fff9f9;
 }
 
 #contact .social .fa:hover {
@@ -807,7 +814,7 @@ label {
 
 .fileView-flex {
   margin-top: 200px;
-  display: flex ;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -818,16 +825,16 @@ label {
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   align-self: center;
 }
 
 .fileTable td {
-  padding: 20px
+  padding: 20px;
 }
 
 .fileTable th {
-  padding: 20px
+  padding: 20px;
 }
 
 .fileTable thead tr {
@@ -850,15 +857,14 @@ label {
 
 #heading {
   align-self: center;
-  font-family: "Lato", sans-serif
-
+  font-family: 'Lato', sans-serif;
 }
 
-.row-flex{
+.row-flex {
   display: flex;
   justify-content: center;
 }
 
 .share {
-  font-family: "Lato", sans-serif
+  font-family: 'Lato', sans-serif;
 }
