@@ -79,7 +79,7 @@ function StyledDropzone(props) {
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  const [description, setDescription] = useState("N/A");
+  const [description, setDescription] = useState("");
 
   const {
     getRootProps,
@@ -169,7 +169,7 @@ function StyledDropzone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
-    setDescription('')
+    setDescription("");
   };
 
   const uploadFile = async () => {
@@ -200,19 +200,18 @@ function StyledDropzone(props) {
     await props.blocks.methods
       .addFile(userId, fileKey, fileCID, description)
       .send({ from: metaMaskAccount });
-
-    const user1 = await props.blocks.methods.getUser(1).call();
-    // const user2 = await props.blocks.methods.getUser(2).call();
-    const userFile = await props.blocks.methods.getUserFile(1, 1).call();
-    console.log("USER:", user1);
-    console.log("File", userFile);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="container">
         <div {...getRootProps({ style })}>
-          <input {...getInputProps()} />
+          <input
+            {...getInputProps()}
+            directory=""
+            webkitdirectory=""
+            type="file"
+          />
           <p>Drag 'n' drop files here</p>
           <button type="button" onClick={open}>
             Open File Dialog
@@ -221,7 +220,7 @@ function StyledDropzone(props) {
         <input
           type="text"
           onChange={handleChange}
-          value={description === 'N/A' ? '' : description}
+          value={description}
           placeholder="Description"
         />
         <aside>

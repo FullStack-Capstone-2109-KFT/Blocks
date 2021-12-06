@@ -54,7 +54,6 @@ export default class FileView extends Component {
     }
 
     this.setState({ userFiles: files });
-    console.log(this.state.userFiles);
   };
 
   render() {
@@ -75,7 +74,14 @@ export default class FileView extends Component {
             {this.state.userFiles.map((file) => (
               <tr key={file.fileNumber}>
                 <td>{file.description}</td>
-                <td>{file.fileHash}</td>
+                <td>
+                  <a
+                    href={"https://ipfs.io/ipfs/" + `${file.fileHash}`}
+                    target="_blank"
+                  >
+                    {file.fileHash}
+                  </a>
+                </td>
                 <td>{file.type}</td>
                 <td>File Encryption</td>
                 <td>
