@@ -37,6 +37,11 @@ export class Navbar extends React.Component {
               id="bs-example-navbar-collapse-1"
             >
               <ul className="nav navbar-nav navbar-right">
+              <li>
+                  <Link to="/cid-reader" className="page-scroll">
+                    CID Reader
+                  </Link>
+                </li>
                 <li>
                   <Link to="/upload" className="page-scroll">
                     Upload File
