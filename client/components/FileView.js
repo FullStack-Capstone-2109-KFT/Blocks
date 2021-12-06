@@ -54,6 +54,7 @@ export default class FileView extends Component {
     }
 
     this.setState({ userFiles: files });
+    console.log(this.state.userFiles);
   };
 
   render() {
