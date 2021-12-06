@@ -117,6 +117,7 @@ function StyledDropzone(props) {
 
     //check blockchain for user with user id. If does not exist, create new user through contract
     let user = await props.blocks.methods.getUser(userId).call();
+
     if (user.userName.length < 1) {
       await props.blocks.methods
         .newUser(userId, userName)
@@ -197,7 +198,7 @@ const baseStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '20px',
+  padding: '16px',
   borderWidth: 2,
   borderRadius: 2,
   borderColor: '#009688',
@@ -206,9 +207,10 @@ const baseStyle = {
   color: '#bdbdbd',
   outline: 'none',
   transition: 'border .24s ease-in-out',
-  maxWidth: '70%',
-  height: '400px',
-  marginLeft: '170px',
+  maxWidth: '45%',
+  height: '391px',
+  marginLeft: '98px',
+  marginTop: '-42px',
 };
 
 const activeStyle = {
@@ -294,6 +296,7 @@ const submit = {
   height: '36px',
   border: '1px solid #03a9f4',
   marginTop: '15px',
+  marginLeft: '7px',
 };
 
 const uploadImg = {
@@ -312,7 +315,7 @@ const DragText = {
 const file = {
   fontSize: '24px',
   letterSpacing: '2px',
-  marginTop: '5px',
+  marginTop: '-25px',
 };
 
 const fileContainer = {
@@ -320,5 +323,9 @@ const fileContainer = {
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
-  margin: '20px',
+  margin: '21x',
+  width: '400px',
+  alignContent: 'space-between',
+  marginLeft: '724px',
+  marginTop: '-333px',
 };
