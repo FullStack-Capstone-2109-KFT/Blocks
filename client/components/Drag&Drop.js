@@ -3,6 +3,7 @@ import React, { useMemo, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { width } from '@mui/system';
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
@@ -99,7 +100,7 @@ function StyledDropzone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
-    setDescription("");
+    setDescription('');
   };
 
   const uploadFile = async () => {

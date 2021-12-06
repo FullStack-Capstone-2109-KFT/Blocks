@@ -137,7 +137,7 @@ hr {
   font-family: 'Raleway', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #337e36;
+  color: black;
   text-transform: uppercase;
   color: #4caf50 #8bc34a #2b5e2d;
 }
@@ -281,7 +281,7 @@ a:focus,
 
 /* LOGIN */
 .login {
-  background: #2e9772;
+  background: #a2cbbc;
   height: 100vh;
   display: flex;
   flex-direction: column;
