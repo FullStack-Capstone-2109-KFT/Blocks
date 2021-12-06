@@ -1,7 +1,8 @@
 import React, { Component, useCallback } from "react";
-import Blocks from "../../abis/Blocks.json";
-import StyledDropzone from "./Drag&Drop";
+import Blocks from "../../abis/Blocks.json"; //remove?
+import StyledDropzone from "./Drag&Drop"; // remove?
 import { loadWeb3, loadBlockchainData } from "../store/blockchain";
+import Share from "./SharePopUp";
 const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
 
@@ -19,7 +20,10 @@ export default class FileView extends Component {
       blocks: null,
       fileCount: 0,
       userFiles: [],
+      seen: false
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async componentDidMount() {
@@ -56,6 +60,20 @@ export default class FileView extends Component {
     this.setState({ userFiles: files });
   };
 
+  handleClick(){
+    const name = event.target.name;
+    console.log(this.state.seen)
+    if (name === 'share'){
+      this.togglePopup();
+    }
+  }
+
+  togglePopup(){
+    this.setState({
+      seen: !this.state.seen
+    })
+  }
+
   render() {
     return (
       <div className="fileView-flex">
@@ -78,12 +96,13 @@ export default class FileView extends Component {
                 <td>{file.type}</td>
                 <td>File Encryption</td>
                 <td>
-                  <button className="share">Share</button>
+                  <button className="share_button" name='share' onClick={this.handleClick}>Share</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        {this.state.seen ? <Share /> : null}
       </div>
     );
   }

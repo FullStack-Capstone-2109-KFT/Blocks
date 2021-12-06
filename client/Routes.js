@@ -6,6 +6,7 @@ import { me } from "./store";
 import UploadFile from "./components/UploadFile";
 import FileView from "./components/FileView";
 import Home from "./components/Home";
+import Share from "./components/SharePopUp"
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
@@ -34,6 +35,7 @@ class Routes extends Component {
             <Route path="/files">
               <FileView userId={userId} />
             </Route>
+            <Route path='/share' component={Share}/>
           </Switch>
         ) : (
           <div>
