@@ -327,5 +327,5 @@ const fileContainer = {
   width: '400px',
   alignContent: 'space-between',
   marginLeft: '724px',
-  marginTop: '-332px',
+  marginTop: '-333px',
 };
