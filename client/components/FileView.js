@@ -24,6 +24,7 @@ export default class FileView extends Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.togglePopup = this.togglePopup.bind(this);
   }
 
   async componentDidMount() {
@@ -104,12 +105,12 @@ export default class FileView extends Component {
                 <td>File Encryption</td>
                 <td>
                   <button className="share_button" name='share' onClick={this.handleClick}>Share</button>
+                  {this.state.seen ? <Share toggle={this.togglePopup} /> : null}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {this.state.seen ? <Share /> : null}
       </div>
     );
   }

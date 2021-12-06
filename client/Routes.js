@@ -26,6 +26,9 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
+            <Route exact path="/">
+              <Redirect to='/upload'/>
+            </Route>
             <Route path="/upload">
               <UploadFile userId={userId} userName={userName} />
             </Route>
@@ -39,10 +42,9 @@ class Routes extends Component {
           </Switch>
         ) : (
           <div>
-            {/* <Route path="/" exact component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Redirect to="/home" /> */}
+            <Route exact path="/">
+              <Redirect to='/home'/>
+            </Route>
             <Route exact path="/home" component={Home} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />

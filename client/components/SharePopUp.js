@@ -7,8 +7,11 @@ export default class Share extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(name){
-        console.log(this.event.target);
+    handleClick(){
+        const name = event.target.name;
+        if (name === 'close'){
+            this.props.toggle();
+        }
     }
     
     render(){
@@ -16,7 +19,6 @@ export default class Share extends Component {
         return (
             <div className='popup'>
                 <div className='popup_content'>
-                    <span className='close_button' name='close' onClick={this.handleClick}>x</span>
                     <div className='share'>
                         <h3>Share Your File!</h3>
                         <div className='share'>
@@ -24,6 +26,7 @@ export default class Share extends Component {
                             <button>Copy to Clipboard</button>
                             <button>Email</button>
                             <button>Social Media</button>
+                            <button className='close_button' name='close' onClick={this.handleClick}>x</button>
                         </div>
                     </div> 
                 </div>
