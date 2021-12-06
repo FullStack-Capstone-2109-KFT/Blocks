@@ -6,6 +6,7 @@ import { me } from "./store";
 import UploadFile from "./components/UploadFile";
 import FileView from "./components/FileView";
 import Home from "./components/Home";
+import CidReader from "./components/CID-Reader";
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
@@ -33,6 +34,9 @@ class Routes extends Component {
             </Route>
             <Route path="/files">
               <FileView userId={userId} />
+            </Route>
+            <Route path="/cid-reader">
+              <CidReader />
             </Route>
           </Switch>
         ) : (
