@@ -99,7 +99,7 @@ function StyledDropzone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
-    setDescription('');
+    setDescription("");
   };
 
   const uploadFile = async () => {
