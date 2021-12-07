@@ -100,32 +100,32 @@
   "Testimonials": [
     {
       "img": "img/users/user-image-1.jpeg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "text": "Blocks is great for America. Blocks we can!",
       "name": "Barack Obama"
     },
     {
       "img": "img/users/user-image-2.jpeg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "text": "Blocks solves our problems with the get from A to B ",
       "name": "Albert Einstein"
     },
     {
       "img": "img/users/user-image-3.jpeg",
-      "text": "\"I just have one thing to say: Can you smell what the block is cooking? Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "text": "I just have one thing to say: Can you smell what the block is cooking? ",
       "name": "Dwayne 'The Rock' Johnson"
     },
     {
       "img": "img/users/user-image-4.jpeg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "text": "Real change, enduring change, happens one block at a time",
       "name": "(The Notorious) RBG"
     },
     {
       "img": "img/users/user-image-5.jpeg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Daenerys Stormborn of House Targaryen, rightful heir to the Iron Throne, rightful Queen of the Andals and the First Men, Protector of the Seven Kingdoms, the Mother of Dragons, the Khaleesi of the Great Grass Sea, the Unburnt, the Breaker of Chains"
+      "text": "Blocks is Coming.",
+      "name": "Daenerys Stormborn of House Targaryen"
     },
     {
       "img": "img/users/user-image-6.jpeg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "text": "Pokemon evolves into Blocks of themselves. And now so can you.",
       "name": "Detective Pikachu, PI"
     }
   ],
