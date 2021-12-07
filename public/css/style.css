@@ -978,3 +978,18 @@ label {
   height: 100%;
   width: 100%;
 }
+
+.inputContainer {
+  display: flex;
+}
+.input {
+  width: 256px;
+  height: 29px;
+  border: 1px solid #009879;
+  border-radius: 2px;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #009879;
+  margin-top: 15px;
+}
