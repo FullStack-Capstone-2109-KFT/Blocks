@@ -7,6 +7,7 @@ import UploadFile from "./components/UploadFile";
 import FileView from "./components/FileView";
 import Home from "./components/Home";
 import Share from "./components/SharePopUp"
+import CidReader from "./components/CID-Reader";
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
@@ -38,7 +39,9 @@ class Routes extends Component {
             <Route path="/files">
               <FileView userId={userId} />
             </Route>
-            <Route path='/share' component={Share}/>
+            <Route path="/cid-reader">
+              <CidReader />
+            </Route>
           </Switch>
         ) : (
           <div>
