@@ -33,6 +33,9 @@ class Routes extends Component {
             <Route path="/login">
               <Redirect to="/files" />
             </Route>
+            <Route path="/signup">
+              <Redirect to="/files"/>
+            </Route>
             <Route path="/files">
               <FileView userId={userId} />
             </Route>
