@@ -2,12 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../store";
+<<<<<<< HEAD
+import { HashLink } from 'react-router-hash-link'
+=======
 import { HashLink as HashLink} from 'react-router-hash-link';
+>>>>>>> main
 
 export class Navbar extends React.Component {
 
   render() {
-    
+
     return (
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
         {this.props.isLoggedIn ?
@@ -25,9 +29,12 @@ export class Navbar extends React.Component {
                 <span className="icon-bar"></span>{" "}
                 <span className="icon-bar"></span>{" "}
               </button>
-              <HashLink to="/home#header" className="navbar-brand page-scroll">
+              <Link
+                className="navbar-brand page-scroll"
+                to="/upload"
+              >
                 Blocks
-              </HashLink>{" "}
+              </Link>
             </div>
 
             <div
@@ -51,7 +58,7 @@ export class Navbar extends React.Component {
                   </Link>
                 </li>
                 <li>
-                  <HashLink to='#' onClick={this.props.handleClick}>
+                  <HashLink to="#" onClick={this.props.handleClick}>
                     Logout
                   </HashLink>
                 </li>
@@ -72,43 +79,39 @@ export class Navbar extends React.Component {
               <span className="icon-bar"></span>{" "}
               <span className="icon-bar"></span>{" "}
             </button>
-            <HashLink to="/home#header" className="navbar-brand page-scroll">
-                Blocks
-            </HashLink>{" "}
+            <HashLink to='/home#header' className="navbar-brand page-scroll">
+                 Blocks
+            </HashLink>
           </div>
-
           <div
             className="collapse navbar-collapse"
             id="bs-example-navbar-collapse-1"
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a
-                  href="http://localhost:8080/home#features"
-                  className="page-scroll"
-                >
+                <HashLink to='/home#features' className="page-scroll">
                   Features
-                </a>
+                </HashLink>
               </li>
               <li>
-                <HashLink to='/home#about' className="page-scroll">
+              <HashLink to='/home#about' className="page-scroll">
                   About
-                </HashLink>
+              </HashLink>
               </li>
               <li>
-                <HashLink to='home#testimonials' className="page-scroll">
+              <HashLink to='/home#testimonials' className="page-scroll" >
                   Testimonials
-                </HashLink>
+              </HashLink>
               </li>
               <li>
-                <HashLink to='home#team' className="page-scroll">
+              <HashLink to='/home#team' className="page-scroll" >
                   Team
-                </HashLink>
+              </HashLink>
               </li>
               <li>
-                <HashLink to='home#contact' className="page-scroll">
+              <HashLink to='/home#contact' className="page-scroll" >
                   Contact
-                </HashLink>
+              </HashLink>
               </li>
               <li>
                 <Link to="/login" className="page-scroll">
