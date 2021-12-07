@@ -865,7 +865,6 @@ label {
   justify-content: center;
 }
 
-<<<<<<< HEAD
 .share_buttons {
   font-family: "Lato", sans-serif;
   display: flex;
@@ -919,27 +918,3 @@ label {
   border: 0px;
   color: white;
 }
-=======
-.share {
-  font-family: "Lato", sans-serif
-}
-
-.cid-container {
-  display: flex;
-  padding-top: 200px;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.ipfs-a {
-  color: inherit;
-  text-decoration: none !important;
-}
-
-.ipfs-a:hover {
-  color: inherit
-}
->>>>>>> main
