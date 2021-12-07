@@ -5,6 +5,5 @@ public/bundle.js.map
 npm-debug.log
 yarn-error.log
 package-lock.json
-server/db/db.js
 abis/Blocks.json
 abis/Migrations.json

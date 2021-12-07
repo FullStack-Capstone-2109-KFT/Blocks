@@ -38,6 +38,12 @@ export default class UploadFile extends Component {
     });
   }
 
+  togglePop() {
+    this.setState({
+      seen: !this.state.seen
+    })
+  }
+
   render() {
     return (
       <div className="nav-margin">
