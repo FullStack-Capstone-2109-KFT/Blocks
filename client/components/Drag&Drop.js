@@ -168,12 +168,7 @@ function StyledDropzone(props) {
       <form onSubmit={handleSubmit}>
         <div>
           <div {...getRootProps({ style })}>
-            <input
-              {...getInputProps()}
-              directory=""
-              webkitdirectory=""
-              type="file"
-            />
+            <input {...getInputProps()} type="file" />
             <p style={DragText}>Drag 'n' drop files here</p>
 
             <FontAwesomeIcon style={img} icon={"key"} />
@@ -182,13 +177,13 @@ function StyledDropzone(props) {
               Browse Files
             </button>
           </div>
-          {/* <input
-            type='text'
+          <input
+            type="text"
             style={input}
             onChange={handleChange}
             value={description}
-            placeholder='Description'
-          /> */}
+            placeholder="Description"
+          />
           <div style={fileContainer}>
             <aside>
               <h4 style={file}>Your Files</h4>
