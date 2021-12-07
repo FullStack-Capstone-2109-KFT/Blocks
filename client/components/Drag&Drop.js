@@ -161,6 +161,7 @@ function StyledDropzone(props) {
             onChange={handleChange}
             value={description}
             placeholder='Description'
+            maxLength="20"
           />
           <div style={fileContainer}>
             <aside>
