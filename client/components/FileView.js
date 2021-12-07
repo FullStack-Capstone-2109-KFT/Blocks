@@ -65,23 +65,36 @@ export default class FileView extends Component {
   };
 
   async getFileFromIPFS(cid) {
+    let key = "123";
+    let bufferArray = [];
     for await (const chunk of ipfs.cat(cid)) {
-      let key = "123";
       let decryptedChunk = await decryptFile(chunk, key);
-
-      let binary = "";
-      for (let i = 0; i < decryptedChunk.length; i++) {
-        binary += String.fromCharCode([decryptedChunk[i]]);
-      }
-      const file = window.btoa(binary);
-
-      let fileType = "jpg";
-      let mimType = "application/" + fileType;
-
-      const url = `data:${mimType};base64,` + file;
-      window.location.replace(url);
-      // console.log(url);
+      bufferArray = bufferArray.concat(decryptedChunk);
     }
+
+    let a = document.createElement("a");
+    a.style.display = "none";
+    let url = window.URL.createObjectURL(
+      new Blob(bufferArray, { type: "application/jpg" })
+    );
+    a.setAttribute("href", url);
+    document.body.appendChild(a);
+    a.click();
+
+    // let key = "123";
+    // let decryptedChunk = await decryptFile(chunk, key);
+    // let binary = "";
+    // for (let i = 0; i < decryptedChunk.length; i++) {
+    //   binary += String.fromCharCode([decryptedChunk[i]]);
+    // }
+    // const file = window.btoa(binary);
+    // let fileType = "jpg";
+    // let mimType = "application/" + fileType;
+    // const url = `data:${mimType};base64,` + file;
+    // window.location.replace(url);
+    // console.log(url);
+    // }
+    // console.log(bufferArray);
   }
 
   handleClick() {
