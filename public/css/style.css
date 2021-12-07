@@ -865,25 +865,56 @@ label {
   justify-content: center;
 }
 
-.share {
-  font-family: "Lato", sans-serif
-}
-
-.cid-container {
+.share_buttons {
+  font-family: "Lato", sans-serif;
   display: flex;
-  padding-top: 200px;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
+  height: 200px;
   justify-content: center;
-  align-items: center;
 }
 
-.ipfs-a {
-  color: inherit;
-  text-decoration: none !important;
+.share_buttons button {
+  margin: 5px
 }
 
-.ipfs-a:hover {
-  color: inherit
+.popup {
+  position: relative;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+}
+
+.popup-main {
+  position: absolute;
+  background: white;
+  width: 250px;
+  height: 300px;
+  transform: translate(100px,-100px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #009879
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.popup_head {
+  background-color: #009879;
+  margin: 0px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+}
+
+.close_button {
+  position: absolute;
+  background-color: transparent;
+  border: 0px;
+  color: white;
 }

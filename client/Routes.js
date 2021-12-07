@@ -6,6 +6,7 @@ import { me } from "./store";
 import UploadFile from "./components/UploadFile";
 import FileView from "./components/FileView";
 import Home from "./components/Home";
+import Share from "./components/SharePopUp"
 import CidReader from "./components/CID-Reader";
 // import SmoothScroll from "smooth-scroll";
 
@@ -26,6 +27,9 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
+            <Route exact path="/">
+              <Redirect to='/upload'/>
+            </Route>
             <Route path="/upload">
               <UploadFile userId={userId} userName={userName} />
             </Route>
@@ -41,10 +45,9 @@ class Routes extends Component {
           </Switch>
         ) : (
           <div>
-            {/* <Route path="/" exact component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Redirect to="/home" /> */}
+            <Route exact path="/">
+              <Redirect to='/home'/>
+            </Route>
             <Route exact path="/home" component={Home} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
