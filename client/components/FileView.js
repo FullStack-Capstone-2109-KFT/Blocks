@@ -20,11 +20,12 @@ export default class FileView extends Component {
       blocks: null,
       fileCount: 0,
       userFiles: [],
-      seen: false
+      seen: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
+    this.getFileFromIPFS = this.getFileFromIPFS.bind(this);
   }
 
   async componentDidMount() {
@@ -61,18 +62,37 @@ export default class FileView extends Component {
     this.setState({ userFiles: files });
   };
 
-  handleClick(){
+  async getFileFromIPFS(cid) {
+    for await (const chunk of ipfs.cat(cid)) {
+      console.log(chunk.length);
+
+      let binary = "";
+      for (let i = 0; i < chunk.length; i++) {
+        binary += String.fromCharCode([chunk[i]]);
+      }
+      const file = window.btoa(binary);
+
+      let fileType = "jpg";
+      let mimType = "application/" + fileType;
+
+      let mimType = "application/";
+      const url = `data:${mimType};base64,` + file;
+      console.log(url);
+    }
+  }
+
+  handleClick() {
     const name = event.target.name;
-    console.log(this.state.seen)
-    if (name === 'share'){
+    console.log(this.state.seen);
+    if (name === "share") {
       this.togglePopup();
     }
   }
 
-  togglePopup(){
+  togglePopup() {
     this.setState({
-      seen: !this.state.seen
-    })
+      seen: !this.state.seen,
+    });
   }
 
   render() {
@@ -94,17 +114,24 @@ export default class FileView extends Component {
               <tr key={file.fileNumber}>
                 <td>{file.description}</td>
                 <td>
-                  <a
+                  {/* <a
                     href={"https://ipfs.io/ipfs/" + `${file.fileHash}`}
                     target="_blank"
-                  >
+                  > */}
+                  <a onClick={() => this.getFileFromIPFS(file.fileHash)}>
                     {file.fileHash}
                   </a>
                 </td>
                 <td>{file.type}</td>
                 <td>File Encryption</td>
                 <td>
-                  <button className="share_button" name='share' onClick={this.handleClick}>Share</button>
+                  <button
+                    className="share_button"
+                    name="share"
+                    onClick={this.handleClick}
+                  >
+                    Share
+                  </button>
                   {this.state.seen ? <Share toggle={this.togglePopup} /> : null}
                 </td>
               </tr>

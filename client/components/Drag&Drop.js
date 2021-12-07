@@ -105,62 +105,36 @@ function StyledDropzone(props) {
   };
 
   const uploadFile = async () => {
-    // //   // console.log("Encrypting File");
-    // //   // let encryptedBuff = encryptFile(buff, key);
+    //   // console.log("Encrypting File");
+    //   // let encryptedBuff = encryptFile(buff, key);
 
-    // //   // Add optional encryption here? Or higher in file.
+    //   //Add file to IPFS and receive CID
+    console.log("Submitting file to IPFS");
+    console.log(buff);
+    const res = await props.ipfs.add(buff);
+    console.log(res);
 
-    // //   //Add file to IPFS and receive CID
-    // console.log("Submitting file to IPFS");
-    // console.log(buff);
-    // const res = await props.ipfs.add(buff);
-    // console.log(res);
+    //identify key variables for contract calls
+    const fileCID = res.path;
+    const userId = props.id;
+    const userName = props.userName;
+    const metaMaskAccount = props.account;
 
-    // //identify key variables for contract calls
-    // const fileCID = res.path;
-    // const userId = props.id;
-    // const userName = props.userName;
-    // const metaMaskAccount = props.account;
-
-    // //check blockchain for user with user id. If does not exist, create new user through contract
-    // let user = await props.blocks.methods.getUser(userId).call();
-    // if (user.userName.length < 1) {
-    //   await props.blocks.methods
-    //     .newUser(userId, userName)
-    //     .send({ from: metaMaskAccount });
-    // }
-
-    // //get fileKey for next file for the assigned user
-    // const fileKey = parseInt(user.fileCount) + 1;
-
-    // //add file to blockchain for the logged in user
-    // await props.blocks.methods
-    //   .addFile(userId, fileKey, fileCID, description)
-    //   .send({ from: metaMaskAccount });
-
-    for await (const chunk of props.ipfs.cat(
-      "QmRUCQUtfyMrt8AUcPze6UY383boQ1sWnniZywi8Ruxo9b"
-    )) {
-      console.log(chunk.length);
-
-      // console.log(chunk);
-
-      let binary = "";
-      for (let i = 0; i < chunk.length; i++) {
-        binary += String.fromCharCode([chunk[i]]);
-      }
-      const file = window.btoa(binary);
-      const mimType = "application/jpg";
-      // console.log(file);
-      const url = `data:${mimType};base64,` + file;
-      console.log(url);
-
-      // const a = Buffer.from(chunk);
-      // console.log(a.length);
-
-      // const base64String = btoa(String.fromCharCode(...new Uint8Array(chunk)));
-      // console.log(base64String);
+    //check blockchain for user with user id. If does not exist, create new user through contract
+    let user = await props.blocks.methods.getUser(userId).call();
+    if (user.userName.length < 1) {
+      await props.blocks.methods
+        .newUser(userId, userName)
+        .send({ from: metaMaskAccount });
     }
+
+    //get fileKey for next file for the assigned user
+    const fileKey = parseInt(user.fileCount) + 1;
+
+    //add file to blockchain for the logged in user
+    await props.blocks.methods
+      .addFile(userId, fileKey, fileCID, description)
+      .send({ from: metaMaskAccount });
   };
 
   return (
