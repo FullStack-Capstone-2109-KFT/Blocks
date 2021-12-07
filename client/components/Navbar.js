@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { logout } from '../store';
+import { HashLink } from 'react-router-hash-link';
 
 export class Navbar extends React.Component {
   render() {
@@ -22,12 +23,9 @@ export class Navbar extends React.Component {
                 <span className='icon-bar'></span>{' '}
                 <span className='icon-bar'></span>{' '}
               </button>
-              <a
-                className='navbar-brand page-scroll'
-                href='http://localhost:8080/upload'
-              >
+              <Link className='navbar-brand page-scroll' to='/upload'>
                 Blocks
-              </a>{' '}
+              </Link>
             </div>
 
             <div
@@ -51,9 +49,9 @@ export class Navbar extends React.Component {
                   </Link>
                 </li>
                 <li>
-                  <a href='#' onClick={this.props.handleClick}>
+                  <HashLink to='#' onClick={this.props.handleClick}>
                     Logout
-                  </a>
+                  </HashLink>
                 </li>
               </ul>
             </div>
@@ -73,59 +71,39 @@ export class Navbar extends React.Component {
                 <span className='icon-bar'></span>{' '}
                 <span className='icon-bar'></span>{' '}
               </button>
-              <a
-                className='navbar-brand page-scroll'
-                href='http://localhost:8080/home#header'
-              >
+              <HashLink to='/home#header' className='navbar-brand page-scroll'>
                 Blocks
-              </a>{' '}
+              </HashLink>
             </div>
-
             <div
               className='collapse navbar-collapse'
               id='bs-example-navbar-collapse-1'
             >
               <ul className='nav navbar-nav navbar-right'>
                 <li>
-                  <a
-                    href='http://localhost:8080/home#features'
-                    className='page-scroll'
-                  >
+                  <HashLink to='/home#features' className='page-scroll'>
                     Features
-                  </a>
+                  </HashLink>
                 </li>
                 <li>
-                  <a
-                    href='http://localhost:8080/home#about'
-                    className='page-scroll'
-                  >
+                  <HashLink to='/home#about' className='page-scroll'>
                     About
-                  </a>
+                  </HashLink>
                 </li>
-
                 <li>
-                  <a
-                    href='http://localhost:8080/home#testimonials'
-                    className='page-scroll'
-                  >
+                  <HashLink to='/home#testimonials' className='page-scroll'>
                     Testimonials
-                  </a>
+                  </HashLink>
                 </li>
                 <li>
-                  <a
-                    href='http://localhost:8080/home#team'
-                    className='page-scroll'
-                  >
+                  <HashLink to='/home#team' className='page-scroll'>
                     Team
-                  </a>
+                  </HashLink>
                 </li>
                 <li>
-                  <a
-                    href='http://localhost:8080/home#contact'
-                    className='page-scroll'
-                  >
+                  <HashLink to='/home#contact' className='page-scroll'>
                     Contact
-                  </a>
+                  </HashLink>
                 </li>
                 <li>
                   <Link to='/login' className='page-scroll'>

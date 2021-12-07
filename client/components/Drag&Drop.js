@@ -140,8 +140,6 @@ function StyledDropzone(props) {
           <div {...getRootProps({ style })}>
             <input
               {...getInputProps()}
-              directory=''
-              webkitdirectory=''
               type='file'
             />
             <p style={DragText}>Drag 'n' drop files here</p>
