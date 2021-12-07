@@ -2,12 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../store";
-<<<<<<< HEAD
-import { HashLink } from 'react-router-hash-link';
-=======
 import { HashLink } from 'react-router-hash-link'
 
->>>>>>> 561b943d8ac32c2ccbc1d0615288f144d40bc172
 export class Navbar extends React.Component {
   render() {
     return (
