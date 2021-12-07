@@ -3,6 +3,9 @@ import React, {Component} from 'react';
 export default class Share extends Component {
     constructor(){
         super();
+        this.state = {
+            seen: false
+        }
 
         this.handleClick = this.handleClick.bind(this);
     }
@@ -17,16 +20,19 @@ export default class Share extends Component {
     render(){
         
         return (
-            <div className='popup'>
-                <div className='popup_content'>
-                    <div className='share'>
-                        <h3>Share Your File!</h3>
-                        <div className='share'>
+            <div className='popup display-block'>
+                <div className='popup-main'>
+                    <div>
+                        <button className='close_button' name='close' onClick={this.handleClick}>x</button>
+                        <div>
+                            <h3 className='popup_head'>Sharing CID:</h3>
+                            <p className='popup_head'>file description</p>
+                        </div>
+                        <div className='share_buttons'>
                             <button>QR Code</button>
                             <button>Copy to Clipboard</button>
                             <button>Email</button>
                             <button>Social Media</button>
-                            <button className='close_button' name='close' onClick={this.handleClick}>x</button>
                         </div>
                     </div> 
                 </div>
