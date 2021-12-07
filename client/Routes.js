@@ -34,7 +34,7 @@ class Routes extends Component {
               <UploadFile userId={userId} userName={userName} />
             </Route>
             <Route path="/login">
-              <Redirect to="/upload" />
+              <Redirect to="/files" />
             </Route>
             <Route path="/files">
               <FileView userId={userId} />
