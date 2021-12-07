@@ -4,7 +4,7 @@
     "paragraph": "A globally encrypted, decentralized file sharing platform"
   },
   "About": {
-    "paragraph": "Users can upload files/images to Blocks with peace of mind that your sensitive data will soon be secure, uncensorable and shareable.  Security in Blocks comes from the decentralized process through the Ethereum Blockchain. Through this process,  your files will be safely stored in the IPFS (The InterPlanetary File System) utilizing Solidity Smart Contracts,  into a unique hash password that can be shared via text, email or even by QR Code.",
+    "paragraph": "Users can upload files/images to Blocks with peace of mind that your sensitive data will soon be secure, uncensorable and shareable.  Security in Blocks comes from the decentralized process through the Ethereum Blockchain. Through this process,  your files will be safely stored in the IPFS (The InterPlanetary File System) utilizing Solidity Smart Contracts, into a unique hash password that can be shared via text or email.",
     "Why": [
       "Accessibility 24/7",
       "Security",
@@ -161,24 +161,24 @@
   },
   "Features": [
     {
-      "icon": "comments",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "user-circle",
+      "title": "Account",
+      "text": "Create user account. We don't store any personal information or data."
     },
     {
-      "icon": "cloud-upload-alt",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "file-upload",
+      "title": "Files",
+      "text": "Your files are encrypted and stored on IPFS's decentralized platform"
     },
     {
-      "icon": "cloud-download-alt",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "key",
+      "title": "Stay Secure",
+      "text": "Keep your files private with multiple layers of proetection"
     },
     {
-      "icon": "project-diagram",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "share",
+      "title": "Share",
+      "text": "Quickly send any file - big or small"
     }
   ]
 }

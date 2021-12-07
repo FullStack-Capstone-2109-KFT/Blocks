@@ -1,6 +1,8 @@
 /* Color palate codes */
 /* #007057 - dark green (main KREM color) */
 
+@import '~video-react/styles/scss/video-react';
+
 @media screen and (max-width: 400px) {
   #features {
     padding: 20px;
@@ -52,7 +54,17 @@ html {
 h2,
 h3,
 h4 {
-  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  letter-spacing: 2.5px;
+}
+
+.featureIcon {
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+p {
+  font-size: 14px;
 }
 
 h2 {
@@ -216,7 +228,7 @@ hr {
   margin-bottom: 15px;
   padding-bottom: 15px;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .section-title h2::after {
@@ -224,10 +236,11 @@ hr {
   content: '';
   background: linear-gradient(to right, #4caf50 0%, #196c1c 100%);
   height: 4px;
-  width: 60px;
+  width: 133px;
   bottom: 0;
   margin-left: -30px;
-  left: 50%;
+  left: 46%;
+  letter-spacing: 6px;
 }
 
 .section-title p {
@@ -281,7 +294,7 @@ a:focus,
 
 /* LOGIN */
 .login {
-  background: #a2cbbc;
+  background: #cdcdcd;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -449,14 +462,17 @@ header .intro-text {
 }
 
 #about h3 {
-  font-size: 22px;
+  font-size: 24px;
   margin: 0 0 20px;
+  font-weight: 300;
 }
 
 #about h2 {
   position: relative;
   margin-bottom: 15px;
   padding-bottom: 15px;
+  font-weight: 300;
+  font-size: 32px;
 }
 
 #about h2::after {
@@ -474,6 +490,7 @@ header .intro-text {
   margin-left: 6px;
   list-style: none;
   padding: 0;
+  letter-spacing: 1px;
 }
 
 #about .about-text li:before {
@@ -496,6 +513,9 @@ header .intro-text {
 #about p {
   line-height: 24px;
   margin: 30px 0;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /* SERVICES */
@@ -547,6 +567,13 @@ header .intro-text {
 
 #services .service-desc {
   margin-bottom: 40px;
+}
+
+.pText {
+  font-weight: 400;
+  color: black;
+  letter-spacing: 0.5px;
+  font-size: 14px;
 }
 
 /* TESTIMONIALS */
@@ -784,7 +811,7 @@ label {
   }
 }
 
-.video-react .video-react-big-play-button {
+.video-react-big-play-button {
   font-size: 3em;
   line-height: 1.5em;
   height: 1.5em;
@@ -813,7 +840,7 @@ label {
 }
 
 .fileView-flex {
-  margin-top: 200px;
+  margin-top: 222px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -831,10 +858,13 @@ label {
 
 .fileTable td {
   padding: 20px;
+  width: 150px;
 }
 
 .fileTable th {
   padding: 20px;
+  width: 159px;
+  letter-spacing: 1.5px;
 }
 
 .fileTable thead tr {
@@ -858,6 +888,9 @@ label {
 #heading {
   align-self: center;
   font-family: 'Lato', sans-serif;
+  letter-spacing: 4px;
+  font-size: 32px;
+  font-weight: 300;
 }
 
 .row-flex {
@@ -867,4 +900,11 @@ label {
 
 .share {
   font-family: 'Lato', sans-serif;
+  width: 59px;
+  border: 1px solid #109979;
+  border-radius: 2px;
+  color: black;
+  letter-spacing: 1px;
+  padding: 2px;
+  font-size: 10px;
 }
