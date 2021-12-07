@@ -108,12 +108,14 @@ function StyledDropzone(props) {
   const uploadFile = async () => {
     //if encryption is desired. Get key from user input
     // console.log("Encrypting File");
-    let key = "123";
-    let encryptedBuff = encryptFile(buff, key);
+    // let key = "123";
+    // let encryptedBuff = encryptFile(buff, key);
 
     //   //Add file to IPFS and receive CID
     console.log("Submitting file to IPFS");
-    const res = await props.ipfs.add(encryptedBuff);
+    // const res = await props.ipfs.add(encryptedBuff);
+    const res = await props.ipfs.add(buff);
+    console.log(res);
 
     //identify key variables for contract calls
     const fileCID = res.path;

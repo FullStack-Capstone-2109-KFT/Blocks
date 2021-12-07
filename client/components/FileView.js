@@ -80,6 +80,7 @@ export default class FileView extends Component {
 
       const url = `data:${mimType};base64,` + file;
       window.location.replace(url);
+      // console.log(url);
     }
   }
 
