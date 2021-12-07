@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
   const [buff, setBuffer] = useState([]);
@@ -135,7 +134,7 @@ function StyledDropzone(props) {
   };
 
   return (
-    <div className='container'>
+    <div style={blocksImg}>
       <form onSubmit={handleSubmit}>
         <div>
           <div {...getRootProps({ style })}>
@@ -148,7 +147,7 @@ function StyledDropzone(props) {
             <img
               style={img}
               src={
-                'data:image/png;base64,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'
+                'https://upload.wikimedia.org/wikipedia/commons/8/81/Portfolio_.gif'
               }
             />
 
@@ -162,6 +161,7 @@ function StyledDropzone(props) {
             onChange={handleChange}
             value={description}
             placeholder='Description'
+            maxLength="20"
           />
           <div style={fileContainer}>
             <aside>
@@ -180,6 +180,13 @@ function StyledDropzone(props) {
           </div>
         </div>
       </form>
+      {/* <img
+        style={blocksImg}
+        src={
+          'https://media3.giphy.com/media/ch7xUuFIoRcGoeA27N/giphy.gif?cid=ecf05e4730g95ezx0se1yt94s35mhewjtzcka6wbvonygkfg&rid=giphy.gif&ct=g'
+        }
+        alt='blocks'
+      /> */}
     </div>
   );
 }
@@ -192,7 +199,7 @@ const baseStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '16px',
-  borderWidth: 2,
+  borderWidth: '3px',
   borderRadius: 2,
   borderColor: '#009688',
   borderStyle: 'dashed',
@@ -201,7 +208,7 @@ const baseStyle = {
   outline: 'none',
   transition: 'border .24s ease-in-out',
   maxWidth: '45%',
-  height: '391px',
+  height: '425px',
   marginLeft: '98px',
   marginTop: '-42px',
 };
@@ -209,7 +216,6 @@ const baseStyle = {
 const activeStyle = {
   borderColor: '#2196f3',
 };
-
 
 const thumbsContainer = {
   display: 'flex',
@@ -238,22 +244,22 @@ const thumbInner = {
 };
 
 const browseFiles = {
-  backgroundColor: '#17c387',
+  backgroundColor: 'rgb(18 153 24 / 85%)',
   marginTop: '54px',
   padding: '3px',
   color: 'white',
-  borderRadius: '4px',
-  fontSize: '11px',
+  borderRadius: '1px',
+  fontSize: '12px',
   letterSpacing: '1px',
-  width: '130px',
-  height: '36px',
+  width: '145px',
+  height: '31px',
   border: '1px solid #03a9f4',
 };
 
 const img = {
   display: 'block',
-  width: '140px',
-  height: '140px',
+  width: '175px',
+  height: '175px',
   marginTop: '35px',
 };
 
@@ -272,14 +278,14 @@ const input = {
 };
 
 const submit = {
-  backgroundColor: '#17c387',
+  backgroundColor: 'rgb(18 153 24 / 85%)',
   padding: '3px',
   color: 'white',
-  borderRadius: '4px',
-  fontSize: '11px',
+  borderRadius: '1px',
+  fontSize: '12px',
   letterSpacing: '1px',
-  width: '130px',
-  height: '36px',
+  width: '145px',
+  height: '31px',
   border: '1px solid #03a9f4',
   marginTop: '15px',
   marginLeft: '7px',
@@ -315,3 +321,15 @@ const fileContainer = {
   marginLeft: '724px',
   marginTop: '-333px',
 };
+
+const blocksImg = {};
+
+// const container = {
+
+//     backgroundColor: rgb(174, 238, 193),
+//     background: radial-gradient(
+//       circle,
+//       rgba(174, 238, 193, 1) 28%,
+//       rgba(76, 175, 108, 1) 88%,
+
+// }
