@@ -1,6 +1,8 @@
 /* Color palate codes */
 /* #007057 - dark green (main KREM color) */
 
+@import "~video-react/styles/scss/video-react";
+
 @media screen and (max-width: 400px) {
   #features {
     padding: 20px;
@@ -40,7 +42,7 @@ code {
 
 body,
 html {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   color: #777;
@@ -52,7 +54,17 @@ html {
 h2,
 h3,
 h4 {
-  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  letter-spacing: 2.5px;
+}
+
+.featureIcon {
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+p {
+  font-size: 14px;
 }
 
 h2 {
@@ -134,7 +146,7 @@ hr {
 }
 
 #menu a.navbar-brand {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: black;
@@ -143,7 +155,7 @@ hr {
 }
 
 #menu.navbar-default .navbar-nav > li > a {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-transform: uppercase;
   color: #555;
   font-size: 15px;
@@ -162,7 +174,7 @@ hr {
   width: 0;
   height: 2px;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%);
-  content: '';
+  content: "";
   transition: width 0.3s;
 }
 
@@ -186,7 +198,7 @@ hr {
   width: 100% !important;
   height: 2px !important;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%) !important;
-  content: '' !important;
+  content: "" !important;
   transition: width 0.3s !important;
 }
 
@@ -216,18 +228,19 @@ hr {
   margin-bottom: 15px;
   padding-bottom: 15px;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .section-title h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: linear-gradient(to right, #4caf50 0%, #196c1c 100%);
   height: 4px;
-  width: 60px;
+  width: 133px;
   bottom: 0;
   margin-left: -30px;
-  left: 50%;
+  left: 46%;
+  letter-spacing: 6px;
 }
 
 .section-title p {
@@ -235,7 +248,7 @@ hr {
 }
 
 .btn-custom {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   color: #fff;
   background-color: #4caf50;
@@ -281,7 +294,7 @@ a:focus,
 
 /* LOGIN */
 .login {
-  background: #a2cbbc;
+  background: #cdcdcd;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -394,7 +407,7 @@ a:focus,
 }
 
 .intro h1 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   color: #4f8652;
   font-size: 82px;
   font-weight: 100;
@@ -449,19 +462,22 @@ header .intro-text {
 }
 
 #about h3 {
-  font-size: 22px;
+  font-size: 24px;
   margin: 0 0 20px;
+  font-weight: 300;
 }
 
 #about h2 {
   position: relative;
   margin-bottom: 15px;
   padding-bottom: 15px;
+  font-weight: 300;
+  font-size: 32px;
 }
 
 #about h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: linear-gradient(to right, #4caf50 0%, #07860c 100%);
   height: 4px;
   width: 60px;
@@ -474,11 +490,12 @@ header .intro-text {
   margin-left: 6px;
   list-style: none;
   padding: 0;
+  letter-spacing: 1px;
 }
 
 #about .about-text li:before {
-  content: '\f00c';
-  font-family: 'FontAwesome';
+  content: "\f00c";
+  font-family: "FontAwesome";
   color: #3cb741;
   font-size: 11px;
   font-weight: 300;
@@ -496,6 +513,9 @@ header .intro-text {
 #about p {
   line-height: 24px;
   margin: 30px 0;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /* SERVICES */
@@ -515,7 +535,7 @@ header .intro-text {
 
 #services .section-title h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -547,6 +567,13 @@ header .intro-text {
 
 #services .service-desc {
   margin-bottom: 40px;
+}
+
+.pText {
+  font-weight: 400;
+  color: black;
+  letter-spacing: 0.5px;
+  font-size: 14px;
 }
 
 /* TESTIMONIALS */
@@ -654,7 +681,7 @@ header .intro-text {
 
 #contact .section-title h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -694,7 +721,7 @@ header .intro-text {
 label {
   font-size: 12px;
   font-weight: 400;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   float: left;
 }
 
@@ -784,7 +811,7 @@ label {
   }
 }
 
-.video-react .video-react-big-play-button {
+.video-react-big-play-button {
   font-size: 3em;
   line-height: 1.5em;
   height: 1.5em;
@@ -813,7 +840,7 @@ label {
 }
 
 .fileView-flex {
-  margin-top: 200px;
+  margin-top: 222px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -831,10 +858,13 @@ label {
 
 .fileTable td {
   padding: 20px;
+  width: 150px;
 }
 
 .fileTable th {
   padding: 20px;
+  width: 159px;
+  letter-spacing: 1.5px;
 }
 
 .fileTable thead tr {
@@ -857,12 +887,26 @@ label {
 
 #heading {
   align-self: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 4px;
+  font-size: 32px;
+  font-weight: 300;
 }
 
 .row-flex {
   display: flex;
   justify-content: center;
+}
+
+.share {
+  font-family: "Lato", sans-serif;
+  width: 59px;
+  border: 1px solid #109979;
+  border-radius: 2px;
+  color: black;
+  letter-spacing: 1px;
+  padding: 2px;
+  font-size: 10px;
 }
 
 .share_buttons {
@@ -874,14 +918,14 @@ label {
 }
 
 .share_buttons button {
-  margin: 5px
+  margin: 5px;
 }
 
 .popup {
   position: relative;
   top: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   height: 100%;
 }
 
@@ -890,9 +934,9 @@ label {
   background: white;
   width: 250px;
   height: 300px;
-  transform: translate(100px,-100px);
+  transform: translate(100px, -100px);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid #009879
+  border: 1px solid #009879;
 }
 
 .display-block {
