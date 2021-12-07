@@ -5,6 +5,8 @@ import { loadWeb3, loadBlockchainData } from "../store/blockchain";
 import Share from "./SharePopUp";
 const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
+// import { fileTypeFromFile } from "file-type";
+import { decryptFile } from "../store/encryption";
 
 const ipfs = create({
   host: "ipfs.infura.io",
@@ -38,7 +40,7 @@ export default class FileView extends Component {
   }
 
   getUserData = async (userId) => {
-    console.log("Retrieving user information from Blockchain");
+    // console.log("Retrieving user information from Blockchain");
 
     let user = await this.state.blocks.methods.getUser(userId).call();
 
@@ -50,7 +52,7 @@ export default class FileView extends Component {
   getUserFiles = async (userId) => {
     let files = [];
 
-    console.log("Retrieving user files from Blockchain");
+    // console.log("Retrieving user files from Blockchain");
 
     for (let i = 1; i <= this.state.fileCount; i++) {
       let file = await this.state.blocks.methods.getUserFile(userId, i).call();
@@ -64,20 +66,20 @@ export default class FileView extends Component {
 
   async getFileFromIPFS(cid) {
     for await (const chunk of ipfs.cat(cid)) {
-      console.log(chunk.length);
+      let key = "123";
+      let decryptedChunk = await decryptFile(chunk, key);
 
       let binary = "";
-      for (let i = 0; i < chunk.length; i++) {
-        binary += String.fromCharCode([chunk[i]]);
+      for (let i = 0; i < decryptedChunk.length; i++) {
+        binary += String.fromCharCode([decryptedChunk[i]]);
       }
       const file = window.btoa(binary);
 
       let fileType = "jpg";
       let mimType = "application/" + fileType;
 
-      let mimType = "application/";
       const url = `data:${mimType};base64,` + file;
-      console.log(url);
+      window.location.replace(url);
     }
   }
 
@@ -121,6 +123,13 @@ export default class FileView extends Component {
                   <a onClick={() => this.getFileFromIPFS(file.fileHash)}>
                     {file.fileHash}
                   </a>
+
+                  {/* <a
+                    href={`${this.getFileFromIPFS(file.fileHash)}`}
+                    target="_blank"
+                  >
+                    {file.fileHash}
+                  </a> */}
                 </td>
                 <td>{file.type}</td>
                 <td>File Encryption</td>

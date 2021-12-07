@@ -3,6 +3,7 @@ import React, { useMemo, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useDropzone } from "react-dropzone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { encryptFile } from "../store/encryption";
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
@@ -105,14 +106,14 @@ function StyledDropzone(props) {
   };
 
   const uploadFile = async () => {
-    //   // console.log("Encrypting File");
-    //   // let encryptedBuff = encryptFile(buff, key);
+    //if encryption is desired. Get key from user input
+    // console.log("Encrypting File");
+    let key = "123";
+    let encryptedBuff = encryptFile(buff, key);
 
     //   //Add file to IPFS and receive CID
     console.log("Submitting file to IPFS");
-    console.log(buff);
-    const res = await props.ipfs.add(buff);
-    console.log(res);
+    const res = await props.ipfs.add(encryptedBuff);
 
     //identify key variables for contract calls
     const fileCID = res.path;
