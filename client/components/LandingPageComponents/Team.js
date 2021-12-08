@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class Team extends React.Component {
   render() {
@@ -10,8 +11,8 @@ export class Team extends React.Component {
           <div className="col-md-8 col-md-offset-2 section-title">
             <h2>Meet the Team</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed
-              dapibus leonec.
+              Meet the team of dedicated engineers who keep Blocks running
+              behind the scenes. Connect with us on LinkedIn!
             </p>
           </div>
           <div id="row">
@@ -24,6 +25,14 @@ export class Team extends React.Component {
                     <div className="thumbnail">
                       {" "}
                       <img src={d.img} alt="..." className="team-img" />
+                      <div className="hover-text">
+                        <a href={d.url}>
+                          <FontAwesomeIcon
+                            className="fa fa-linkedin"
+                            icon={["fab", "linkedin"]}
+                          />
+                        </a>
+                      </div>
                       <div className="caption">
                         <h4>{d.name}</h4>
                         <p>{d.job}</p>

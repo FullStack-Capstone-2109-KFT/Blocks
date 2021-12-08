@@ -652,12 +652,37 @@ header .intro-text {
 
 #team .thumbnail {
   background: transparent;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
   border: 0;
+}
+
+#team .thumbnail:hover .team-img {
+  opacity: 0.7;
+}
+
+#team .thumbnail:hover .hover-text {
+  opacity: 1;
 }
 
 #team .thumbnail .caption {
   padding: 10px 0 0;
   color: #888;
+}
+
+#team .thumbnail .hover-text {
+  transition: 0.5s ease;
+  font-size: 80px;
+  opacity: 0;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  text-align: center;
+}
+
+#team .fa {
+  color: #387a43;
 }
 
 /* CONTACT */
@@ -894,8 +919,9 @@ label {
   align-self: center;
   font-family: 'Lato', sans-serif;
   letter-spacing: 4px;
-  font-size: 32px;
+  font-size: 50px;
   font-weight: 300;
+  color: #109979;
 }
 
 .row-flex {
@@ -1000,8 +1026,94 @@ label {
   width: 100%;
 }
 
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 142px;
+}
+.input {
+  width: 626px;
+  height: 36px;
+  border: 2px solid #009879;
+  border-radius: 2px;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #009879;
+  margin-top: 15px;
+  padding: -1px;
+}
+
+.decrypt {
+  width: 449px;
+  height: 36px;
+  border: 2px solid #009879;
+  border-radius: 2px;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #009879;
+  margin-top: 15px;
+  padding: -1px;
+  text-align: center;
+}
+
+.decryptContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  CID */
+.outerCID {
+  background-image: url('https://cdn.dribbble.com/users/1655668/screenshots/5286570/3d-cube-4x3.gif');
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-evenly;
+}
 .cid-container {
   margin-top: 200px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  margin-top: 100px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* margin-left: 200px; */
+  border-radius: 7px;
+}
+.CIDText {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  font-size: 34px;
+  letter-spacing: 2px;
+}
+
+.inputCID {
+  width: 50%;
+  margin: 5px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.buttonCID {
+  margin: 5px;
+  width: 50%;
+  height: 30px;
+  border: 2px solid #009879;
+  border-radius: 2px;
+  border-radius: 1px;
 }
 
 #opaque {
@@ -1018,4 +1130,8 @@ label {
 }
 * html #opaque {
   position: absolute;
+}
+
+.inputContainer > .checbox-text {
+  font-size: 30;
 }

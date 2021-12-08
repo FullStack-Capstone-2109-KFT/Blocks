@@ -3,6 +3,7 @@ import React, { useMemo, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { encryptFile } from '../store/encryption';
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
@@ -10,6 +11,8 @@ function StyledDropzone(props) {
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
   const [description, setDescription] = useState('');
+  const [encryptionKey, setEncryptionKey] = useState('');
+  const [isChecked, setIsCheck] = useState(false)
 
   const {
     getRootProps,
@@ -26,10 +29,12 @@ function StyledDropzone(props) {
     noKeyboard: true,
     onDrop: (acceptedFiles) => {
       const theFile = acceptedFiles[0];
+      console.log(theFile);
       const reader = new window.FileReader();
+
       reader.readAsArrayBuffer(theFile);
       reader.onloadend = () => {
-        setBuffer(Buffer(reader.result));
+        setBuffer(Buffer.from(reader.result));
         setName(theFile.name);
         setType(theFile.type);
       };
@@ -96,28 +101,44 @@ function StyledDropzone(props) {
     setDescription(target);
   };
 
+  const handleKeyChange = (evt) => {
+    let target = evt.target.value;
+    setEncryptionKey(target);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
     setDescription('');
+    setEncryptionKey('')
   };
+  const handleChecked = () => {
+    setIsCheck(!isChecked);
+  }
 
   const uploadFile = async () => {
-    //Add optional encryption here? Or higher in file.
+    let encryptedBuff = buff;
+
+    //If a key has been provided, encrypt the file with it
+    if (encryptionKey.length > 0) {
+      console.log('Encrypting File');
+      encryptedBuff = await encryptFile(buff, encryptionKey);
+    }
 
     //Add file to IPFS and receive CID
     console.log('Submitting file to IPFS');
-    const res = await props.ipfS.add(buff);
+    const res = await props.ipfs.add(encryptedBuff);
+    console.log(res);
 
     //identify key variables for contract calls
     const fileCID = res.path;
     const userId = props.id;
     const userName = props.userName;
     const metaMaskAccount = props.account;
+    const fileType = type;
 
     //check blockchain for user with user id. If does not exist, create new user through contract
     let user = await props.blocks.methods.getUser(userId).call();
-
     if (user.userName.length < 1) {
       await props.blocks.methods
         .newUser(userId, userName)
@@ -129,19 +150,16 @@ function StyledDropzone(props) {
 
     //add file to blockchain for the logged in user
     await props.blocks.methods
-      .addFile(userId, fileKey, fileCID, description)
+      .addFile(userId, fileKey, fileCID, fileType, description)
       .send({ from: metaMaskAccount });
   };
-
   return (
     <div style={blocksImg}>
       <form onSubmit={handleSubmit}>
         <div>
           <div {...getRootProps({ style })}>
-            <input
-              {...getInputProps()}
-              type='file'
-            />
+            <input {...getInputProps()} type='file' />
+
             <p style={DragText}>Drag 'n' drop files here</p>
 
             <img
@@ -154,21 +172,39 @@ function StyledDropzone(props) {
             <button style={browseFiles} type='button' onClick={open}>
               Browse Files
             </button>
+            <div className='inputContainer'>
+              <input
+                className='input'
+                type='text'
+                onChange={handleChange}
+                value={description}
+                placeholder='Title / Description (max 20 chars)'
+                maxLength= "20"
+              />
+                <h3 className="checbox-text">
+                  Do you want to encrypt your file?
+                  <FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>
+                  <input type="checkbox" checked={isChecked} onChange={handleChecked}/>
+                </h3>
+              {isChecked ? (
+                <input
+                type='text'
+                className='input'
+                onChange={handleKeyChange}
+                value={encryptionKey}
+                placeholder='Encryption Key (up to 20 chars) - keys are NOT SAVED.'
+                maxLength='20'
+              />
+              ) : ''}
+            </div>
           </div>
-          <input
-            type='text'
-            style={input}
-            onChange={handleChange}
-            value={description}
-            placeholder='Description'
-            maxLength="20"
-          />
           <div style={fileContainer}>
             <aside>
-              <h4 style={file}>Your Files</h4>
+              <h4 style={file}>Files to Upload</h4>
               <ul>{filepath}</ul>
             </aside>
             <aside style={thumbsContainer}>{thumbs}</aside>
+
             <input
               style={submit}
               type='submit'
@@ -180,13 +216,6 @@ function StyledDropzone(props) {
           </div>
         </div>
       </form>
-      {/* <img
-        style={blocksImg}
-        src={
-          'https://media3.giphy.com/media/ch7xUuFIoRcGoeA27N/giphy.gif?cid=ecf05e4730g95ezx0se1yt94s35mhewjtzcka6wbvonygkfg&rid=giphy.gif&ct=g'
-        }
-        alt='blocks'
-      /> */}
     </div>
   );
 }
@@ -245,14 +274,14 @@ const thumbInner = {
 
 const browseFiles = {
   backgroundColor: 'rgb(18 153 24 / 85%)',
-  marginTop: '54px',
+  marginTop: '33px',
   padding: '3px',
   color: 'white',
   borderRadius: '1px',
   fontSize: '12px',
   letterSpacing: '1px',
-  width: '145px',
-  height: '31px',
+  width: '256px',
+  height: '34px',
   border: '1px solid #03a9f4',
 };
 
@@ -274,7 +303,10 @@ const doc = {
 };
 
 const input = {
-  width: '100%',
+  width: '256px',
+  marginLeft: '1204px',
+  marginBottom: '33px',
+  marginTop: '18px',
 };
 
 const submit = {
@@ -284,11 +316,11 @@ const submit = {
   borderRadius: '1px',
   fontSize: '12px',
   letterSpacing: '1px',
-  width: '145px',
+  width: '305px',
   height: '31px',
   border: '1px solid #03a9f4',
-  marginTop: '15px',
-  marginLeft: '7px',
+  marginTop: '6px',
+  marginLeft: '-10px',
 };
 
 const uploadImg = {
@@ -308,6 +340,7 @@ const file = {
   fontSize: '24px',
   letterSpacing: '2px',
   marginTop: '-25px',
+  fontWeight: '400',
 };
 
 const fileContainer = {
@@ -318,8 +351,8 @@ const fileContainer = {
   margin: '21x',
   width: '400px',
   alignContent: 'space-between',
-  marginLeft: '724px',
-  marginTop: '-333px',
+  marginLeft: '816px',
+  marginTop: '-399px',
 };
 
 const blocksImg = {};

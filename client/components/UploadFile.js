@@ -48,7 +48,7 @@ export default class UploadFile extends Component {
     return (
       <div className="nav-margin">
         <StyledDropzone
-          ipfS={ipfs}
+          ipfs={ipfs}
           blocks={this.state.blocks}
           account={this.state.account}
           id={this.state.id}
