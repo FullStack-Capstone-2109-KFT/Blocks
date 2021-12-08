@@ -11,7 +11,9 @@ import CidReader from "./components/CID-Reader";
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
-
+  componentDidMount() {
+    this.props.loadInitialData();
+  }
   render() {
     const { isLoggedIn, userId, userName } = this.props;
 
