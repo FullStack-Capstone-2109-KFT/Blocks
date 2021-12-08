@@ -210,7 +210,7 @@ function StyledDropzone(props) {
           </div>
           <div style={fileContainer}>
             <div className='fileUploadContainer'>
-              <h4 style={file}>Files to Upload</h4>
+              <h4 style={file}>File to Upload</h4>
               <ul>{filepath}</ul>
 
               <aside style={thumbsContainer}>{thumbs}</aside>
