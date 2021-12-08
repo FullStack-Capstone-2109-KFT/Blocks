@@ -66,20 +66,56 @@ export default class FileView extends Component {
 
   async getFileFromIPFS(cid) {
     let key = "123";
+    // key = ""; //comment for encrypted
     let bufferArray = [];
+
     for await (const chunk of ipfs.cat(cid)) {
-      let decryptedChunk = await decryptFile(chunk, key);
-      bufferArray = bufferArray.concat(decryptedChunk);
+      bufferArray = bufferArray.concat(chunk);
     }
 
-    let a = document.createElement("a");
-    a.style.display = "none";
-    let url = window.URL.createObjectURL(
-      new Blob(bufferArray, { type: "application/jpg" })
-    );
-    a.setAttribute("href", url);
-    document.body.appendChild(a);
-    a.click();
+    let length = bufferArray.reduce((acc, value) => acc + value.length, 0);
+
+    let result = new Uint8Array(length);
+    let l = 0;
+    for (let array of bufferArray) {
+      result.set(array, l);
+      l += array.length;
+    }
+
+    let decryptedBuffer = await decryptFile(result, key);
+
+    console.log([decryptedBuffer]);
+
+    let blob = new Blob([decryptedBuffer], { type: "application/jpg" });
+
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "test";
+    link.click();
+
+    // ;
+    // let url = window.URL.createObjectURL(blob);
+    // console.log(url);
+
+    // let a = document.createElement("a");
+    // a.href = decryptedBuffer;
+    // a.download = "testFile";
+    // document.body.appendChild(a);
+    // a.style = "display: none";
+
+    // a.click();
+    // a.remove();
+
+    // console.log(blob);
+
+    // let a = document.createElement("a");
+    // a.style.display = "none";
+    // let url = window.URL.createObjectURL(
+    //   new Blob(decryptedBuffer, { type: "application/jpg" })
+    // );
+    // a.setAttribute("href", url);
+    // document.body.appendChild(a);
+    // a.click();
 
     // let key = "123";
     // let decryptedChunk = await decryptFile(chunk, key);
