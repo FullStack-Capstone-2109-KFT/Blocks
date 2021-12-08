@@ -130,7 +130,7 @@ function StyledDropzone(props) {
     const userId = props.id;
     const userName = props.userName;
     const metaMaskAccount = props.account;
-    const fileType = "jpg";
+    const fileType = type;
 
     //check blockchain for user with user id. If does not exist, create new user through contract
     let user = await props.blocks.methods.getUser(userId).call();

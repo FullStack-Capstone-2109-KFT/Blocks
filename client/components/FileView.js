@@ -64,7 +64,7 @@ export default class FileView extends Component {
   };
 
   async getFileFromIPFS(cid, fileType, description) {
-    let key = "test";
+    let key = "123";
     let bufferArray = [];
 
     for await (const chunk of ipfs.cat(cid)) {
@@ -82,11 +82,12 @@ export default class FileView extends Component {
 
     let decryptedBuffer = await decryptFile(result, key);
 
-    let blob = new Blob([decryptedBuffer], { type: "application/" + fileType });
+    let blob = new Blob([decryptedBuffer], { type: fileType });
+    let typeSuffix = fileType.split("/")[1];
 
     let link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.download = `${description}.${fileType}`;
+    link.download = `${description}.${typeSuffix}`;
     link.click();
   }
 
@@ -135,7 +136,7 @@ export default class FileView extends Component {
                     {file.fileHash}
                   </a>
                 </td>
-                <td>{"." + file.fileType}</td>
+                <td>{file.fileType}</td>
                 <td>File Encryption</td>
                 <td>
                   <button
