@@ -63,9 +63,8 @@ export default class FileView extends Component {
     this.setState({ userFiles: files });
   };
 
-  async getFileFromIPFS(cid) {
-    let key = "123";
-    // key = ""; //comment for encrypted
+  async getFileFromIPFS(cid, fileType, description) {
+    let key = "test";
     let bufferArray = [];
 
     for await (const chunk of ipfs.cat(cid)) {
@@ -83,11 +82,11 @@ export default class FileView extends Component {
 
     let decryptedBuffer = await decryptFile(result, key);
 
-    let blob = new Blob([decryptedBuffer], { type: "application/pdf" });
+    let blob = new Blob([decryptedBuffer], { type: "application/" + fileType });
 
     let link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.download = "test";
+    link.download = `${description}.${fileType}`;
     link.click();
   }
 
@@ -124,22 +123,19 @@ export default class FileView extends Component {
               <tr key={file.fileNumber}>
                 <td>{file.description}</td>
                 <td>
-                  {/* <a
-                    href={"https://ipfs.io/ipfs/" + `${file.fileHash}`}
-                    target="_blank"
-                  > */}
-                  <a onClick={() => this.getFileFromIPFS(file.fileHash)}>
-                    {file.fileHash}
-                  </a>
-
-                  {/* <a
-                    href={`${this.getFileFromIPFS(file.fileHash)}`}
-                    target="_blank"
+                  <a
+                    onClick={() =>
+                      this.getFileFromIPFS(
+                        file.fileHash,
+                        file.fileType,
+                        file.description
+                      )
+                    }
                   >
                     {file.fileHash}
-                  </a> */}
+                  </a>
                 </td>
-                <td>{file.type}</td>
+                <td>{"." + file.fileType}</td>
                 <td>File Encryption</td>
                 <td>
                   <button

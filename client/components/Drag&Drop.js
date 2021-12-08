@@ -11,6 +11,7 @@ function StyledDropzone(props) {
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
   const [description, setDescription] = useState("");
+  const [encryptionKey, setEncryptionKey] = useState("");
 
   const {
     getRootProps,
@@ -99,6 +100,11 @@ function StyledDropzone(props) {
     setDescription(target);
   };
 
+  const handleKeyChange = (evt) => {
+    let target = evt.target.value;
+    setEncryptionKey(target);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
@@ -106,17 +112,15 @@ function StyledDropzone(props) {
   };
 
   const uploadFile = async () => {
-    //if encryption is desired. Get key from user input
-    // console.log("Encrypting File");
-    let key = "123";
-    // key = ""; //comment for encrypted
     let encryptedBuff = buff;
 
-    if (key.length > 0) {
-      encryptedBuff = await encryptFile(buff, key);
+    //If a key has been provided, encrypt the file with it
+    if (encryptionKey.length > 0) {
+      console.log("Encrypting File");
+      encryptedBuff = await encryptFile(buff, encryptionKey);
     }
 
-    //   //Add file to IPFS and receive CID
+    //Add file to IPFS and receive CID
     console.log("Submitting file to IPFS");
     const res = await props.ipfs.add(encryptedBuff);
     console.log(res);
@@ -126,6 +130,7 @@ function StyledDropzone(props) {
     const userId = props.id;
     const userName = props.userName;
     const metaMaskAccount = props.account;
+    const fileType = "jpg";
 
     //check blockchain for user with user id. If does not exist, create new user through contract
     let user = await props.blocks.methods.getUser(userId).call();
@@ -140,7 +145,7 @@ function StyledDropzone(props) {
 
     //add file to blockchain for the logged in user
     await props.blocks.methods
-      .addFile(userId, fileKey, fileCID, description)
+      .addFile(userId, fileKey, fileCID, fileType, description)
       .send({ from: metaMaskAccount });
   };
 
@@ -169,6 +174,14 @@ function StyledDropzone(props) {
             onChange={handleChange}
             value={description}
             placeholder="Description"
+            maxLength="20"
+          />
+          <input
+            type="text"
+            style={input}
+            onChange={handleKeyChange}
+            value={encryptionKey}
+            placeholder="Encryption Key (up to 20 chars)"
             maxLength="20"
           />
           <div style={fileContainer}>

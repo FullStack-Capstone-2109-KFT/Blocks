@@ -7,7 +7,7 @@ contract Blocks {
   //define the File struct
   struct File {
     string fileHash; //CID
-    // string fileType; //file type (pdf, jpg, etc.)
+    string fileType; //file type (pdf, jpg, etc.)
     string description; //file description
   }
 
@@ -50,7 +50,7 @@ contract Blocks {
     uint256 userKey,
     uint256 fileKey,
     string memory fileHash,
-    // string memory fileType,
+    string memory fileType,
     string memory description
   ) public returns (bool success) {
     require(userKey > 0 && fileKey > 0);
@@ -58,7 +58,7 @@ contract Blocks {
 
     userStructs[userKey].fileList.push(fileKey);
     userStructs[userKey].fileStructs[fileKey].fileHash = fileHash;
-    // userStructs[userKey].fileStructs[fileKey].fileType = fileType;
+    userStructs[userKey].fileStructs[fileKey].fileType = fileType;
     userStructs[userKey].fileStructs[fileKey].description = description;
     return true;
   }
@@ -69,7 +69,7 @@ contract Blocks {
     returns (
       string memory fileHash,
       string memory description,
-      // string memory fileType,
+      string memory fileType,
       uint256 fileNumber //aka fileKey
     )
   {
@@ -78,7 +78,7 @@ contract Blocks {
     return (
       userStructs[userKey].fileStructs[fileKey].fileHash,
       userStructs[userKey].fileStructs[fileKey].description,
-      // userStructs[userKey].fileStructs[fileKey].fileType,
+      userStructs[userKey].fileStructs[fileKey].fileType,
       fileKey
     );
   }
