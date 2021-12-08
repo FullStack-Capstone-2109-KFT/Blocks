@@ -11,10 +11,7 @@ function CidReader() {
   return (
     <div className='outerCID'>
       <div className='cid-container'>
-        <p className='CIDText'>
-          Hello, you can retrieve your file just by pasting the CID into the
-          field!
-        </p>
+        <p className='CIDText'>Retrieve file </p>
         <input
           className='inputCID'
           type='text'
