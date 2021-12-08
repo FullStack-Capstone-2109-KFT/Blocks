@@ -940,16 +940,39 @@ label {
   font-size: 10px;
 }
 
+.share_button {
+  background-color: #009879;
+  padding: 3px;
+  color: white;
+  border-radius: 1px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border: 1px solid ;
+}
+
 .share_buttons {
   font-family: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
-  height: 200px;
+  height: 212px;
   justify-content: center;
 }
 
 .share_buttons button {
-  margin: 5px;
+  margin: 20px;
+  background-color: #009879;
+  padding: 3px;
+  color: white;
+  border-radius: 1px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border: 1px solid ;
+}
+
+.share_buttons p {
+  align-self: center;
+  color: #009879;
+  font-weight: bold;
 }
 
 .popup {
