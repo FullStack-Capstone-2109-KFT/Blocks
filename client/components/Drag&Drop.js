@@ -105,10 +105,6 @@ function StyledDropzone(props) {
     setDescription("");
   };
 
-  const sleep = (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
-
   const uploadFile = async () => {
     //if encryption is desired. Get key from user input
     // console.log("Encrypting File");
@@ -119,10 +115,6 @@ function StyledDropzone(props) {
     if (key.length > 0) {
       encryptedBuff = await encryptFile(buff, key);
     }
-
-    await sleep(1000);
-
-    // console.log(encryptedBuff);
 
     //   //Add file to IPFS and receive CID
     console.log("Submitting file to IPFS");

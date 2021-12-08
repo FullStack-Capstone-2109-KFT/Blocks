@@ -1,11 +1,10 @@
 import React, { Component, useCallback } from "react";
-import Blocks from "../../abis/Blocks.json"; //remove?
-import StyledDropzone from "./Drag&Drop"; // remove?
+// import Blocks from "../../abis/Blocks.json"; //remove?
+// import StyledDropzone from "./Drag&Drop"; // remove?
 import { loadWeb3, loadBlockchainData } from "../store/blockchain";
 import Share from "./SharePopUp";
-const Web3 = require("web3");
+// const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
-// import { fileTypeFromFile } from "file-type";
 import { decryptFile } from "../store/encryption";
 
 const ipfs = create({
@@ -84,53 +83,12 @@ export default class FileView extends Component {
 
     let decryptedBuffer = await decryptFile(result, key);
 
-    console.log([decryptedBuffer]);
-
-    let blob = new Blob([decryptedBuffer], { type: "application/jpg" });
+    let blob = new Blob([decryptedBuffer], { type: "application/pdf" });
 
     let link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
     link.download = "test";
     link.click();
-
-    // ;
-    // let url = window.URL.createObjectURL(blob);
-    // console.log(url);
-
-    // let a = document.createElement("a");
-    // a.href = decryptedBuffer;
-    // a.download = "testFile";
-    // document.body.appendChild(a);
-    // a.style = "display: none";
-
-    // a.click();
-    // a.remove();
-
-    // console.log(blob);
-
-    // let a = document.createElement("a");
-    // a.style.display = "none";
-    // let url = window.URL.createObjectURL(
-    //   new Blob(decryptedBuffer, { type: "application/jpg" })
-    // );
-    // a.setAttribute("href", url);
-    // document.body.appendChild(a);
-    // a.click();
-
-    // let key = "123";
-    // let decryptedChunk = await decryptFile(chunk, key);
-    // let binary = "";
-    // for (let i = 0; i < decryptedChunk.length; i++) {
-    //   binary += String.fromCharCode([decryptedChunk[i]]);
-    // }
-    // const file = window.btoa(binary);
-    // let fileType = "jpg";
-    // let mimType = "application/" + fileType;
-    // const url = `data:${mimType};base64,` + file;
-    // window.location.replace(url);
-    // console.log(url);
-    // }
-    // console.log(bufferArray);
   }
 
   handleClick() {
