@@ -369,12 +369,3 @@ const fileContainer = {
 
 const blocksImg = {};
 
-// const container = {
-
-//     backgroundColor: rgb(174, 238, 193),
-//     background: radial-gradient(
-//       circle,
-//       rgba(174, 238, 193, 1) 28%,
-//       rgba(76, 175, 108, 1) 88%,
-
-// }
