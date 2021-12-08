@@ -154,7 +154,8 @@ function StyledDropzone(props) {
       <form onSubmit={handleSubmit}>
         <div>
           <div {...getRootProps({ style })}>
-            <input {...getInputProps()} type="file" />
+            <input {...getInputProps()} type='file' />
+
             <p style={DragText}>Drag 'n' drop files here</p>
 
             <img
@@ -167,6 +168,15 @@ function StyledDropzone(props) {
             <button style={browseFiles} type="button" onClick={open}>
               Browse Files
             </button>
+            <div className='inputContainer'>
+              <input
+                className='input'
+                type='text'
+                onChange={handleChange}
+                value={description}
+                placeholder='Title / Description (max 20 chars)'
+              />
+            </div>
           </div>
           <input
             type="text"
@@ -190,6 +200,7 @@ function StyledDropzone(props) {
               <ul>{filepath}</ul>
             </aside>
             <aside style={thumbsContainer}>{thumbs}</aside>
+
             <input
               style={submit}
               type="submit"
@@ -201,13 +212,6 @@ function StyledDropzone(props) {
           </div>
         </div>
       </form>
-      {/* <img
-        style={blocksImg}
-        src={
-          'https://media3.giphy.com/media/ch7xUuFIoRcGoeA27N/giphy.gif?cid=ecf05e4730g95ezx0se1yt94s35mhewjtzcka6wbvonygkfg&rid=giphy.gif&ct=g'
-        }
-        alt='blocks'
-      /> */}
     </div>
   );
 }
@@ -265,16 +269,17 @@ const thumbInner = {
 };
 
 const browseFiles = {
-  backgroundColor: "rgb(18 153 24 / 85%)",
-  marginTop: "54px",
-  padding: "3px",
-  color: "white",
-  borderRadius: "1px",
-  fontSize: "12px",
-  letterSpacing: "1px",
-  width: "145px",
-  height: "31px",
-  border: "1px solid #03a9f4",
+  backgroundColor: 'rgb(18 153 24 / 85%)',
+  marginTop: '33px',
+  padding: '3px',
+  color: 'white',
+  borderRadius: '1px',
+  fontSize: '12px',
+  letterSpacing: '1px',
+  width: '256px',
+  height: '34px',
+  border: '1px solid #03a9f4',
+
 };
 
 const img = {
@@ -295,21 +300,24 @@ const doc = {
 };
 
 const input = {
-  width: "100%",
+  width: '256px',
+  marginLeft: '1204px',
+  marginBottom: '33px',
+  marginTop: '18px',
 };
 
 const submit = {
-  backgroundColor: "rgb(18 153 24 / 85%)",
-  padding: "3px",
-  color: "white",
-  borderRadius: "1px",
-  fontSize: "12px",
-  letterSpacing: "1px",
-  width: "145px",
-  height: "31px",
-  border: "1px solid #03a9f4",
-  marginTop: "15px",
-  marginLeft: "7px",
+  backgroundColor: 'rgb(18 153 24 / 85%)',
+  padding: '3px',
+  color: 'white',
+  borderRadius: '1px',
+  fontSize: '12px',
+  letterSpacing: '1px',
+  width: '305px',
+  height: '31px',
+  border: '1px solid #03a9f4',
+  marginTop: '6px',
+  marginLeft: '-10px',
 };
 
 const uploadImg = {
@@ -326,21 +334,22 @@ const DragText = {
 };
 
 const file = {
-  fontSize: "24px",
-  letterSpacing: "2px",
-  marginTop: "-25px",
+  fontSize: '24px',
+  letterSpacing: '2px',
+  marginTop: '-25px',
+  fontWeight: '400',
 };
 
 const fileContainer = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  margin: "21x",
-  width: "400px",
-  alignContent: "space-between",
-  marginLeft: "724px",
-  marginTop: "-333px",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  margin: '21x',
+  width: '400px',
+  alignContent: 'space-between',
+  marginLeft: '816px',
+  marginTop: '-399px',
 };
 
 const blocksImg = {};
