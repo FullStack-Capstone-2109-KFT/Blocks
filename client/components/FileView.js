@@ -179,6 +179,7 @@ export default class FileView extends Component {
                   <Share
                     seen={this.state.seen}
                     fileSeen={file.fileNumber}
+                    fileCID={file.fileHash}
                     fileSelected={this.state.selected}
                     toggle={this.togglePopup}
                   />
