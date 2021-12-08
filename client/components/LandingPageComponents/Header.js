@@ -1,5 +1,6 @@
 import React from "react";
-import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
+// import { HashLink } from "react-router-hash-link";
 
 export class Header extends React.Component {
   render() {
@@ -17,9 +18,15 @@ export class Header extends React.Component {
                     <span></span>
                   </h1>
                   <p>{props.data ? props.data.paragraph : "Loading"}</p>
-                  <HashLink to='#' className="btn btn-custom btn-lg page-scroll">
+                  {/* <HashLink to='#' className="btn btn-custom btn-lg page-scroll">
                     Get Started
-                  </HashLink>{" "}
+                  </HashLink>{" "} */}
+                  <Link
+                    to="/login"
+                    className="btn btn-custom btn-lg page-scroll"
+                  >
+                    Get Started
+                  </Link>{" "}
                 </div>
               </div>
             </div>

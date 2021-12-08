@@ -105,7 +105,7 @@
     },
     {
       "img": "img/users/user-image-2.jpeg",
-      "text": "Blocks solves our problems with the get from A to B ",
+      "text": "Blocks solves our problems with getting from A to B ",
       "name": "Albert Einstein"
     },
     {
@@ -125,29 +125,32 @@
     },
     {
       "img": "img/users/user-image-6.jpeg",
-      "text": "Pokemon evolves into Blocks of themselves. And now so can you.",
+      "text": "'Pika pika, pika pika, Blocks pika!' (Pokemon evolves into Blocks of themselves. And now so can you).",
       "name": "Detective Pikachu, PI"
     }
   ],
   "Team": [
     {
       "img": "img/team/david_kremenitzer_headshot.png",
+      "url": "https://www.linkedin.com/in/dkremenitzer/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAABfNhC0BrSFlIVWw1e5cUbsJCq37mQt3jL8",
       "name": "David Kremenitzer",
       "job": "Senior Developer"
-
     },
     {
       "img": "img/team/davide_lepri_headshot.png",
+      "url": "https://www.linkedin.com/in/davide-lepri-03/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACYgJcMBqzlZkvPHnZkZ68ty9L4SqmwtoTc",
       "name": "Davide Lepri",
       "job": "Senior Developer"
     },
     {
       "img": "img/team/jordan_oetting_headshot.png",
+      "url": "https://www.linkedin.com/in/jordan-oetting/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAABoT6AMBUVkUxT3nsfibUc0DrTdR2prPyAc",
       "name": "Jordan Oetting",
       "job": "Senior Developer"
     },
     {
       "img": "img/team/takumi_otsuka_headshot.png",
+      "url": "https://www.linkedin.com/in/takumiotsuka/",
       "name": "Takumi Otsuka",
       "job": "Senior Developer"
     }
@@ -164,7 +167,7 @@
     {
       "icon": "user-circle",
       "title": "Account",
-      "text": "Create user account. We don't store any personal information or data."
+      "text": "Create a private user account. We don't store any personal information or data."
     },
     {
       "icon": "file-upload",
@@ -174,7 +177,7 @@
     {
       "icon": "key",
       "title": "Stay Secure",
-      "text": "Keep your files private with multiple layers of proetection"
+      "text": "Keep your files private with multiple layers of protection"
     },
     {
       "icon": "share",

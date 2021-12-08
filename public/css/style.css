@@ -1,7 +1,7 @@
 /* Color palate codes */
 /* #007057 - dark green (main KREM color) */
 
-@import '~video-react/styles/scss/video-react';
+@import "~video-react/styles/scss/video-react";
 
 @media screen and (max-width: 400px) {
   #features {
@@ -42,7 +42,7 @@ code {
 
 body,
 html {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   color: rgb(119, 119, 119);
@@ -146,7 +146,7 @@ hr {
 }
 
 #menu a.navbar-brand {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: black;
@@ -155,7 +155,7 @@ hr {
 }
 
 #menu.navbar-default .navbar-nav > li > a {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-transform: uppercase;
   color: #555;
   font-size: 15px;
@@ -174,7 +174,7 @@ hr {
   width: 0;
   height: 2px;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%);
-  content: '';
+  content: "";
   transition: width 0.3s;
 }
 
@@ -198,7 +198,7 @@ hr {
   width: 100% !important;
   height: 2px !important;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%) !important;
-  content: '' !important;
+  content: "" !important;
   transition: width 0.3s !important;
 }
 
@@ -233,7 +233,7 @@ hr {
 
 .section-title h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: linear-gradient(to right, #4caf50 0%, #196c1c 100%);
   height: 4px;
   width: 133px;
@@ -248,7 +248,7 @@ hr {
 }
 
 .btn-custom {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   color: #fff;
   background-color: #4caf50;
@@ -294,7 +294,7 @@ a:focus,
 
 /* LOGIN */
 .login {
-  background: url('https://media4.giphy.com/media/l0HlKcmahAXyS7hJK/source.gif');
+  background: url("https://media4.giphy.com/media/l0HlKcmahAXyS7hJK/source.gif");
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -397,7 +397,7 @@ a:focus,
   display: table;
   width: 100%;
   padding: 0;
-  background: url('https://miro.medium.com/max/1400/1*WwukW_cL3TtVTGcefVpr3w.gif')
+  background: url("https://miro.medium.com/max/1400/1*WwukW_cL3TtVTGcefVpr3w.gif")
     center center no-repeat;
   background-color: #bbbbbb;
   background-blend-mode: overlay;
@@ -412,7 +412,7 @@ a:focus,
 }
 
 .intro h1 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   color: black;
   font-size: 82px;
   font-weight: 100;
@@ -482,7 +482,7 @@ header .intro-text {
 
 #about h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: linear-gradient(to right, #4caf50 0%, #07860c 100%);
   height: 4px;
   width: 60px;
@@ -499,8 +499,8 @@ header .intro-text {
 }
 
 #about .about-text li:before {
-  content: '\f00c';
-  font-family: 'FontAwesome';
+  content: "\f00c";
+  font-family: "FontAwesome";
   color: #3cb741;
   font-size: 11px;
   font-weight: 300;
@@ -540,7 +540,7 @@ header .intro-text {
 
 #services .section-title h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -652,12 +652,37 @@ header .intro-text {
 
 #team .thumbnail {
   background: transparent;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
   border: 0;
+}
+
+#team .thumbnail:hover .team-img {
+  opacity: 0.7;
+}
+
+#team .thumbnail:hover .hover-text {
+  opacity: 1;
 }
 
 #team .thumbnail .caption {
   padding: 10px 0 0;
   color: #888;
+}
+
+#team .thumbnail .hover-text {
+  transition: 0.5s ease;
+  font-size: 80px;
+  opacity: 0;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  text-align: center;
+}
+
+#team .fa {
+  color: #387a43;
 }
 
 /* CONTACT */
@@ -686,7 +711,7 @@ header .intro-text {
 
 #contact .section-title h2::after {
   position: absolute;
-  content: '';
+  content: "";
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -726,7 +751,7 @@ header .intro-text {
 label {
   font-size: 12px;
   font-weight: 400;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   float: left;
 }
 
@@ -892,7 +917,7 @@ label {
 
 #heading {
   align-self: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   letter-spacing: 4px;
   font-size: 32px;
   font-weight: 300;
@@ -904,7 +929,7 @@ label {
 }
 
 .share {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   width: 59px;
   border: 1px solid #109979;
   border-radius: 2px;
@@ -915,7 +940,7 @@ label {
 }
 
 .share_buttons {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   display: flex;
   flex-direction: column;
   height: 200px;
@@ -935,13 +960,17 @@ label {
 }
 
 .popup-main {
-  position: absolute;
+  position: fixed;
   background: white;
   width: 250px;
   height: 300px;
-  transform: translate(100px, -100px);
+  top: 50%;
+  left: 50%;
+  margin-left: -125px;
+  margin-top: -150px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border: 1px solid #009879;
+  z-index: 1055;
 }
 
 .display-block {
@@ -995,4 +1024,20 @@ label {
 }
 .cid-container {
   margin-top: 200px;
+}
+
+#opaque {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1050;
+  display: none;
+  background-color: black;
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+}
+* html #opaque {
+  position: absolute;
 }
