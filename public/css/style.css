@@ -1132,7 +1132,7 @@ label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 110addpx;
+  margin-top: 120px;
 }
 
 .infoIcon {
@@ -1142,6 +1142,7 @@ label {
 .encryptCheckbox {
   width: 18px;
   height: 18px;
+  margin-left: 8px;
 }
 
 .popup {
@@ -1164,4 +1165,13 @@ label {
 
 .learnText {
   margin-top: 100px;
+}
+
+.ipfs-a:hover{
+  text-decoration: none;
+  color: #000000;
+}
+.ipfs-a {
+  text-decoration: none;
+  color: #000000;
 }

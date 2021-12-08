@@ -187,17 +187,6 @@ function StyledDropzone(props) {
                 placeholder='Title / Description (max 20 chars)'
                 maxLength='20'
               />
-                {/* <h3 className="checbox-text">
-                  Do you want to encrypt your file?
-                  <Popup
-                  className="popUp"
-                  content={encryptionInfo.bio}
-                  trigger={<FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>}
-                  key={encryptionInfo.name}
-                  header={encryptionInfo.name}
-                  />
-                  <input type="checkbox" checked={isChecked} onChange={handleChecked}/>
-                </h3> */}
 
               <h3 className='checkbox-text'>
                 Do you want to encrypt your file?
@@ -206,9 +195,10 @@ function StyledDropzone(props) {
                 key={encryptionInfo.name}
                 header={encryptionInfo.name}
                 />
-                
+
                 <input
                   className='encryptCheckbox'
+                  style={checkbox}
                   type='checkbox'
                   checked={isChecked}
                   onChange={handleChecked}
@@ -390,3 +380,9 @@ const blocksImg = {
   alignItems: 'center',
 };
 
+const checkbox = {
+  marginLeft: '8px',
+  height: '15px',
+  width: '15px'
+
+}
