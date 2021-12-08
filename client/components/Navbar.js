@@ -33,6 +33,11 @@ export class Navbar extends React.Component {
               id='bs-example-navbar-collapse-1'
             >
               <ul className='nav navbar-nav navbar-right'>
+              <li>
+                  <Link to='/learn-blocks' className='page-scroll'>
+                    About Blocks
+                  </Link>
+                </li>
                 <li>
                   <Link to='/cid-reader' className='page-scroll'>
                     CID Reader
