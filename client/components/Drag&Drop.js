@@ -12,6 +12,7 @@ function StyledDropzone(props) {
   const [type, setType] = useState(null);
   const [description, setDescription] = useState('');
   const [encryptionKey, setEncryptionKey] = useState('');
+  const [isChecked, setIsCheck] = useState(false)
 
   const {
     getRootProps,
@@ -109,7 +110,11 @@ function StyledDropzone(props) {
     e.preventDefault();
     uploadFile();
     setDescription('');
+    setEncryptionKey('')
   };
+  const handleChecked = () => {
+    setIsCheck(!isChecked);
+  }
 
   const uploadFile = async () => {
     let encryptedBuff = buff;
@@ -148,7 +153,6 @@ function StyledDropzone(props) {
       .addFile(userId, fileKey, fileCID, fileType, description)
       .send({ from: metaMaskAccount });
   };
-
   return (
     <div style={blocksImg}>
       <form onSubmit={handleSubmit}>
@@ -177,7 +181,13 @@ function StyledDropzone(props) {
                 placeholder='Title / Description (max 20 chars)'
                 maxLength= "20"
               />
-              <input
+                <h3 className="checbox-text">
+                  Do you want to encrypt your file?
+                  <FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>
+                  <input type="checkbox" checked={isChecked} onChange={handleChecked}/>
+                </h3>
+              {isChecked ? (
+                <input
                 type='text'
                 className='input'
                 onChange={handleKeyChange}
@@ -185,9 +195,9 @@ function StyledDropzone(props) {
                 placeholder='Encryption Key (up to 20 chars) - keys are NOT SAVED.'
                 maxLength='20'
               />
+              ) : ''}
             </div>
           </div>
-
           <div style={fileContainer}>
             <aside>
               <h4 style={file}>Files to Upload</h4>
