@@ -145,14 +145,19 @@ function StyledDropzone(props) {
   };
 
   return (
-    <div className="container">
+    <div style={blocksImg}>
       <form onSubmit={handleSubmit}>
         <div>
           <div {...getRootProps({ style })}>
             <input {...getInputProps()} type="file" />
             <p style={DragText}>Drag 'n' drop files here</p>
 
-            <FontAwesomeIcon style={img} icon={"key"} />
+            <img
+              style={img}
+              src={
+                "https://upload.wikimedia.org/wikipedia/commons/8/81/Portfolio_.gif"
+              }
+            />
 
             <button style={browseFiles} type="button" onClick={open}>
               Browse Files
@@ -164,6 +169,7 @@ function StyledDropzone(props) {
             onChange={handleChange}
             value={description}
             placeholder="Description"
+            maxLength="20"
           />
           <div style={fileContainer}>
             <aside>
@@ -182,6 +188,13 @@ function StyledDropzone(props) {
           </div>
         </div>
       </form>
+      {/* <img
+        style={blocksImg}
+        src={
+          'https://media3.giphy.com/media/ch7xUuFIoRcGoeA27N/giphy.gif?cid=ecf05e4730g95ezx0se1yt94s35mhewjtzcka6wbvonygkfg&rid=giphy.gif&ct=g'
+        }
+        alt='blocks'
+      /> */}
     </div>
   );
 }
@@ -194,7 +207,7 @@ const baseStyle = {
   flexDirection: "column",
   alignItems: "center",
   padding: "16px",
-  borderWidth: 2,
+  borderWidth: "3px",
   borderRadius: 2,
   borderColor: "#009688",
   borderStyle: "dashed",
@@ -203,7 +216,7 @@ const baseStyle = {
   outline: "none",
   transition: "border .24s ease-in-out",
   maxWidth: "45%",
-  height: "391px",
+  height: "425px",
   marginLeft: "98px",
   marginTop: "-42px",
 };
@@ -239,22 +252,22 @@ const thumbInner = {
 };
 
 const browseFiles = {
-  backgroundColor: "#17c387",
+  backgroundColor: "rgb(18 153 24 / 85%)",
   marginTop: "54px",
   padding: "3px",
   color: "white",
-  borderRadius: "4px",
-  fontSize: "11px",
+  borderRadius: "1px",
+  fontSize: "12px",
   letterSpacing: "1px",
-  width: "130px",
-  height: "36px",
+  width: "145px",
+  height: "31px",
   border: "1px solid #03a9f4",
 };
 
 const img = {
   display: "block",
-  width: "140px",
-  height: "140px",
+  width: "175px",
+  height: "175px",
   marginTop: "35px",
 };
 
@@ -273,14 +286,14 @@ const input = {
 };
 
 const submit = {
-  backgroundColor: "#17c387",
+  backgroundColor: "rgb(18 153 24 / 85%)",
   padding: "3px",
   color: "white",
-  borderRadius: "4px",
-  fontSize: "11px",
+  borderRadius: "1px",
+  fontSize: "12px",
   letterSpacing: "1px",
-  width: "130px",
-  height: "36px",
+  width: "145px",
+  height: "31px",
   border: "1px solid #03a9f4",
   marginTop: "15px",
   marginLeft: "7px",
@@ -316,3 +329,15 @@ const fileContainer = {
   marginLeft: "724px",
   marginTop: "-333px",
 };
+
+const blocksImg = {};
+
+// const container = {
+
+//     backgroundColor: rgb(174, 238, 193),
+//     background: radial-gradient(
+//       circle,
+//       rgba(174, 238, 193, 1) 28%,
+//       rgba(76, 175, 108, 1) 88%,
+
+// }

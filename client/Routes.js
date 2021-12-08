@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from "react";
+import React, { Component, Fragment, useState  } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
@@ -11,9 +11,6 @@ import CidReader from "./components/CID-Reader";
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
-  componentDidMount() {
-    this.props.loadInitialData();
-  }
 
   render() {
     const { isLoggedIn, userId, userName } = this.props;
@@ -35,6 +32,9 @@ class Routes extends Component {
             </Route>
             <Route path="/login">
               <Redirect to="/files" />
+            </Route>
+            <Route path="/signup">
+              <Redirect to="/files"/>
             </Route>
             <Route path="/files">
               <FileView userId={userId} />

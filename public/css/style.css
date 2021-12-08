@@ -42,10 +42,10 @@ code {
 
 body,
 html {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #777;
+  color: rgb(119, 119, 119);
   font-weight: 400;
   width: 100% !important;
   height: 100% !important;
@@ -294,17 +294,20 @@ a:focus,
 
 /* LOGIN */
 .login {
-  background: #cdcdcd;
+  background: url("https://media4.giphy.com/media/l0HlKcmahAXyS7hJK/source.gif");
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-evenly;
 }
 .inputs {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 16px;
+  margin: 25px;
   border: 2px solid #009688;
   padding: 6px;
   width: 100%;
@@ -313,31 +316,32 @@ a:focus,
 }
 
 .login__logo {
-  margin-top: 4px;
-  margin-bottom: 18px;
+  margin-top: 13px;
+  margin-bottom: 50px;
   object-fit: contain;
-  width: 43px;
+  width: 50px;
   margin-right: auto;
   margin-left: auto;
 }
 
 .login__container {
-  width: 380px;
-  height: 407px;
+  width: 464px;
+  height: 550px;
   display: flex;
   flex-direction: column;
-  border-radius: 11px;
+  border-radius: 0px;
   border: 2px solid black;
   padding: 49px;
   margin-top: 100px;
   text-align: center;
   margin-top: 0px 20px 20px 20px;
-  margin-top: 249px;
+  margin-top: 125px;
   background: #f7f7f7;
   /* padding: 46px; */
   /* margin-left: 26px; */
   box-sizing: 10px 5px 5px black;
   box-shadow: 7px 11px 26px #0c0c0c;
+  margin-left: 110px;
 }
 
 .login__container > h1 {
@@ -370,7 +374,7 @@ a:focus,
 
 .login__signInButton {
   margin-left: 4px;
-  background: #16c08a;
+  background: #0f8fa4;
   border-radius: 2px;
   width: 100%;
   height: 40px;
@@ -393,7 +397,8 @@ a:focus,
   display: table;
   width: 100%;
   padding: 0;
-  background: url(../css/headerBackground.png) center center no-repeat;
+  background: url("https://miro.medium.com/max/1400/1*WwukW_cL3TtVTGcefVpr3w.gif")
+    center center no-repeat;
   background-color: #bbbbbb;
   background-blend-mode: overlay;
   -webkit-background-size: cover;
@@ -408,7 +413,7 @@ a:focus,
 
 .intro h1 {
   font-family: "Raleway", sans-serif;
-  color: #4f8652;
+  color: black;
   font-size: 82px;
   font-weight: 100;
   text-transform: uppercase;
@@ -451,7 +456,7 @@ header .intro-text {
   height: 100px;
   padding: 30px 0;
   border-radius: 50%;
-  background: linear-gradient(to right, #4caf50 0%, #265828 100%);
+  background: linear-gradient(to right, #50c955 0%, #327e35 100%);
   box-shadow: 10px 8px 17px #3d4a50;
 }
 
@@ -961,6 +966,17 @@ label {
   background-color: transparent;
   border: 0px;
   color: white;
+}
+
+.dragPage {
+  background-color: rgb(174, 238, 193);
+  background-color: radial-gradient(
+    circle,
+    rgba(174, 238, 193, 1) 28%,
+    rgba(76, 175, 108, 1) 88%
+  );
+  height: 100%;
+  width: 100%;
 }
 
 .cid-container {
