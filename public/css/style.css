@@ -1060,31 +1060,33 @@ label {
 }
 .cid-container {
   margin-top: 200px;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 7px solid white;
+  border: 5px solid white;
   margin-top: 100px;
   flex-direction: column;
   flex-wrap: wrap;
   marign-left: 100px;
   margin-left: 200px;
-  border-radius: 2px;
+  border-radius: 20px;
 }
 .CIDText {
   font-family: 'Lato', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   text-align: center;
   color: white;
-  padding: 26px;
-  font-size: 20px;
+  padding: 20px;
+  font-size: 34px;
 }
 
 .inputCID {
   width: 50%;
   margin: 5px;
+  border-radius: 4px;
+  text-align: center;
 }
 
 .buttonCID {
@@ -1093,7 +1095,7 @@ label {
   height: 30px;
   border: 2px solid #009879;
   border-radius: 2px;
-  color: #009879;
+  border-radius: 1px;
 }
 
 #opaque {
