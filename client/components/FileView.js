@@ -123,6 +123,7 @@ export default class FileView extends Component {
 
     return (
       <div className="fileView-flex">
+      {this.state.seen ? <div id='opaque' style={{display: 'block'}}></div> : <div id='opaque' style={{display: 'none'}}></div>}
         <h3 id="heading">Uploaded Files</h3>
         <table className="fileTable">
           <thead>
