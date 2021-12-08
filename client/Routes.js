@@ -8,8 +8,8 @@ import FileView from "./components/FileView";
 import Home from "./components/Home";
 import Share from "./components/SharePopUp";
 import CidReader from "./components/CID-Reader";
-const QRCode = require("qrcode.react")
-
+import Info from "./components/LandingPageComponents/Learn-Blocks";
+import Learn from "./components/LandingPageComponents/Learn-Blocks";
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
@@ -46,8 +46,8 @@ class Routes extends Component {
             <Route path="/cid-reader">
               <CidReader />
             </Route>
-            <Route path='/qr'>
-              <QRCode value="www.artstation.com"/>
+            <Route path="/learn-blocks">
+              <Learn />
             </Route>
           </Switch>
         ) : (
