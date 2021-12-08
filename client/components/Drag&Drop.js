@@ -268,10 +268,10 @@ const doc = {
 };
 
 const input = {
-  width: '52%',
+  width: '256px',
   marginLeft: '1204px',
   marginBottom: '33px',
-  marginTop: '3px',
+  marginTop: '18px',
 };
 
 const submit = {
