@@ -4,6 +4,12 @@ import ReactDOM from 'react-dom';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { encryptFile } from '../store/encryption';
+import { Popup } from 'semantic-ui-react'
+
+const encryptionInfo = {
+  name: <h5 className="encryptName">Why Encryption?</h5>,
+  bio: <p className="encryptBio">It helps protect your file, and can enhance security.</p>
+}
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
@@ -183,7 +189,13 @@ function StyledDropzone(props) {
               />
                 <h3 className="checbox-text">
                   Do you want to encrypt your file?
-                  <FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>
+                  <Popup
+                  className="popUp"
+                  content={encryptionInfo.bio}
+                  trigger={<FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>}
+                  key={encryptionInfo.name}
+                  header={encryptionInfo.name}
+                  />
                   <input type="checkbox" checked={isChecked} onChange={handleChecked}/>
                 </h3>
               {isChecked ? (

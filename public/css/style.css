@@ -1117,3 +1117,21 @@ label {
 .inputContainer > .checbox-text {
   font-size: 30;
 }
+
+.popup {
+  background-color: lightgray;
+  letter-spacing: .5px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.encryptName {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+}
+
+.encryptBio {
+  font-size: 11px;
+}
