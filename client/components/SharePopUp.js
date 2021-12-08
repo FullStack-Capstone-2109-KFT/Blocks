@@ -29,8 +29,6 @@ export default class Share extends Component {
                             <div className='share_buttons'>
                                 <button>QR Code</button>
                                 <button>Copy to Clipboard</button>
-                                <button>Email</button>
-                                <button>Social Media</button>
                             </div>
                         </div> 
                     </div> : null
