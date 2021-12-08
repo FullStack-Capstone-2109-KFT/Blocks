@@ -85,39 +85,40 @@ export default class FileView extends Component {
     
     return (
       <div className="fileView-flex">
-        <h3 id="heading">Uploaded Files</h3>
-        <table className="fileTable">
-          <thead>
-            <tr>
-              <th>File</th>
-              <th>CID</th>
-              <th>Type</th>
-              <th>Encryption Key</th>
-              <th>Share</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.userFiles.map((file) => (
-              <tr key={file.fileNumber}>
-                <td>{file.description}</td>
-                <td>
-                  <a
-                    href={"https://ipfs.io/ipfs/" + `${file.fileHash}`}
-                    target="_blank"
-                  >
-                    {file.fileHash}
-                  </a>
-                </td>
-                <td>{file.type}</td>
-                <td>File Encryption</td>
-                <td>
-                  <button className="share_button" name='share' onClick={(event, num = file.fileNumber) => this.handleClick(event, num)}>Share</button>
-                  <Share seen={this.state.seen} fileSeen={file.fileNumber} fileSelected={this.state.selected} toggle={this.togglePopup} />
-                </td>
+        {this.state.seen ? <div id='opaque' style={{display: 'block'}}></div> : <div id='opaque' style={{display: 'none'}}></div>}
+          <h3 id="heading">Uploaded Files</h3>
+          <table className="fileTable">
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>CID</th>
+                <th>Type</th>
+                <th>Encryption Key</th>
+                <th>Share</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {this.state.userFiles.map((file) => (
+                <tr key={file.fileNumber}>
+                  <td>{file.description}</td>
+                  <td>
+                    <a
+                      href={"https://ipfs.io/ipfs/" + `${file.fileHash}`}
+                      target="_blank"
+                    >
+                      {file.fileHash}
+                    </a>
+                  </td>
+                  <td>{file.type}</td>
+                  <td>File Encryption</td>
+                  <td>
+                    <button className="share_button" name='share' onClick={(event, num = file.fileNumber) => this.handleClick(event, num)}>Share</button>
+                    <Share seen={this.state.seen} fileSeen={file.fileNumber} fileSelected={this.state.selected} toggle={this.togglePopup} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
       </div>
     );
   }
