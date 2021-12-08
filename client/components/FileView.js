@@ -22,11 +22,14 @@ export default class FileView extends Component {
       fileCount: 0,
       userFiles: [],
       seen: false,
+      selected: null,
+      decryptionKey: "",
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
     this.getFileFromIPFS = this.getFileFromIPFS.bind(this);
+    this.handleKeyChange = this.handleKeyChange.bind(this);
   }
 
   async componentDidMount() {
@@ -64,7 +67,6 @@ export default class FileView extends Component {
   };
 
   async getFileFromIPFS(cid, fileType, description) {
-    let key = "123";
     let bufferArray = [];
 
     for await (const chunk of ipfs.cat(cid)) {
@@ -80,9 +82,12 @@ export default class FileView extends Component {
       l += array.length;
     }
 
-    let decryptedBuffer = await decryptFile(result, key);
+    if (this.state.decryptionKey.length > 0) {
+      console.log("Attempting file decryption with provided key");
+      result = await decryptFile(result, this.state.decryptionKey);
+    }
 
-    let blob = new Blob([decryptedBuffer], { type: fileType });
+    let blob = new Blob([result], { type: fileType });
     let typeSuffix = fileType.split("/")[1];
 
     let link = document.createElement("a");
@@ -91,10 +96,18 @@ export default class FileView extends Component {
     link.click();
   }
 
-  handleClick() {
+  handleKeyChange = (evt) => {
+    let target = evt.target.value;
+    this.setState({ decryptionKey: target });
+  };
+
+  handleClick(event, num) {
     const name = event.target.name;
-    console.log(this.state.seen);
+    console.log(name, num);
     if (name === "share") {
+      this.setState({
+        selected: num,
+      });
       this.togglePopup();
     }
   }
@@ -106,6 +119,8 @@ export default class FileView extends Component {
   }
 
   render() {
+    const seen = false;
+
     return (
       <div className="fileView-flex">
         <h3 id="heading">Uploaded Files</h3>
@@ -142,16 +157,28 @@ export default class FileView extends Component {
                   <button
                     className="share_button"
                     name="share"
-                    onClick={this.handleClick}
+                    onClick={(event, num = file.fileNumber) =>
+                      this.handleClick(event, num)
+                    }
                   >
                     Share
                   </button>
-                  {this.state.seen ? <Share toggle={this.togglePopup} /> : null}
+                  <Share
+                    seen={this.state.seen}
+                    fileSeen={file.fileNumber}
+                    fileSelected={this.state.selected}
+                    toggle={this.togglePopup}
+                  />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <input
+          type="text"
+          onChange={this.handleKeyChange}
+          placeholder="Decryption Key (optional, will be applied to any attempted file retrievals)"
+        />
       </div>
     );
   }

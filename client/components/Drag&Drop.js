@@ -173,7 +173,7 @@ function StyledDropzone(props) {
             style={input}
             onChange={handleChange}
             value={description}
-            placeholder="Description"
+            placeholder="Description (up to 20 chars) - Downloaded files will take their name from this."
             maxLength="20"
           />
           <input
@@ -181,12 +181,12 @@ function StyledDropzone(props) {
             style={input}
             onChange={handleKeyChange}
             value={encryptionKey}
-            placeholder="Encryption Key (up to 20 chars)"
+            placeholder="Encryption Key (up to 20 chars) - Please note that keys are NOT SAVED. We cannot recover lost or forgotten keys."
             maxLength="20"
           />
           <div style={fileContainer}>
             <aside>
-              <h4 style={file}>Your Files</h4>
+              <h4 style={file}>Files to Upload</h4>
               <ul>{filepath}</ul>
             </aside>
             <aside style={thumbsContainer}>{thumbs}</aside>
