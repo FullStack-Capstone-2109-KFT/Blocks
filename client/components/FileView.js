@@ -20,7 +20,8 @@ export default class FileView extends Component {
       blocks: null,
       fileCount: 0,
       userFiles: [],
-      seen: false
+      seen: false,
+      selected: null
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -61,10 +62,13 @@ export default class FileView extends Component {
     this.setState({ userFiles: files });
   };
 
-  handleClick(){
+  handleClick(event, num){
     const name = event.target.name;
-    console.log(this.state.seen)
+    console.log(name, num);
     if (name === 'share'){
+      this.setState({
+        selected: num
+      })
       this.togglePopup();
     }
   }
@@ -76,6 +80,9 @@ export default class FileView extends Component {
   }
 
   render() {
+    
+    const seen = false;
+    
     return (
       <div className="fileView-flex">
         <h3 id="heading">Uploaded Files</h3>
@@ -104,8 +111,8 @@ export default class FileView extends Component {
                 <td>{file.type}</td>
                 <td>File Encryption</td>
                 <td>
-                  <button className="share_button" name='share' onClick={this.handleClick}>Share</button>
-                  {this.state.seen ? <Share toggle={this.togglePopup} /> : null}
+                  <button className="share_button" name='share' onClick={(event, num = file.fileNumber) => this.handleClick(event, num)}>Share</button>
+                  <Share seen={this.state.seen} fileSeen={file.fileNumber} fileSelected={this.state.selected} toggle={this.togglePopup} />
                 </td>
               </tr>
             ))}
