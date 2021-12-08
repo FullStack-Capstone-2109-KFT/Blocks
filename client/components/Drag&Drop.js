@@ -175,6 +175,7 @@ function StyledDropzone(props) {
                 onChange={handleChange}
                 value={description}
                 placeholder='Title / Description (max 20 chars)'
+                maxLength= "20"
               />
             </div>
           </div>
