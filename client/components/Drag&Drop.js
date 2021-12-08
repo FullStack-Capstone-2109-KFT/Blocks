@@ -1,17 +1,17 @@
-import { filter } from "compression";
-import React, { useMemo, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { useDropzone } from "react-dropzone";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { encryptFile } from "../store/encryption";
+import { filter } from 'compression';
+import React, { useMemo, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { useDropzone } from 'react-dropzone';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { encryptFile } from '../store/encryption';
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
   const [buff, setBuffer] = useState([]);
   const [name, setName] = useState(null);
   const [type, setType] = useState(null);
-  const [description, setDescription] = useState("");
-  const [encryptionKey, setEncryptionKey] = useState("");
+  const [description, setDescription] = useState('');
+  const [encryptionKey, setEncryptionKey] = useState('');
 
   const {
     getRootProps,
@@ -23,7 +23,7 @@ function StyledDropzone(props) {
     open,
   } = useDropzone({
     accept:
-      "image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3",
+      'image/*, .pdf, .doc, .js, .txt, .xls, .mp4, .move, .jpeg, .ppt, .key, .mp3',
     noClick: true,
     noKeyboard: true,
     onDrop: (acceptedFiles) => {
@@ -60,15 +60,15 @@ function StyledDropzone(props) {
   let thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
-        {file.type === "image/png" ? (
+        {file.type === 'image/png' ? (
           <img src={file.preview} style={img} />
         ) : (
           <div>
             <iframe
               className={file.type}
-              width="100%"
-              height="600"
-              frameBorder="0"
+              width='100%'
+              height='600'
+              frameBorder='0'
               src={file.preview}
             ></iframe>
           </div>
@@ -108,7 +108,7 @@ function StyledDropzone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     uploadFile();
-    setDescription("");
+    setDescription('');
   };
 
   const uploadFile = async () => {
@@ -116,12 +116,12 @@ function StyledDropzone(props) {
 
     //If a key has been provided, encrypt the file with it
     if (encryptionKey.length > 0) {
-      console.log("Encrypting File");
+      console.log('Encrypting File');
       encryptedBuff = await encryptFile(buff, encryptionKey);
     }
 
     //Add file to IPFS and receive CID
-    console.log("Submitting file to IPFS");
+    console.log('Submitting file to IPFS');
     const res = await props.ipfs.add(encryptedBuff);
     console.log(res);
 
@@ -161,11 +161,11 @@ function StyledDropzone(props) {
             <img
               style={img}
               src={
-                "https://upload.wikimedia.org/wikipedia/commons/8/81/Portfolio_.gif"
+                'https://upload.wikimedia.org/wikipedia/commons/8/81/Portfolio_.gif'
               }
             />
 
-            <button style={browseFiles} type="button" onClick={open}>
+            <button style={browseFiles} type='button' onClick={open}>
               Browse Files
             </button>
             <div className='inputContainer'>
@@ -176,24 +176,17 @@ function StyledDropzone(props) {
                 value={description}
                 placeholder='Title / Description (max 20 chars)'
               />
+              <input
+                type='text'
+                className='input'
+                onChange={handleKeyChange}
+                value={encryptionKey}
+                placeholder='Encryption Key (up to 20 chars) - keys are NOT SAVED.'
+                maxLength='20'
+              />
             </div>
           </div>
-          <input
-            type="text"
-            style={input}
-            onChange={handleChange}
-            value={description}
-            placeholder="Description (up to 20 chars) - Downloaded files will take their name from this."
-            maxLength="20"
-          />
-          <input
-            type="text"
-            style={input}
-            onChange={handleKeyChange}
-            value={encryptionKey}
-            placeholder="Encryption Key (up to 20 chars) - Please note that keys are NOT SAVED. We cannot recover lost or forgotten keys."
-            maxLength="20"
-          />
+
           <div style={fileContainer}>
             <aside>
               <h4 style={file}>Files to Upload</h4>
@@ -203,8 +196,8 @@ function StyledDropzone(props) {
 
             <input
               style={submit}
-              type="submit"
-              value="Submit"
+              type='submit'
+              value='Submit'
               onClick={() => {
                 setFiles([]);
               }}
@@ -220,52 +213,52 @@ export default StyledDropzone;
 
 const baseStyle = {
   flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  padding: "16px",
-  borderWidth: "3px",
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '16px',
+  borderWidth: '3px',
   borderRadius: 2,
-  borderColor: "#009688",
-  borderStyle: "dashed",
-  backgroundColor: "#green",
-  color: "#bdbdbd",
-  outline: "none",
-  transition: "border .24s ease-in-out",
-  maxWidth: "45%",
-  height: "425px",
-  marginLeft: "98px",
-  marginTop: "-42px",
+  borderColor: '#009688',
+  borderStyle: 'dashed',
+  backgroundColor: '#green',
+  color: '#bdbdbd',
+  outline: 'none',
+  transition: 'border .24s ease-in-out',
+  maxWidth: '45%',
+  height: '425px',
+  marginLeft: '98px',
+  marginTop: '-42px',
 };
 
 const activeStyle = {
-  borderColor: "#2196f3",
+  borderColor: '#2196f3',
 };
 
 const thumbsContainer = {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
   marginTop: 16,
 };
 
 const thumb = {
-  backgroundColor: "green",
-  display: "inline-flex",
+  backgroundColor: 'green',
+  display: 'inline-flex',
   borderRadius: 2,
-  border: "1px solid #17c387",
+  border: '1px solid #17c387',
   marginBottom: 8,
   marginRight: 8,
-  width: "auto",
+  width: 'auto',
   height: 200,
   padding: 4,
-  boxSizing: "border-box",
+  boxSizing: 'border-box',
 };
 
 const thumbInner = {
-  display: "flex",
+  display: 'flex',
   minWidth: 0,
-  overflow: "hidden",
+  overflow: 'hidden',
 };
 
 const browseFiles = {
@@ -279,24 +272,23 @@ const browseFiles = {
   width: '256px',
   height: '34px',
   border: '1px solid #03a9f4',
-
 };
 
 const img = {
-  display: "block",
-  width: "175px",
-  height: "175px",
-  marginTop: "35px",
+  display: 'block',
+  width: '175px',
+  height: '175px',
+  marginTop: '35px',
 };
 
 const doc = {
-  width: "100%",
-  height: "800px",
-  backgroundColor: "red",
-  overflowY: "auto",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  width: '100%',
+  height: '800px',
+  backgroundColor: 'red',
+  overflowY: 'auto',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 const input = {
@@ -321,16 +313,16 @@ const submit = {
 };
 
 const uploadImg = {
-  width: "30px",
-  height: "30px",
+  width: '30px',
+  height: '30px',
 };
 
 const DragText = {
-  fontSize: "20px",
-  letterSpacing: "1px",
-  color: "#black",
-  fontWeight: "bold",
-  marginTop: "20px",
+  fontSize: '20px',
+  letterSpacing: '1px',
+  color: '#black',
+  fontWeight: 'bold',
+  marginTop: '20px',
 };
 
 const file = {

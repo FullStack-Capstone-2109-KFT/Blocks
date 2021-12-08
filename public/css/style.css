@@ -1,7 +1,7 @@
 /* Color palate codes */
 /* #007057 - dark green (main KREM color) */
 
-@import "~video-react/styles/scss/video-react";
+@import '~video-react/styles/scss/video-react';
 
 @media screen and (max-width: 400px) {
   #features {
@@ -42,7 +42,7 @@ code {
 
 body,
 html {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   color: rgb(119, 119, 119);
@@ -146,7 +146,7 @@ hr {
 }
 
 #menu a.navbar-brand {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: black;
@@ -155,7 +155,7 @@ hr {
 }
 
 #menu.navbar-default .navbar-nav > li > a {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   color: #555;
   font-size: 15px;
@@ -174,7 +174,7 @@ hr {
   width: 0;
   height: 2px;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%);
-  content: "";
+  content: '';
   transition: width 0.3s;
 }
 
@@ -198,7 +198,7 @@ hr {
   width: 100% !important;
   height: 2px !important;
   background: linear-gradient(to right, #4caf50 0%, #8bc34a 100%) !important;
-  content: "" !important;
+  content: '' !important;
   transition: width 0.3s !important;
 }
 
@@ -233,7 +233,7 @@ hr {
 
 .section-title h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: linear-gradient(to right, #4caf50 0%, #196c1c 100%);
   height: 4px;
   width: 133px;
@@ -248,7 +248,7 @@ hr {
 }
 
 .btn-custom {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   color: #fff;
   background-color: #4caf50;
@@ -294,7 +294,7 @@ a:focus,
 
 /* LOGIN */
 .login {
-  background: url("https://media4.giphy.com/media/l0HlKcmahAXyS7hJK/source.gif");
+  background: url('https://media4.giphy.com/media/l0HlKcmahAXyS7hJK/source.gif');
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -397,7 +397,7 @@ a:focus,
   display: table;
   width: 100%;
   padding: 0;
-  background: url("https://miro.medium.com/max/1400/1*WwukW_cL3TtVTGcefVpr3w.gif")
+  background: url('https://miro.medium.com/max/1400/1*WwukW_cL3TtVTGcefVpr3w.gif')
     center center no-repeat;
   background-color: #bbbbbb;
   background-blend-mode: overlay;
@@ -412,7 +412,7 @@ a:focus,
 }
 
 .intro h1 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: black;
   font-size: 82px;
   font-weight: 100;
@@ -482,7 +482,7 @@ header .intro-text {
 
 #about h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: linear-gradient(to right, #4caf50 0%, #07860c 100%);
   height: 4px;
   width: 60px;
@@ -499,8 +499,8 @@ header .intro-text {
 }
 
 #about .about-text li:before {
-  content: "\f00c";
-  font-family: "FontAwesome";
+  content: '\f00c';
+  font-family: 'FontAwesome';
   color: #3cb741;
   font-size: 11px;
   font-weight: 300;
@@ -540,7 +540,7 @@ header .intro-text {
 
 #services .section-title h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -711,7 +711,7 @@ header .intro-text {
 
 #contact .section-title h2::after {
   position: absolute;
-  content: "";
+  content: '';
   background: rgba(255, 255, 255, 0.3);
   height: 4px;
   width: 60px;
@@ -751,7 +751,7 @@ header .intro-text {
 label {
   font-size: 12px;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   float: left;
 }
 
@@ -917,7 +917,7 @@ label {
 
 #heading {
   align-self: center;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   letter-spacing: 4px;
   font-size: 32px;
   font-weight: 300;
@@ -929,7 +929,7 @@ label {
 }
 
 .share {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   width: 59px;
   border: 1px solid #109979;
   border-radius: 2px;
@@ -940,7 +940,7 @@ label {
 }
 
 .share_buttons {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
   height: 200px;
@@ -1010,20 +1010,69 @@ label {
 
 .inputContainer {
   display: flex;
+  flex-direction: column;
+  margin-top: 142px;
 }
 .input {
-  width: 256px;
-  height: 29px;
-  border: 1px solid #009879;
+  width: 626px;
+  height: 36px;
+  border: 2px solid #009879;
   border-radius: 2px;
   padding: 0px 10px;
   font-size: 16px;
   font-family: sans-serif;
   color: #009879;
   margin-top: 15px;
+  padding: -1px;
+}
+
+/*  CID */
+.outerCID {
+  background-image: url('https://cdn.dribbble.com/users/1655668/screenshots/5286570/3d-cube-4x3.gif');
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-evenly;
 }
 .cid-container {
   margin-top: 200px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 7px solid white;
+  margin-top: 100px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  marign-left: 100px;
+  margin-left: 200px;
+  border-radius: 2px;
+}
+.CIDText {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+  padding: 26px;
+  font-size: 20px;
+}
+
+.inputCID {
+  width: 50%;
+  margin: 5px;
+}
+
+.buttonCID {
+  margin: 5px;
+  width: 50%;
+  height: 30px;
+  border: 2px solid #009879;
+  border-radius: 2px;
+  color: #009879;
 }
 
 #opaque {
