@@ -49,6 +49,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "qrcode.react": "^1.0.1",
     "react-dropzone": "^11.4.2",
     "react-router-hash-link": "^2.4.3",
     "sequelize": "^6.3.5",
