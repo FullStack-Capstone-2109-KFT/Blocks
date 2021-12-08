@@ -12,7 +12,7 @@ function StyledDropzone(props) {
   const [type, setType] = useState(null);
   const [description, setDescription] = useState('');
   const [encryptionKey, setEncryptionKey] = useState('');
-  const [isChecked, setIsCheck] = useState(false)
+  const [isChecked, setIsCheck] = useState(false);
 
   const {
     getRootProps,
@@ -110,11 +110,11 @@ function StyledDropzone(props) {
     e.preventDefault();
     uploadFile();
     setDescription('');
-    setEncryptionKey('')
+    setEncryptionKey('');
   };
   const handleChecked = () => {
     setIsCheck(!isChecked);
-  }
+  };
 
   const uploadFile = async () => {
     let encryptedBuff = buff;
@@ -179,40 +179,51 @@ function StyledDropzone(props) {
                 onChange={handleChange}
                 value={description}
                 placeholder='Title / Description (max 20 chars)'
-                maxLength= "20"
-              />
-                <h3 className="checbox-text">
-                  Do you want to encrypt your file?
-                  <FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>
-                  <input type="checkbox" checked={isChecked} onChange={handleChecked}/>
-                </h3>
-              {isChecked ? (
-                <input
-                type='text'
-                className='input'
-                onChange={handleKeyChange}
-                value={encryptionKey}
-                placeholder='Encryption Key (up to 20 chars) - keys are NOT SAVED.'
                 maxLength='20'
               />
-              ) : ''}
+              <h3 className='checkbox-text'>
+                Do you want to encrypt your file?
+                <FontAwesomeIcon
+                  className='fas fa-info-circle infoIcon'
+                  icon={['fas', 'info-circle']}
+                />
+                <input
+                  className='encryptCheckbox'
+                  type='checkbox'
+                  checked={isChecked}
+                  onChange={handleChecked}
+                />
+              </h3>
+              {isChecked ? (
+                <input
+                  type='text'
+                  className='input'
+                  onChange={handleKeyChange}
+                  value={encryptionKey}
+                  placeholder='Encryption Key (up to 20 chars) - keys are NOT SAVED.'
+                  maxLength='20'
+                />
+              ) : (
+                ''
+              )}
             </div>
           </div>
           <div style={fileContainer}>
-            <aside>
+            <div className='fileUploadContainer'>
               <h4 style={file}>Files to Upload</h4>
               <ul>{filepath}</ul>
-            </aside>
-            <aside style={thumbsContainer}>{thumbs}</aside>
 
-            <input
-              style={submit}
-              type='submit'
-              value='Submit'
-              onClick={() => {
-                setFiles([]);
-              }}
-            />
+              <aside style={thumbsContainer}>{thumbs}</aside>
+
+              <input
+                style={submit}
+                type='submit'
+                value='Submit'
+                onClick={() => {
+                  setFiles([]);
+                }}
+              />
+            </div>
           </div>
         </div>
       </form>
@@ -228,7 +239,7 @@ const baseStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '16px',
-  borderWidth: '3px',
+  borderWidth: '4px',
   borderRadius: 2,
   borderColor: '#009688',
   borderStyle: 'dashed',
@@ -236,10 +247,8 @@ const baseStyle = {
   color: '#bdbdbd',
   outline: 'none',
   transition: 'border .24s ease-in-out',
-  maxWidth: '45%',
-  height: '425px',
-  marginLeft: '98px',
-  marginTop: '-42px',
+  width: '100%',
+  height: '400px',
 };
 
 const activeStyle = {
@@ -273,14 +282,14 @@ const thumbInner = {
 };
 
 const browseFiles = {
-  backgroundColor: 'rgb(18 153 24 / 85%)',
-  marginTop: '33px',
-  padding: '3px',
+  backgroundColor: '#14b185',
+  marginTop: '50px',
+  padding: '5px',
   color: 'white',
-  borderRadius: '1px',
+  borderRadius: '3px',
   fontSize: '12px',
   letterSpacing: '1px',
-  width: '256px',
+  width: '150px',
   height: '34px',
   border: '1px solid #03a9f4',
 };
@@ -303,24 +312,26 @@ const doc = {
 };
 
 const input = {
-  width: '256px',
-  marginLeft: '1204px',
+  width: '150px',
   marginBottom: '33px',
-  marginTop: '18px',
+  marginTop: '76px',
+  height: '34px',
+  padding: '7px',
 };
 
 const submit = {
-  backgroundColor: 'rgb(18 153 24 / 85%)',
-  padding: '3px',
+  backgroundColor: '#14b185',
+  marginTop: '22px',
+  padding: '5px',
   color: 'white',
-  borderRadius: '1px',
+  borderRadius: '3px',
   fontSize: '12px',
   letterSpacing: '1px',
-  width: '305px',
-  height: '31px',
+  width: '70%',
+  height: '34px',
   border: '1px solid #03a9f4',
-  marginTop: '6px',
-  marginLeft: '-10px',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 const uploadImg = {
@@ -339,7 +350,7 @@ const DragText = {
 const file = {
   fontSize: '24px',
   letterSpacing: '2px',
-  marginTop: '-25px',
+  marginTop: '74px',
   fontWeight: '400',
 };
 
@@ -351,11 +362,13 @@ const fileContainer = {
   margin: '21x',
   width: '400px',
   alignContent: 'space-between',
-  marginLeft: '816px',
-  marginTop: '-399px',
 };
 
-const blocksImg = {};
+const blocksImg = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 // const container = {
 

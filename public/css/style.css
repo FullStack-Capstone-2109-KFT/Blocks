@@ -1012,10 +1012,10 @@ label {
 .inputContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 142px;
+  margin-top: 100px;
 }
 .input {
-  width: 626px;
+  width: 400px;
   height: 36px;
   border: 2px solid #009879;
   border-radius: 2px;
@@ -1065,11 +1065,9 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid white;
   margin-top: 100px;
   flex-direction: column;
   flex-wrap: wrap;
-  /* margin-left: 200px; */
   border-radius: 7px;
 }
 .CIDText {
@@ -1079,24 +1077,28 @@ label {
   text-align: center;
   color: white;
   padding: 20px;
-  font-size: 34px;
-  letter-spacing: 2px;
+  font-size: 42px;
+  letter-spacing: 3px;
 }
 
 .inputCID {
-  width: 50%;
-  margin: 5px;
+  width: 75%;
+  margin: 6px;
   border-radius: 4px;
   text-align: center;
+  height: 47px;
+  border: 2px solid black;
 }
 
 .buttonCID {
   margin: 5px;
-  width: 50%;
+  width: 75%;
   height: 30px;
-  border: 2px solid #009879;
+
   border-radius: 2px;
   border-radius: 1px;
+  text-decoration: none;
+  color: black;
 }
 
 #opaque {
@@ -1115,6 +1117,29 @@ label {
   position: absolute;
 }
 
-.inputContainer > .checbox-text {
-  font-size: 30;
+.checkbox-text {
+  display: flex;
+  font-size: 13px;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: #14b185;
+}
+
+.fileUploadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 88px;
+}
+
+.infoIcon {
+  width: 10px;
+}
+
+.encryptCheckbox {
+  width: 18px;
+  height: 18px;
 }
