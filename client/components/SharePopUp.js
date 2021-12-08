@@ -67,8 +67,7 @@ export default class Share extends Component {
                                 <p className='popup_head'>{this.props.fileDesc ? this.props.fileDesc : 'No Description'}</p>
                             </div>
                             <div className='share_buttons'>
-                                <h3>Your CID has been copied to your clipobaord.</h3>
-                                <h4>Cool beans!!</h4>
+                                <p>CID copied to clipboard</p>
                             </div>
                         </div> 
                     </div>) : null

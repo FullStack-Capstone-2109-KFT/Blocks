@@ -969,6 +969,12 @@ label {
   border: 1px solid ;
 }
 
+.share_buttons p {
+  align-self: center;
+  color: #009879;
+  font-weight: bold;
+}
+
 .popup {
   position: relative;
   top: 0;
