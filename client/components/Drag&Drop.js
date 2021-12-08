@@ -153,7 +153,6 @@ function StyledDropzone(props) {
       .addFile(userId, fileKey, fileCID, fileType, description)
       .send({ from: metaMaskAccount });
   };
-
   return (
     <div style={blocksImg}>
       <form onSubmit={handleSubmit}>
@@ -182,12 +181,11 @@ function StyledDropzone(props) {
                 placeholder='Title / Description (max 20 chars)'
                 maxLength= "20"
               />
-              <label>
-                {/* <h3>Do you want to encrypt your file?</h3> */}
-                <h3>Do you want to encrypt your file?
+                <h3 className="checbox-text">
+                  Do you want to encrypt your file?
+                  <FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>
                   <input type="checkbox" checked={isChecked} onChange={handleChecked}/>
                 </h3>
-              </label>
               {isChecked ? (
                 <input
                 type='text'

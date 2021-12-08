@@ -1090,3 +1090,7 @@ label {
 * html #opaque {
   position: absolute;
 }
+
+.inputContainer > .checbox-text {
+  font-size: 30;
+}
