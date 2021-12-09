@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ParticleComponent from '../ParticlesFile';
+import React from "react";
+import { Link } from "react-router-dom";
+import ParticleComponent from "../ParticlesFile";
 // import { HashLink } from "react-router-hash-link";
 
 export class Header extends React.Component {
@@ -8,27 +8,27 @@ export class Header extends React.Component {
     const { props } = this;
 
     return (
-      <header id='header'>
-        <div className='intro'>
+      <header id="header">
+        <div className="intro">
           <ParticleComponent />
-          <div className='overlay'>
-            <div className='container'>
-              <div className='row'>
-                <div className='col-md-8 col-md-offset-2 intro-text'>
-                  <h1 classaName='Blocks'>
-                    {props.data ? props.data.title : 'Loading'}
+          <div className="overlay">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-8 col-md-offset-2 intro-text">
+                  <h1 className="Blocks">
+                    {props.data ? props.data.title : "Loading"}
                     <span></span>
                   </h1>
-                  <p>{props.data ? props.data.paragraph : 'Loading'}</p>
+                  <p>{props.data ? props.data.paragraph : "Loading"}</p>
                   {/* <HashLink to='#' className="btn btn-custom btn-lg page-scroll">
                     Get Started
                   </HashLink>{" "} */}
                   <Link
-                    to='/login'
-                    className='btn btn-custom btn-lg page-scroll'
+                    to="/login"
+                    className="btn btn-custom btn-lg page-scroll"
                   >
                     Get Started
-                  </Link>{' '}
+                  </Link>{" "}
                 </div>
               </div>
             </div>
