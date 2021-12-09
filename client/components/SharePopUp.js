@@ -25,7 +25,7 @@ export default class Share extends Component {
     render(){
         console.log(this.state.copied);
         return (
-            <div className='popup display-block'>
+            <div>
                 { this.props.seen && (this.props.fileSeen === this.props.fileSelected ) ? 
                     this.state.copied === false && (this.state.qr === false) ? 
                     (<div className='popup-main'>
