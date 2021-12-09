@@ -83,7 +83,7 @@ export default class FileView extends Component {
     }
 
     if (this.state.decryptionKey.length > 0) {
-      console.log("Attempting file decryption with provided key");
+      // console.log("Attempting file decryption with provided key");
       result = await decryptFile(result, this.state.decryptionKey);
     }
 
