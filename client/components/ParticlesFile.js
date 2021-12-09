@@ -4,17 +4,14 @@ import Particles from "react-tsparticles";
 
 const ParticleComponent = () => {
   const particlesInit = (main) => {
-    console.log(main);
-
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
   };
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesLoaded = (container) => {};
+
   return (
     <Particles
-    className="particles"
+      className="particles"
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
@@ -99,4 +96,4 @@ const ParticleComponent = () => {
   );
 };
 
-export default ParticleComponent
+export default ParticleComponent;

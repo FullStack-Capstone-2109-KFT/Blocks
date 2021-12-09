@@ -1,13 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Header } from './LandingPageComponents/Header';
-import { Features } from './LandingPageComponents/Features';
-import { About } from './LandingPageComponents/About';
-import { Testimonials } from './LandingPageComponents/Testimonials';
-import { Team } from './LandingPageComponents/Team';
-import { Contact } from './LandingPageComponents/Contact';
-import JsonData from '../../script/data.json';
-import MyDropzone from './Drag&Drop';
+import React from "react";
+import { connect } from "react-redux";
+import { Header } from "./LandingPageComponents/Header";
+import { Features } from "./LandingPageComponents/Features";
+import { About } from "./LandingPageComponents/About";
+import { Testimonials } from "./LandingPageComponents/Testimonials";
+import { Team } from "./LandingPageComponents/Team";
+import { Contact } from "./LandingPageComponents/Contact";
+import JsonData from "../../script/data.json";
+import MyDropzone from "./Drag&Drop";
 
 /**
  * COMPONENT
