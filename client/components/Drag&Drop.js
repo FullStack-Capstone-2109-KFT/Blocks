@@ -4,12 +4,16 @@ import ReactDOM from 'react-dom';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { encryptFile } from '../store/encryption';
-import { Popup } from 'semantic-ui-react'
+import { Popup } from 'semantic-ui-react';
 
 const encryptionInfo = {
-  name: <h5 className="encryptName">Why Encryption?</h5>,
-  bio: <p className="encryptBio">It helps protect your file, and can enhance security.</p>
-}
+  name: <h5 className='encryptName'>Why Encryption?</h5>,
+  bio: (
+    <p className='encryptBio'>
+      It helps protect your file, and can enhance security.
+    </p>
+  ),
+};
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
@@ -109,7 +113,7 @@ function StyledDropzone(props) {
 
   const handleKeyChange = (evt) => {
     let target = evt.target.value;
-    console.log('TARGETTT',evt.target.value)
+    console.log('TARGETTT', evt.target.value);
     setEncryptionKey(target);
   };
 
@@ -190,12 +194,18 @@ function StyledDropzone(props) {
 
               <h3 className='checkbox-text'>
                 Do you want to encrypt your file?
-                <Popup className="popUp" content={encryptionInfo.bio}
-                trigger={<FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>}
-                key={encryptionInfo.name}
-                header={encryptionInfo.name}
+                <Popup
+                  className='popUp'
+                  content={encryptionInfo.bio}
+                  trigger={
+                    <FontAwesomeIcon
+                      className='fas fa-info-circle'
+                      icon={['fas', 'info-circle']}
+                    />
+                  }
+                  key={encryptionInfo.name}
+                  header={encryptionInfo.name}
                 />
-
                 <input
                   className='encryptCheckbox'
                   style={checkbox}
@@ -203,7 +213,6 @@ function StyledDropzone(props) {
                   checked={isChecked}
                   onChange={handleChecked}
                 />
-
               </h3>
               {isChecked ? (
                 <input
@@ -274,15 +283,12 @@ const thumbsContainer = {
 };
 
 const thumb = {
-  backgroundColor: 'green',
-  display: 'inline-flex',
   borderRadius: 2,
   border: '1px solid #17c387',
   marginBottom: 8,
-  marginRight: 8,
   width: 'auto',
-  height: 200,
-  padding: 4,
+  height: 'auto',
+  padding: 2,
   boxSizing: 'border-box',
 };
 
@@ -338,7 +344,7 @@ const submit = {
   borderRadius: '3px',
   fontSize: '12px',
   letterSpacing: '1px',
-  width: '70%',
+  width: '100%',
   height: '34px',
   border: '1px solid #03a9f4',
   justifyContent: 'center',
@@ -384,6 +390,5 @@ const blocksImg = {
 const checkbox = {
   marginLeft: '8px',
   height: '15px',
-  width: '15px'
-
-}
+  width: '15px',
+};
