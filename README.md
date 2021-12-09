@@ -46,4 +46,4 @@ yarn start
 - Coming soon
 
 ### Live Demo
-- Coming soon
+- https://blocks-kool.herokuapp.com/
