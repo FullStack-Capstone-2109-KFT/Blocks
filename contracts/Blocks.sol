@@ -13,37 +13,24 @@ contract Blocks {
 
   //define the User struct
   struct User {
-    string userName; //userName
+    uint256 userKey; //userKey
     uint256[] fileList; //list of file keys for lookup
     mapping(uint256 => File) fileStructs;
   }
 
   mapping(uint256 => User) public userStructs;
-  uint256[] userList; //list of user keys to enumerate - do we need?
-
-  //   constructor() public {}
+  uint256[] userList; //list of user keys for enumeration
 
   //   //define user creation event
-  //   event UserCreated(bytes32 userKey, string userName);
+  //   event UserCreated(bytes32 userKey);
 
-  function newUser(uint256 userKey, string memory userName)
-    public
-    returns (bool success)
-  {
-    userStructs[userKey].userName = userName;
-    userList.push(userKey); //do we need this?
+  function newUser(uint256 userKey) public returns (bool success) {
+    userList.push(userKey);
     return true;
   }
 
-  function getUser(uint256 userKey)
-    public
-    view
-    returns (string memory userName, uint256 fileCount)
-  {
-    return (
-      userStructs[userKey].userName,
-      userStructs[userKey].fileList.length
-    );
+  function getUser(uint256 userKey) public view returns (uint256 fileCount) {
+    return (userStructs[userKey].fileList.length);
   }
 
   function addFile(

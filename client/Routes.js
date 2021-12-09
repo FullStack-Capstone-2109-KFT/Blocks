@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState  } from "react";
+import React, { Component, Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
@@ -18,7 +18,7 @@ class Routes extends Component {
     this.props.loadInitialData();
   }
   render() {
-    const { isLoggedIn, userId, userName } = this.props;
+    const { isLoggedIn, userId } = this.props;
 
     // const scroll = new SmoothScroll('a[href*="#"]', {
     //   speed: 1000,
@@ -33,13 +33,13 @@ class Routes extends Component {
               <Redirect to="/files" />
             </Route>
             <Route path="/upload">
-              <UploadFile userId={userId} userName={userName} />
+              <UploadFile userId={userId} />
             </Route>
             <Route path="/login">
               <Redirect to="/files" />
             </Route>
             <Route path="/signup">
-              <Redirect to="/files"/>
+              <Redirect to="/files" />
             </Route>
             <Route path="/files">
               <FileView userId={userId} />
@@ -70,7 +70,6 @@ const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     userId: state.auth.id,
-    userName: state.auth.username,
   };
 };
 
