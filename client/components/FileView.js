@@ -44,10 +44,10 @@ export default class FileView extends Component {
   getUserData = async (userId) => {
     console.log("Retrieving user information from Blockchain");
 
-    let user = await this.state.blocks.methods.getUser(userId).call();
+    let userFileCount = await this.state.blocks.methods.getUser(userId).call();
 
-    if (parseInt(user.fileCount) > 0) {
-      this.setState({ fileCount: parseInt(user.fileCount) });
+    if (parseInt(userFileCount) > 0) {
+      this.setState({ fileCount: parseInt(userFileCount) });
     }
   };
 

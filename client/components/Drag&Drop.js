@@ -147,15 +147,15 @@ function StyledDropzone(props) {
     const fileType = type;
 
     //check blockchain for user with user id. If does not exist, create new user through contract
-    let user = await props.blocks.methods.getUser(userId).call();
-    if (user.fileCount < 1) {
+    let userFileCount = await props.blocks.methods.getUser(userId).call();
+    if (parseInt(userFileCount) === 0) {
       await props.blocks.methods
         .newUser(userId)
         .send({ from: metaMaskAccount });
     }
 
     //get fileKey for next file for the assigned user
-    const fileKey = parseInt(user.fileCount) + 1;
+    const fileKey = parseInt(userFileCount) + 1;
 
     //add file to blockchain for the logged in user
     await props.blocks.methods
