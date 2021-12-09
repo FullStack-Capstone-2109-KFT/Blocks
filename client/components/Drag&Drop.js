@@ -4,12 +4,16 @@ import ReactDOM from 'react-dom';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { encryptFile } from '../store/encryption';
-import { Popup } from 'semantic-ui-react'
+import { Popup } from 'semantic-ui-react';
 
 const encryptionInfo = {
-  name: <h5 className="encryptName">Why Encryption?</h5>,
-  bio: <p className="encryptBio">It helps protect your file, and can enhance security.</p>
-}
+  name: <h5 className='encryptName'>Why Encryption?</h5>,
+  bio: (
+    <p className='encryptBio'>
+      It helps protect your file, and can enhance security.
+    </p>
+  ),
+};
 
 function StyledDropzone(props) {
   const [files, setFiles] = useState([]);
@@ -109,7 +113,7 @@ function StyledDropzone(props) {
 
   const handleKeyChange = (evt) => {
     let target = evt.target.value;
-    console.log('TARGETTT',evt.target.value)
+    console.log('TARGETTT', evt.target.value);
     setEncryptionKey(target);
   };
 
@@ -190,12 +194,18 @@ function StyledDropzone(props) {
 
               <h3 className='checkbox-text'>
                 Do you want to encrypt your file?
-                <Popup className="popUp" content={encryptionInfo.bio}
-                trigger={<FontAwesomeIcon className="fas fa-info-circle" icon={["fas", "info-circle"]}/>}
-                key={encryptionInfo.name}
-                header={encryptionInfo.name}
+                <Popup
+                  className='popUp'
+                  content={encryptionInfo.bio}
+                  trigger={
+                    <FontAwesomeIcon
+                      className='fas fa-info-circle'
+                      icon={['fas', 'info-circle']}
+                    />
+                  }
+                  key={encryptionInfo.name}
+                  header={encryptionInfo.name}
                 />
-
                 <input
                   className='encryptCheckbox'
                   style={checkbox}
@@ -203,7 +213,6 @@ function StyledDropzone(props) {
                   checked={isChecked}
                   onChange={handleChecked}
                 />
-
               </h3>
               {isChecked ? (
                 <input
@@ -223,8 +232,9 @@ function StyledDropzone(props) {
             <div className='fileUploadContainer'>
               <h4 style={file}>File to Upload</h4>
               <ul>{filepath}</ul>
-
-              <aside style={thumbsContainer}>{thumbs}</aside>
+              <div className='outerPic'>
+                <div style={thumbsContainer}>{thumbs}</div>
+              </div>
 
               <input
                 style={submit}
@@ -250,7 +260,7 @@ const baseStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '16px',
-  borderWidth: '4px',
+  borderWidth: '3px',
   borderRadius: 2,
   borderColor: '#009688',
   borderStyle: 'dashed',
@@ -258,8 +268,9 @@ const baseStyle = {
   color: '#bdbdbd',
   outline: 'none',
   transition: 'border .24s ease-in-out',
-  width: '100%',
-  height: '400px',
+  width: '95%',
+  height: '380px',
+  marginTop: '-40px',
 };
 
 const activeStyle = {
@@ -274,22 +285,22 @@ const thumbsContainer = {
 };
 
 const thumb = {
-  backgroundColor: 'green',
-  display: 'inline-flex',
-  borderRadius: 2,
-  border: '1px solid #17c387',
-  marginBottom: 8,
-  marginRight: 8,
-  width: 'auto',
-  height: 200,
-  padding: 4,
-  boxSizing: 'border-box',
+  display: 'flex',
+  borderRadius: 4,
+  padding: 5,
+  border: '2px solid #17c387',
+  marginBottom: 2,
+  width: 'fit-content',
+  height: 165,
+  // boxSizing: 'border-box',
 };
 
 const thumbInner = {
   display: 'flex',
   minWidth: 0,
   overflow: 'hidden',
+  alignItems: 'center',
+  justifyContent: 'center',
 };
 
 const browseFiles = {
@@ -323,26 +334,25 @@ const doc = {
 };
 
 const input = {
-  width: '150px',
   marginBottom: '33px',
   marginTop: '76px',
-  height: '34px',
   padding: '7px',
 };
 
 const submit = {
   backgroundColor: '#14b185',
-  marginTop: '22px',
+  marginTop: '6px',
   padding: '5px',
   color: 'white',
   borderRadius: '3px',
   fontSize: '12px',
   letterSpacing: '1px',
-  width: '70%',
+  width: '100%',
   height: '34px',
   border: '1px solid #03a9f4',
   justifyContent: 'center',
   alignItems: 'center',
+  marginBottom: '75px',
 };
 
 const uploadImg = {
@@ -362,7 +372,7 @@ const file = {
   fontSize: '24px',
   letterSpacing: '2px',
   marginTop: '34px',
-  fontWeight: '400',
+  fontWeight: '300',
 };
 
 const fileContainer = {
@@ -384,6 +394,5 @@ const blocksImg = {
 const checkbox = {
   marginLeft: '8px',
   height: '15px',
-  width: '15px'
-
-}
+  width: '15px',
+};
