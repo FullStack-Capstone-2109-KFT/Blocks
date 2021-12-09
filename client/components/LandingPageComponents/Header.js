@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ParticleComponent from "../ParticlesFile";
 // import { HashLink } from "react-router-hash-link";
 
 export class Header extends React.Component {
@@ -8,7 +9,7 @@ export class Header extends React.Component {
 
     return (
       <header id="header">
-        <div className="intro">
+        <ParticleComponent />
           <div className="overlay">
             <div className="container">
               <div className="row">
@@ -31,7 +32,7 @@ export class Header extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </header>
     );
   }
