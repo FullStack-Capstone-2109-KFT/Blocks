@@ -109,6 +109,7 @@ function StyledDropzone(props) {
 
   const handleKeyChange = (evt) => {
     let target = evt.target.value;
+    console.log('TARGETTT',evt.target.value)
     setEncryptionKey(target);
   };
 
@@ -116,7 +117,6 @@ function StyledDropzone(props) {
     e.preventDefault();
     uploadFile();
     setDescription('');
-    setEncryptionKey('');
   };
   const handleChecked = () => {
     setIsCheck(!isChecked);
@@ -203,6 +203,7 @@ function StyledDropzone(props) {
                   checked={isChecked}
                   onChange={handleChecked}
                 />
+
               </h3>
               {isChecked ? (
                 <input
@@ -210,7 +211,7 @@ function StyledDropzone(props) {
                   className='input'
                   onChange={handleKeyChange}
                   value={encryptionKey}
-                  placeholder='Encryption Key (up to 20 chars) - keys are NOT SAVED.'
+                  placeholder='Encryption Key - keys are NOT SAVED.'
                   maxLength='20'
                 />
               ) : (
@@ -360,7 +361,7 @@ const DragText = {
 const file = {
   fontSize: '24px',
   letterSpacing: '2px',
-  marginTop: '74px',
+  marginTop: '34px',
   fontWeight: '400',
 };
 

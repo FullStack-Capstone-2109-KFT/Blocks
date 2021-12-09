@@ -10,6 +10,7 @@ import Share from "./components/SharePopUp";
 import CidReader from "./components/CID-Reader";
 import Info from "./components/LandingPageComponents/Learn-Blocks";
 import Learn from "./components/LandingPageComponents/Learn-Blocks";
+
 // import SmoothScroll from "smooth-scroll";
 
 class Routes extends Component {
