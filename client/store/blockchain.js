@@ -1,5 +1,5 @@
 const Web3 = require("web3");
-import Blocks from "../../abis/Blocks.json";
+import Blocks from "./../../abis/Blocks.json";
 
 export const loadWeb3 = async () => {
   if (window.ethereum) {
