@@ -39,7 +39,6 @@ function StyledDropzone(props) {
     noKeyboard: true,
     onDrop: (acceptedFiles) => {
       const theFile = acceptedFiles[0];
-      console.log(theFile);
       const reader = new window.FileReader();
 
       reader.readAsArrayBuffer(theFile);
@@ -102,9 +101,7 @@ function StyledDropzone(props) {
     </li>
   ));
 
-  useEffect(() => {
-    // console.log(buff, name, type);
-  }, [name, type]);
+  useEffect(() => {}, [name, type]);
 
   const handleChange = (evt) => {
     let target = evt.target.value;
@@ -113,7 +110,6 @@ function StyledDropzone(props) {
 
   const handleKeyChange = (evt) => {
     let target = evt.target.value;
-    console.log("TARGETTT", evt.target.value);
     setEncryptionKey(target);
   };
 
@@ -131,14 +127,14 @@ function StyledDropzone(props) {
 
     //If a key has been provided, encrypt the file with it
     if (encryptionKey.length > 0) {
-      console.log("Encrypting File");
+      // console.log("Encrypting File");
       encryptedBuff = await encryptFile(buff, encryptionKey);
     }
 
     //Add file to IPFS and receive CID
-    console.log("Submitting file to IPFS");
+    // console.log("Submitting file to IPFS");
     const res = await props.ipfs.add(encryptedBuff);
-    console.log(res);
+    // console.log(res);
 
     //identify key variables for contract calls
     const fileCID = res.path;

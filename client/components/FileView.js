@@ -42,7 +42,7 @@ export default class FileView extends Component {
   }
 
   getUserData = async (userId) => {
-    console.log("Retrieving user information from Blockchain");
+    // console.log("Retrieving user information from Blockchain");
 
     let userFileCount = await this.state.blocks.methods.getUser(userId).call();
 
@@ -54,7 +54,7 @@ export default class FileView extends Component {
   getUserFiles = async (userId) => {
     let files = [];
 
-    console.log("Retrieving user files from Blockchain");
+    // console.log("Retrieving user files from Blockchain");
 
     for (let i = 1; i <= this.state.fileCount; i++) {
       let file = await this.state.blocks.methods.getUserFile(userId, i).call();
@@ -64,7 +64,6 @@ export default class FileView extends Component {
     }
 
     this.setState({ userFiles: files });
-    console.log("Done");
   };
 
   async getFileFromIPFS(cid, fileType, description) {
@@ -104,7 +103,6 @@ export default class FileView extends Component {
 
   handleClick(event, num) {
     const name = event.target.name;
-    console.log(name, num);
     if (name === "share") {
       this.setState({
         selected: num,
