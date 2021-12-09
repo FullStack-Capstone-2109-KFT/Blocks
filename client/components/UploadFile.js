@@ -23,7 +23,6 @@ export default class UploadFile extends Component {
       name: null,
       description: "",
       id: 0,
-      userName: "",
     };
   }
 
@@ -32,7 +31,6 @@ export default class UploadFile extends Component {
     let bcData = await loadBlockchainData();
     this.setState({
       id: this.props.userId,
-      userName: this.props.userName,
       account: bcData.account,
       blocks: bcData.contract,
     });
@@ -40,8 +38,8 @@ export default class UploadFile extends Component {
 
   togglePop() {
     this.setState({
-      seen: !this.state.seen
-    })
+      seen: !this.state.seen,
+    });
   }
 
   render() {
@@ -52,7 +50,6 @@ export default class UploadFile extends Component {
           blocks={this.state.blocks}
           account={this.state.account}
           id={this.state.id}
-          userName={this.state.userName}
         />
       </div>
     );
