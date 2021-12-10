@@ -4,12 +4,12 @@
     "paragraph": "A globally encrypted, decentralized file sharing platform"
   },
   "About": {
-    "paragraph": "Users can upload files/images to Blocks with peace of mind that your sensitive data will soon be secure, uncensorable and shareable.  Security in Blocks comes from the decentralized process through the Ethereum Blockchain. Through this process,  your files will be safely stored in the IPFS (The InterPlanetary File System) utilizing Solidity Smart Contracts, into a unique hash password that can be shared via text or email.",
+    "paragraph": "Users can upload files to Blocks with peace of mind that your sensitive data will soon be secure, uncensorable and shareable.  Security in Blocks comes from the decentralized process through the Ethereum Blockchain. Through this process, your files will be safely stored in the IPFS (The InterPlanetary File System) utilizing Solidity Smart Contracts, into a unique hash password that can be shared via text or email.",
     "Why": [
       "Accessibility 24/7",
-      "Security",
+      "Top-tier Security",
       "Files can't be restricted",
-      "Piece of Mind"
+      "Peace of Mind"
     ],
     "Why2": [
       "We can't sell your information",
@@ -172,17 +172,17 @@
     {
       "icon": "file-upload",
       "title": "Files",
-      "text": "Your files are encrypted and stored on IPFS's decentralized platform"
+      "text": "Your files stored on the IPFS decentralized platform, while file keys are managed with the Ethereum blockchain (Rinkeby Network)"
     },
     {
       "icon": "key",
       "title": "Stay Secure",
-      "text": "Keep your files private with multiple layers of protection"
+      "text": "Keep your files protected with multiple layers of protection and AES256 cypher encryption"
     },
     {
       "icon": "share",
       "title": "Share",
-      "text": "Quickly send any file - big or small"
+      "text": "Quickly send any file - big or small, or access shared files on the IPFS"
     }
   ]
 }
