@@ -1,5 +1,5 @@
 import React from "react";
-import VideoPlayer from "../Video";
+import VideoPlayer from "./Video";
 
 export class About extends React.Component {
   render() {
