@@ -142,7 +142,7 @@ export default class FileView extends Component {
               <th>Description</th>
               <th>CID</th>
               <th>Type</th>
-              <th>Encryption Key</th>
+              {/* <th>Encryption Key</th> */}
               <th>Share</th>
             </tr>
           </thead>
@@ -164,7 +164,7 @@ export default class FileView extends Component {
                   </a>
                 </td>
                 <td>{file.fileType}</td>
-                <td>File Encryption</td>
+                {/* <td>File Encryption</td> */}
                 <td>
                   <button
                     className="share_button"
