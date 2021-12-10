@@ -1,5 +1,6 @@
+//THIS FILE DOES NOTHING, CAN WE REMOVE?
 
-  {
+{
   "particles": {
     "number": {
       "value": 80,
@@ -72,7 +73,7 @@
     "detect_on": "canvas",
     "events": {
       "onhover": {
-        "enable": true,
+        "enable": false,
         "mode": "repulse"
       },
       "onclick": {
@@ -96,7 +97,7 @@
         "speed": 3
       },
       "repulse": {
-        "distance": 200,
+        "distance": 500,
         "duration": 0.4
       },
       "push": {
@@ -109,4 +110,3 @@
   },
   "retina_detect": false
 }
-

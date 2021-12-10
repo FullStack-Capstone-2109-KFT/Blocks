@@ -3,18 +3,16 @@ import React from "react";
 import Particles from "react-tsparticles";
 
 const ParticleComponent = () => {
-  const particlesInit = (main) => {
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-  };
-
-  const particlesLoaded = (container) => {};
+  // // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
+  // const particlesInit = (main) => {  };
+  // const particlesLoaded = (container) => {};
 
   return (
     <Particles
       className="particles"
       id="tsparticles"
-      init={particlesInit}
-      loaded={particlesLoaded}
+      // init={particlesInit}
+      // loaded={particlesLoaded}
       options={{
         background: {
           color: {
@@ -45,7 +43,7 @@ const ParticleComponent = () => {
               quantity: 4,
             },
             repulse: {
-              distance: 200,
+              distance: 100,
               duration: 0.4,
             },
           },
@@ -69,7 +67,7 @@ const ParticleComponent = () => {
             enable: true,
             outMode: "bounce",
             random: false,
-            speed: 4,
+            speed: 2,
             straight: false,
           },
           number: {
@@ -83,7 +81,7 @@ const ParticleComponent = () => {
             value: 0.5,
           },
           shape: {
-            type: "circle",
+            type: "edge",
           },
           size: {
             random: true,

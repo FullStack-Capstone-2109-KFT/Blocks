@@ -1,5 +1,7 @@
-import React from 'react';
-import Particles from 'react-tsparticles';
+import React from "react";
+import Particles from "react-tsparticles";
+
+//THIS FILE DOES NOTHING - CAN WE REMOVE?
 
 const ParticleComponent = () => {
   const particlesInit = (main) => {
@@ -13,14 +15,14 @@ const ParticleComponent = () => {
   };
   return (
     <Particles
-      className='particles'
-      id='tsparticles'
+      className="particles"
+      id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
         background: {
           color: {
-            value: '#7E994A',
+            value: "#7E994A",
           },
         },
         fpsLimit: 60,
@@ -28,11 +30,11 @@ const ParticleComponent = () => {
           events: {
             onClick: {
               enable: true,
-              mode: 'push',
+              mode: "push",
             },
             onHover: {
               enable: true,
-              mode: 'repulse',
+              mode: "repulse",
             },
             resize: true,
           },
@@ -47,17 +49,17 @@ const ParticleComponent = () => {
               quantity: 4,
             },
             repulse: {
-              distance: 200,
+              distance: 100,
               duration: 0.4,
             },
           },
         },
         particles: {
           color: {
-            value: '#ffffff',
+            value: "#ffffff",
           },
           links: {
-            color: '#ffffff',
+            color: "#ffffff",
             distance: 150,
             enable: true,
             opacity: 0.5,
@@ -67,9 +69,9 @@ const ParticleComponent = () => {
             enable: true,
           },
           move: {
-            direction: 'none',
-            enable: true,
-            outMode: 'bounce',
+            direction: "none",
+            enable: false,
+            outMode: "bounce",
             random: false,
             speed: 3,
             straight: false,
@@ -85,7 +87,7 @@ const ParticleComponent = () => {
             value: 0.5,
           },
           shape: {
-            type: 'circle',
+            type: "circle",
           },
           size: {
             random: true,
