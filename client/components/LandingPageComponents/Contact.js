@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import emailjs from "emailjs-com";
-//emailjs requires subscription, pay for > 200 monthly requests
+import emailjs from "emailjs-com";
 
 export class Contact extends React.Component {
   constructor(props) {
@@ -13,6 +12,7 @@ export class Contact extends React.Component {
     };
     this.clearState = this.clearState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   clearState() {
@@ -28,21 +28,21 @@ export class Contact extends React.Component {
     const { name, email, message } = this.state;
     evt.preventDefault();
     console.log(name, email, message);
-    // emailjs
-    //   .sendForm(
-    //     "YOUR_SERVICE_ID",
-    //     "YOUR_TEMPLATE_ID",
-    //     evt.target,
-    //     "YOUR_USER_ID"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text), this.clearState();
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
+    emailjs
+      .sendForm(
+        "service_4frr8qa",
+        "template_8augfxj",
+        evt.target,
+        "user_foUtc38kpDPMaRxQfojwG"
+      )
+      .then(
+        (result) => {
+          console.log(result.text), this.clearState();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   }
 
   render() {
@@ -70,6 +70,7 @@ export class Contact extends React.Component {
                           id="name"
                           name="name"
                           className="form-control"
+                          value={this.state.name}
                           placeholder="Name"
                           required
                           onChange={handleChange}
@@ -84,6 +85,7 @@ export class Contact extends React.Component {
                           id="email"
                           name="email"
                           className="form-control"
+                          value={this.state.email}
                           placeholder="Email"
                           required
                           onChange={handleChange}
@@ -97,6 +99,7 @@ export class Contact extends React.Component {
                       name="message"
                       id="message"
                       className="form-control"
+                      value={this.state.message}
                       rows="4"
                       placeholder="Message"
                       required
@@ -174,7 +177,9 @@ export class Contact extends React.Component {
         </div>
         <div id="footer">
           <div className="container text-center">
-            <p>&copy; 2021 KOOL L.L.C.</p>
+            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ">
+              &copy; 2021 KOOL L.L.C.
+            </a>
           </div>
         </div>
       </div>
