@@ -8,7 +8,12 @@ export const loadWeb3 = async () => {
   } else if (window.web3) {
     window.web3 = new Web3(window.web3.currentProvider);
   } else {
-    window.alert("Non-Ethereum browser detected");
+    window.alert(
+      `Hi there - Blocks requires users to have a MetaMask account in order to interact with the blockchain. Do you have MetaMask installed? (https://metamask.io/download.html)` +
+        "\n" +
+        "\n" +
+        "(Error: Non-Ethereum browser detected)"
+    );
   }
 };
 

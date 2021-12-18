@@ -20,7 +20,7 @@ export class Header extends React.Component {
                   </h1>
                   <p>{props.data ? props.data.paragraph : "Loading"}</p>
                   <Link
-                    to="/login"
+                    to="/signup"
                     className="btn btn-custom btn-lg page-scroll"
                   >
                     Get Started

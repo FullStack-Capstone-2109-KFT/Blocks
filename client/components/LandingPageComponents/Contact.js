@@ -145,19 +145,27 @@ export class Contact extends React.Component {
               <div className="row">
                 <div className="social">
                   <ul>
-                    <li>
+                    {/* <li>
                       <a href={props.data ? props.data.facebook : "/"}>
                         <FontAwesomeIcon
                           className="fa fa-youtube"
                           icon={["fab", "facebook"]}
                         />
                       </a>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <a href={props.data ? props.data.twitter : "/"}>
                         <FontAwesomeIcon
                           className="fa fa-twitter"
                           icon={["fab", "twitter"]}
+                        />
+                      </a>
+                    </li> */}
+                    <li>
+                      <a href={props.data ? props.data.github : "/"}>
+                        <FontAwesomeIcon
+                          className="fa fa-github"
+                          icon={["fab", "github"]}
                         />
                       </a>
                     </li>
