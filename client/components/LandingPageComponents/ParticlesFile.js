@@ -3,16 +3,10 @@ import React from "react";
 import Particles from "react-tsparticles";
 
 const ParticleComponent = () => {
-  // // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-  // const particlesInit = (main) => {  };
-  // const particlesLoaded = (container) => {};
-
   return (
     <Particles
       className="particles"
       id="tsparticles"
-      // init={particlesInit}
-      // loaded={particlesLoaded}
       options={{
         background: {
           color: {

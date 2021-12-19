@@ -1,9 +1,6 @@
-import React, { Component, useCallback } from "react";
-// import Blocks from "../../abis/Blocks.json"; //remove?
-// import StyledDropzone from "./Drag&Drop"; // remove?
+import React, { Component } from "react";
 import { loadWeb3, loadBlockchainData } from "../store/blockchain";
 import Share from "./SharePopUp";
-// const Web3 = require("web3");
 const { create } = require("ipfs-http-client");
 import { decryptFile } from "../store/encryption";
 
@@ -42,8 +39,6 @@ export default class FileView extends Component {
   }
 
   getUserData = async (userId) => {
-    // console.log("Retrieving user information from Blockchain");
-
     let userFileCount = await this.state.blocks.methods.getUser(userId).call();
 
     if (parseInt(userFileCount) > 0) {
@@ -53,8 +48,6 @@ export default class FileView extends Component {
 
   getUserFiles = async (userId) => {
     let files = [];
-
-    // console.log("Retrieving user files from Blockchain");
 
     for (let i = 1; i <= this.state.fileCount; i++) {
       let file = await this.state.blocks.methods.getUserFile(userId, i).call();
@@ -83,7 +76,6 @@ export default class FileView extends Component {
     }
 
     if (this.state.decryptionKey.length > 0) {
-      // console.log("Attempting file decryption with provided key");
       result = await decryptFile(result, this.state.decryptionKey);
     }
 
@@ -164,7 +156,6 @@ export default class FileView extends Component {
                   </a>
                 </td>
                 <td>{file.fileType}</td>
-                {/* <td>File Encryption</td> */}
                 <td>
                   <button
                     className="share_button"

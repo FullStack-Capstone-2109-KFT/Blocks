@@ -1,15 +1,15 @@
-import { filter } from 'compression';
-import React, { useMemo, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { useDropzone } from 'react-dropzone';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { encryptFile } from '../store/encryption';
-import { Popup } from 'semantic-ui-react';
+import { filter } from "compression";
+import React, { useMemo, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import { useDropzone } from "react-dropzone";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { encryptFile } from "../store/encryption";
+import { Popup } from "semantic-ui-react";
 
 const encryptionInfo = {
-  name: <h5 className='encryptName'>Why Encryption?</h5>,
+  name: <h5 className="encryptName">Why Encryption?</h5>,
   bio: (
-    <p className='encryptBio'>
+    <p className="encryptBio">
       It helps protect your file, and can enhance security.
     </p>
   ),
@@ -127,14 +127,11 @@ function StyledDropzone(props) {
 
     //If a key has been provided, encrypt the file with it
     if (encryptionKey.length > 0) {
-      // console.log("Encrypting File");
       encryptedBuff = await encryptFile(buff, encryptionKey);
     }
 
     //Add file to IPFS and receive CID
-    // console.log("Submitting file to IPFS");
     const res = await props.ipfs.add(encryptedBuff);
-    // console.log(res);
 
     //identify key variables for contract calls
     const fileCID = res.path;
@@ -190,12 +187,12 @@ function StyledDropzone(props) {
               <h3 className="checkbox-text">
                 Do you want to encrypt your file?
                 <Popup
-                  className='popUp'
+                  className="popUp"
                   content={encryptionInfo.bio}
                   trigger={
                     <FontAwesomeIcon
-                      className='fas fa-info-circle'
-                      icon={['fas', 'info-circle']}
+                      className="fas fa-info-circle"
+                      icon={["fas", "info-circle"]}
                     />
                   }
                   key={encryptionInfo.name}
@@ -227,7 +224,7 @@ function StyledDropzone(props) {
             <div className="fileUploadContainer">
               <h4 style={file}>File to Upload</h4>
               <ul>{filepath}</ul>
-              <div className='outerPic'>
+              <div className="outerPic">
                 <div style={thumbsContainer}>{thumbs}</div>
               </div>
 
@@ -251,21 +248,21 @@ export default StyledDropzone;
 
 const baseStyle = {
   flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '16px',
-  borderWidth: '3px',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "16px",
+  borderWidth: "3px",
   borderRadius: 2,
-  borderColor: '#009688',
-  borderStyle: 'dashed',
-  backgroundColor: '#green',
-  color: '#bdbdbd',
-  outline: 'none',
-  transition: 'border .24s ease-in-out',
-  width: '95%',
-  height: '380px',
-  marginTop: '-40px',
+  borderColor: "#009688",
+  borderStyle: "dashed",
+  backgroundColor: "#green",
+  color: "#bdbdbd",
+  outline: "none",
+  transition: "border .24s ease-in-out",
+  width: "95%",
+  height: "380px",
+  marginTop: "-40px",
 };
 
 const activeStyle = {
@@ -280,12 +277,12 @@ const thumbsContainer = {
 };
 
 const thumb = {
-  display: 'flex',
+  display: "flex",
   borderRadius: 4,
   padding: 5,
-  border: '2px solid #17c387',
+  border: "2px solid #17c387",
   marginBottom: 2,
-  width: 'fit-content',
+  width: "fit-content",
   height: 165,
   // boxSizing: 'border-box',
 };
@@ -293,9 +290,9 @@ const thumb = {
 const thumbInner = {
   display: "flex",
   minWidth: 0,
-  overflow: 'hidden',
-  alignItems: 'center',
-  justifyContent: 'center',
+  overflow: "hidden",
+  alignItems: "center",
+  justifyContent: "center",
 };
 
 const browseFiles = {
@@ -329,25 +326,25 @@ const doc = {
 };
 
 const input = {
-  marginBottom: '33px',
-  marginTop: '76px',
-  padding: '7px',
+  marginBottom: "33px",
+  marginTop: "76px",
+  padding: "7px",
 };
 
 const submit = {
-  backgroundColor: '#14b185',
-  marginTop: '6px',
-  padding: '5px',
-  color: 'white',
-  borderRadius: '3px',
-  fontSize: '12px',
-  letterSpacing: '1px',
-  width: '100%',
-  height: '34px',
-  border: '1px solid #03a9f4',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginBottom: '75px',
+  backgroundColor: "#14b185",
+  marginTop: "6px",
+  padding: "5px",
+  color: "white",
+  borderRadius: "3px",
+  fontSize: "12px",
+  letterSpacing: "1px",
+  width: "100%",
+  height: "34px",
+  border: "1px solid #03a9f4",
+  justifyContent: "center",
+  alignItems: "center",
+  marginBottom: "75px",
 };
 
 const uploadImg = {
@@ -364,10 +361,10 @@ const DragText = {
 };
 
 const file = {
-  fontSize: '24px',
-  letterSpacing: '2px',
-  marginTop: '34px',
-  fontWeight: '300',
+  fontSize: "24px",
+  letterSpacing: "2px",
+  marginTop: "34px",
+  fontWeight: "300",
 };
 
 const fileContainer = {
@@ -387,7 +384,7 @@ const blocksImg = {
 };
 
 const checkbox = {
-  marginLeft: '8px',
-  height: '15px',
-  width: '15px',
+  marginLeft: "8px",
+  height: "15px",
+  width: "15px",
 };
