@@ -11,7 +11,10 @@ const Learn = (props) => {
         <h5>It all starts with a file...</h5>
       </div>
       <div>
-        <a href="https://www.flaticon.com/free-icons/file" title="file icons">File icons created by Roundicons Premium - Flaticon</a>
+        <img src='../img/file.png' style={{width: '250px'}}/>
+        <div>
+          <a href="https://www.flaticon.com/free-icons/file" title="file icons">File icons created by Roundicons Premium - Flaticon</a>
+        </div>
       </div>
     </div>
   )
