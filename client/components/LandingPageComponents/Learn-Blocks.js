@@ -3,7 +3,7 @@ import React from "react";
 
 const Learn = (props) => {
   return (
-    <div className="learnText" /* style="text-align: center" */>
+    <div className="learnText">
       <div>
         <h2>How Blocks Works</h2>
       </div>
