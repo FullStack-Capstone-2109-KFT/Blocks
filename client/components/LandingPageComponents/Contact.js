@@ -178,7 +178,7 @@ export class Contact extends React.Component {
         <div id="footer">
           <div className="container text-center">
             <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ">
-              &copy; 2021 KOOL L.L.C.
+              &copy; 2022 KOOL L.L.C.
             </a>
           </div>
         </div>
