@@ -1212,11 +1212,24 @@ label {
 .learnText {
   margin-top: 75px;
   font-family: 'Lato', sans-serif;
-  padding: 100px 0;
+  padding: 50px 0;
   text-align: center;
   background-color: #e6e6e6;
   font-size: 24px;
   font-weight: 300;
+}
+
+.learnText h1 {
+  border-style: solid;
+  font-family: 'Lato', sans-serif;
+  padding: 20px;
+  width: 700px;
+  margin: auto;
+}
+
+.learnText h5 {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .ipfs-a:hover {
